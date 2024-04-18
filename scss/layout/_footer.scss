@@ -1,0 +1,144 @@
+@use "../abstracts";
+.footer {
+
+    &__inner {
+        padding: 50px 50px 30px;
+        background-color: var(--footer-bg);
+
+        @include abstracts.screen(md) {
+            padding: 30px;
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.2fr 1fr 1.2fr;
+        gap: 50px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #9e9da8;
+
+        @include abstracts.screen(lg) {
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        @include abstracts.screen(md) {
+            grid-template-columns: 1fr;
+        }
+
+        @include abstracts.screen(sm) {
+            gap: 20px;
+        }
+    }
+
+    &__socials {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        transition: 0.25s;
+        @include abstracts.screen(md) {
+            width: 48px;
+            height: 48px;
+        }
+
+        &-wrap {
+            border-radius: 50%;
+        }
+
+        &-wrap:nth-child(1) {
+            background-color: #0866ff;
+            color: #fff;
+        }
+
+        &-wrap:nth-child(2) {
+            background-color: #50a8d4;
+            color: #fff;
+        }
+
+        &-wrap:nth-child(3) {
+            background-color: #ed8fe7;
+            color: #fff;
+        }
+
+        &-wrap:nth-child(4) {
+            background-color: #fa7338;
+            color: #fff;
+        }
+
+        font-size: 2.2rem;
+        &:hover {
+            cursor: pointer;
+            scale: 1.2;
+        }
+    }
+
+    &__title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 145.455%;
+    }
+
+    &__list {
+        margin-top: 13px;
+        @include abstracts.screen(md) {
+            margin-top: 0;
+        }
+    }
+
+    &__desc {
+        margin-top: 20px;
+    }
+
+    &__copywrite,
+    &__desc,
+    &__link {
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 150%;
+        @include abstracts.screen(md) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 0;
+
+        @include abstracts.screen(md) {
+            padding: 10px 0;
+        }
+
+        &-icon {
+            align-self: flex-start;
+            font-size: 2rem;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__copywrite-wrap {
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        @include abstracts.screen(md) {
+            row-gap: 10px;
+        }
+    }
+}
