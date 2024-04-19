@@ -18,8 +18,8 @@ html.dark {
     --dropdown-arrow: brightness(0) saturate(100%) invert(17%) sepia(12%) saturate(1228%) hue-rotate(172deg)
         brightness(94%) contrast(96%);
 
-    --dropdown-border-color: #171c28;
-    --dropdown-thumb-border-color: var(--dropdown-border-color);
+    --dropdown-border-color: #4c4c4f;
+    --dropdown-thumb-border-color: #4c4c4f;
 
     // top menu
     --top-menu-border-color: #171c28;
@@ -106,6 +106,6 @@ html.dark {
     --profile-sidebar-shadow: rgba(23, 28, 40, 0.2);
     --profile-user-shadow: rgba(23, 28, 40, 0.2);
 
-    --account-info-bg: #292E39;
-    --account-info-icon: #171C28;
+    --account-info-bg: #292e39;
+    --account-info-icon: #171c28;
 }
