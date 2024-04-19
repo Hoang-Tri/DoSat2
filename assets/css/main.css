@@ -236,6 +236,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+option {
+  background-color: var(--body-bg);
+}
+
 .col, .row[class*=row-cols-] > *,
 .row [class*=col-], .container-fluid, .container {
   padding-left: calc(var(--grid-gutter-x) / 2);
@@ -2766,18 +2770,32 @@ html {
   }
 }
 .form__select {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: var(--width, 108px);
+  min-width: var(--width, 200px);
   height: calc(100% - 10px);
-  padding: 0 14px;
   cursor: pointer;
 }
 @media (max-width: 1199.98px) {
   .form__select {
-    flex-grow: 1;
     --width: 86px;
+  }
+}
+.form__select-select {
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+  background-color: transparent;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 144.444%;
+}
+@media (max-width: 767.98px) {
+  .form__select-select {
+    font-size: 1.6rem;
+    line-height: 150%;
   }
 }
 .form__select + .form__select {
