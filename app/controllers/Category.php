@@ -9,9 +9,9 @@
         // lay danh muc
         public function categoryDisplay() {
             $this->load->view("header");
-            $homeModel = $this->load->modal("homeModel");
+            $categoryModel = $this->load->model("categorymodel");
             $tbl_cate_pro = "category_product";
-            $data["category"] = $homeModel->selectTbl($tbl_cate_pro);
+            $data["category"] = $categoryModel->category($tbl_cate_pro);
             $this->load->view("category", $data);
             $this->load->view("footer");
         }
@@ -19,12 +19,24 @@
         // lay danh muc tu id
         public function categoryByIdDisplay() {
             $this->load->view("header");
-            $homeModel = $this->load->modal("homeModel");
+            $categorymodel = $this->load->model("categorymodel");
             $id = 1;
             $tbl_cate_pro = "category_product";
-            $data["categorybyid"] = $homeModel->selectTblCategoryById($tbl_cate_pro, $id);
+            $data["categorybyid"] = $categorymodel->categoryById($tbl_cate_pro, $id);
             $this->load->view("categorybyid", $data);
             $this->load->view("footer");
+        }
+
+        // them danh muc
+        public function insertCategory() {
+            $categorymodel = $this->load->model("categorymodel");
+            $tbl_cate_pro = "category_product";
+
+            $data = array(
+                "cate_pro_title" => "Cafe nguyen chat do anh ui"
+            );
+
+            $result = $categorymodel->insertCategory($tbl_cate_pro, $data);
         }
     }
 ?>

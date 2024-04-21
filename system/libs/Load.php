@@ -12,7 +12,7 @@
             include("./app/views/".$fileName.".php");
         }
 
-        public function modal ($fileName) {
+        public function model ($fileName) {
             include("./app/models/".$fileName.".php");
             // tra ve class modal
             return new $fileName;

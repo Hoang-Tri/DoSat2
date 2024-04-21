@@ -1,7 +1,7 @@
 <!-- Ket noi co so du lieu -->
 
 <?php
-    class DModal {
+    class DModel {
         
         protected $db = array();
         public function __construct() {
