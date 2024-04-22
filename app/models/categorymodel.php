@@ -18,5 +18,13 @@
         public function insertCategory($tbl_cate_pro, $data) {
            return $this->db->insert($tbl_cate_pro, $data);
         }
+
+        public function updateCategory($tbl_cate_pro, $data, $cond) {
+            return $this->db->update($tbl_cate_pro, $data, $cond);
+         }
+
+         public function deleteCategory($tbl_cate_pro, $cond) {
+            return $this->db->delete($tbl_cate_pro, $cond);
+         }
     }
 ?>

@@ -10,13 +10,12 @@
 <body>
     <div class="content">
         <?php 
-            include_once("./system/libs/Main.php");
-            include_once("./system/libs/DController.php");
-            include_once("./system/libs/DModel.php");
-            include_once("./system/libs/Database.php");
-            include_once("./system/libs/Load.php");
+            // tu dong load cac class trong libs
+            spl_autoload_register(function($class) {
+                include_once("./system/libs/".$class.".php");
+            });
 
-            // $main = new Main();
+            include_once("./app/config/config.php");
             
             $url = isset($_GET["url"]) ? $_GET["url"] : null;
             
