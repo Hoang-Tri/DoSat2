@@ -1,5 +1,5 @@
 <?php
-    class CategoryModel extends DModel {
+    class Categorymodel extends DModel {
         function __construct() {
             parent::__construct();
         }
@@ -9,21 +9,21 @@
             return $this->db->select($sql);
         }
 
-        public function categoryById($tbl_cate_pro, $id) {
+        public function categorybyid($tbl_cate_pro, $id) {
             $sql = "SELECT * FROM $tbl_cate_pro WHERE cate_pro_id =:id";
             $data = array(":id" => $id);
             return $this->db->select($sql, $data);
         }   
 
-        public function insertCategory($tbl_cate_pro, $data) {
+        public function insertcategory($tbl_cate_pro, $data) {
            return $this->db->insert($tbl_cate_pro, $data);
         }
 
-        public function updateCategory($tbl_cate_pro, $data, $cond) {
+        public function updatecategory($tbl_cate_pro, $data, $cond) {
             return $this->db->update($tbl_cate_pro, $data, $cond);
          }
 
-         public function deleteCategory($tbl_cate_pro, $cond) {
+         public function deletecategory($tbl_cate_pro, $cond) {
             return $this->db->delete($tbl_cate_pro, $cond);
          }
     }

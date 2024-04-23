@@ -1,0 +1,1 @@
+<h3>Heloo anh em day la dashboard <a href="<?php echo BASE_URL ?>/login/logout">LogOut</a></h3>

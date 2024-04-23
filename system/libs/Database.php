@@ -66,5 +66,19 @@
             $sql = "DELETE FROM `category_product` WHERE $cond LIMIT $limit";
             return $this->exec($sql);
         }
+
+
+        // Login admin
+        public function affectedRows($sql, $username, $password) {
+            $statement = $this->prepare($sql);
+            $statement->execute(array($username, $password));
+            return $statement->rowCount();
+        }
+
+        public function selectUser($sql, $username, $password) {
+            $statement = $this->prepare($sql);
+            $statement->execute(array($username, $password));
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>

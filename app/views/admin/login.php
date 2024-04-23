@@ -1,4 +1,4 @@
-<form action="<?php echo BASE_URL ?>/category/insertcategory" method="post" class="form" autocomplete="off">
+<form action="<?php echo BASE_URL ?>/login/authentication_login" method="post" class="form" autocomplete="off">
 
     <?php 
         if(isset($msg)) {
@@ -6,17 +6,15 @@
         }
     ?>
     <table class="table__insert-category">
-        <thead>
-            <th>INSERT CATEGORY HERE!</th>
-        </thead>
-
         <tbody>
             <tr>
-                <td><input required type="text" name="title"></td> 
+                <td>User Name</td>
+                <td><input required type="text" name="ad_username"></td> 
             </tr>
 
             <tr>
-                <td><input required type="text" name="desc"></td>
+                <td>Password</td>
+                <td><input required type="password" name="ad_password"></td>
             </tr>
         </tbody>
     </table>
