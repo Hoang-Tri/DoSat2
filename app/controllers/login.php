@@ -1,6 +1,7 @@
 <?php
     class login extends DController {
         public function __construct() {
+            Session::checkSession();
             $message = array();
             $data = array();
             parent::__construct();
@@ -23,8 +24,10 @@
         // Login admin
         public function dashboard() {
             // Kiem tra xem session login co hay khong
-            Session::checkSession();
+            $this->load->view("admin/header");
+            $this->load->view("admin/sidebar");
             $this->load->view("admin/dashboard");
+            $this->load->view("admin/footer");
         }
         public function authentication_login() {
 
@@ -55,7 +58,5 @@
             header("Location:".BASE_URL."/login");
             
         }
-        
-
     }
 ?>

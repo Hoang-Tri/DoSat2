@@ -1,5 +1,5 @@
 <?php
-    class product extends DController {
+    class order extends DController {
         public function __construct() {
             // lay tat ca cua thanh cha
             Session::checkSession();
@@ -8,16 +8,16 @@
 
        
         public function index() {
-            $this->product();
+            $this->order();
         }
 
 
         // List ra các đơn hàng
-        public function product() {
+        public function order() {
              // Kiem tra xem session login co hay khong
              $this->load->view("admin/header");
              $this->load->view("admin/sidebar");
-             $this->load->view("admin/product/product");
+             $this->load->view("admin/order/order");
              $this->load->view("admin/footer");
         }
     }
