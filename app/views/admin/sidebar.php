@@ -2,7 +2,7 @@
     <!-- Content For Sidebar -->
     <div class="h-100">
         <div class="sidebar-logo">
-            <a href="<?php echo BASE_URL ?>/login/dashboard" class="logo-admin">
+            <a href="./" class="logo-admin">
                 <img src="<?php echo BASE_URL ?>/assets/icons/logo.svg" alt="grocerymart" class="logo__img top-bar__img" />
                 <h1 class="logo-admin__title">cafegrocery</h1>
             </a>
@@ -22,8 +22,8 @@
 
             <!-- Trang thông tin website -->
             <li class="sidebar-item">
-                <a href="<?php echo BASE_URL ?>/login/dashboard" class="sidebar-link">
-                    <i class="fa-solid fa-list pe-2"></i>
+                <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-info pe-2"></i>
                     Thông tin website
                 </a>
             </li>
@@ -47,7 +47,7 @@
             <!-- Trang bài viết -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed" data-bs-target="#post" data-bs-toggle="collapse"
-                    aria-expanded="false"><i class="fa-solid fa-cart-plus pe-2"></i>
+                    aria-expanded="false"><i class="fa-regular fa-pen-to-square pe-2"></i>
                     Bài viết
                 </a>
                 <ul id="post" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -62,16 +62,16 @@
 
             <!-- Trang danh mục sản phẩm -->
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#cate_product" data-bs-toggle="collapse"
-                    aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
-                    Danh mục sản phẩm
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#brand" data-bs-toggle="collapse"
+                    aria-expanded="false"><i class="fa-solid fa-rss pe-2"></i>
+                    Thương hiệu
                 </a>
-                <ul id="cate_product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="brand" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="<?php echo BASE_URL ?>/product" class="sidebar-link">Thêm</a>
+                        <a href="<?php echo BASE_URL ?>/brand" class="sidebar-link">Thêm</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Liệt kê</a>
+                        <a href="<?php echo BASE_URL ?>/brand/list_brand" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
             </li>
@@ -87,7 +87,7 @@
                         <a href="#" class="sidebar-link">Thêm</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="<?php echo BASE_URL ?>/product" class="sidebar-link">Liệt kê</a>
+                        <a href="#" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
             </li>

@@ -4,27 +4,27 @@
             parent::__construct();
         }
 
-        public function category($tbl_cate_pro) {
-            $sql = "SELECT * FROM $tbl_cate_pro";
+        public function category($table, $table_id) {
+            $sql = "SELECT * FROM $table ORDER BY $table_id DESC";
             return $this->db->select($sql);
         }
 
-        public function categorybyid($tbl_cate_pro, $id) {
-            $sql = "SELECT * FROM $tbl_cate_pro WHERE cate_pro_id =:id";
+        public function categorybyid($table, $id) {
+            $sql = "SELECT * FROM $table WHERE cate_pro_id =:id";
             $data = array(":id" => $id);
             return $this->db->select($sql, $data);
         }   
 
-        public function insertcategory($tbl_cate_pro, $data) {
-           return $this->db->insert($tbl_cate_pro, $data);
+        public function insertcategory($table, $data) {
+           return $this->db->insert($table, $data);
         }
 
-        public function updatecategory($tbl_cate_pro, $data, $cond) {
-            return $this->db->update($tbl_cate_pro, $data, $cond);
+        public function updatecategory($table, $data, $cond) {
+            return $this->db->update($table, $data, $cond);
          }
 
-         public function deletecategory($tbl_cate_pro, $cond) {
-            return $this->db->delete($tbl_cate_pro, $cond);
+         public function deletecategory($table, $cond) {
+            return $this->db->delete($table, $cond);
          }
     }
 ?>

@@ -52,7 +52,7 @@
             // => "title_1 = :title_1, title_2 = :title_2"
 
 
-            $sql = "UPDATE `category_product` SET $updateKey WHERE $cond";
+            $sql = "UPDATE $table SET $updateKey WHERE $cond";
             $statement = $this->prepare($sql);
 
             foreach($data as $key => $value) {
@@ -63,7 +63,7 @@
 
          // Ham update vao table
          public function delete($table, $cond, $limit = 1) {
-            $sql = "DELETE FROM `category_product` WHERE $cond LIMIT $limit";
+            $sql = "DELETE FROM $table WHERE $cond LIMIT $limit";
             return $this->exec($sql);
         }
 
