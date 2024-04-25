@@ -28,13 +28,13 @@
                 </a>
             </li>
 
-            <!-- Trang bài viết -->
+            <!-- Trang danh mục bài viết -->
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#cate_post" data-bs-toggle="collapse"
                     aria-expanded="false"><i class="fa-solid fa-file-lines pe-2"></i>
-                    Bài viết
+                    Danh mục bài viết
                 </a>
-                <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="cate_post" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">Thêm</a>
                     </li>
@@ -44,13 +44,45 @@
                 </ul>
             </li>
 
+            <!-- Trang bài viết -->
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#post" data-bs-toggle="collapse"
+                    aria-expanded="false"><i class="fa-solid fa-cart-plus pe-2"></i>
+                    Bài viết
+                </a>
+                <ul id="post" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">Thêm</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/order" class="sidebar-link">Liệt kê</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Trang danh mục sản phẩm -->
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#cate_product" data-bs-toggle="collapse"
+                    aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
+                    Danh mục sản phẩm
+                </a>
+                <ul id="cate_product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/product" class="sidebar-link">Thêm</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">Liệt kê</a>
+                    </li>
+                </ul>
+            </li>
+
             <!-- Trang sản phẩm -->
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#product" data-bs-toggle="collapse"
                     aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
                     Sản phẩm
                 </a>
-                <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">Thêm</a>
                     </li>
@@ -62,11 +94,11 @@
 
             <!-- Trang đơn hàng  -->
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#auth" data-bs-toggle="collapse"
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#order" data-bs-toggle="collapse"
                     aria-expanded="false"><i class="fa-solid fa-cart-plus pe-2"></i>
                     Đơn hàng
                 </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">Thêm</a>
                     </li>
@@ -75,6 +107,8 @@
                     </li>
                 </ul>
             </li>
+
+            
             <!-- <li class="sidebar-header">
                 Multi Level Menu
             </li>

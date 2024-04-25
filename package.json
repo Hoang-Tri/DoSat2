@@ -20,5 +20,8 @@
     "homepage": "https://github.com/T-feww66/f8-project-08#readme",
     "dependencies": {
         "boxicons": "^2.1.4"
+    },
+    "devDependencies": {
+        "sweetalert2": "^11.10.8"
     }
 }
