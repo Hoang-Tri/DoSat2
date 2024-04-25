@@ -9,9 +9,9 @@
 ?>
 
 <h4 style="margin-top: 30px;">Thêm thương hiệu</h4>
-<div style="margin-top: 50px" class="row row-cols-8">
-    <div class="col">
-        <form style="width: 22rem;" method="post" action="<?php echo BASE_URL?>/brand/insert_brand">
+<div style="margin-top: 50px" class="row">
+    <div class="col-6">
+        <form method="post" action="<?php echo BASE_URL?>/brand/insert_brand">
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="brand_name">Tên thương hiệu</label>
@@ -21,7 +21,7 @@
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="brand_desc">Miêu tả thương hiệu</label>
-                <input type="text" name="brand_desc" id="brand_desc" class="form-control" required autocomplete="off"/>
+                <textarea name="brand_desc" id="brand_desc" class="form-control" required ></textarea>
             </div>
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Thêm thương hiệu</button>

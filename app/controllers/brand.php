@@ -50,7 +50,7 @@
                     header("Location:".BASE_URL."/brand?msg=".$message);
                     exit();
                 } else {
-                    $error = "Failed to add brand!";
+                    $error = "Thêm sản phẩm thất bại!";
                     header("Location:".BASE_URL."/brand?error=".$error);
                     exit();
                 }
@@ -89,6 +89,50 @@
                 exit();
             } else {
                 header("Location:".BASE_URL."/brand/list_brand");
+                exit();
+            }
+        }
+
+        // view edit
+        public function edit_brand($id) {
+            $table = "brand";
+            $cond = "brand.brand_id = '$id'";
+            $categorymodel = $this->load->model("categorymodel");
+            $data['brandbyid'] = $categorymodel->categorybyid($table, $cond);
+            $this->load->view("admin/header");
+            $this->load->view("admin/sidebar");
+            $this->load->view("admin/brand/edit_brand", $data);
+            $this->load->view("admin/footer");
+        }
+
+        // Hàm cập nhật brand
+        public function update_brand($id) {
+            $categorymodel = $this->load->model("categorymodel");
+            $table = "brand";
+            $cond = "brand.brand_id = '$id'";
+
+            $brand_name = $_POST["brand_name"];
+            $desc = $_POST["brand_desc"];
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (empty($brand_name) || empty($desc)) {
+                $error = "Please fill in all fields.";
+                header("Location:".BASE_URL."/brand?error=".urlencode($error));
+                exit();
+            }
+            $data = array(
+                "brand_name" => $brand_name,
+                "brand_desc" => $desc
+            );
+            
+            $result = $categorymodel->updatecategory($table, $data, $cond);
+
+            if($result == 1) {
+                $message = "Cập nhật thương hiệu thành công";
+                header("Location:".BASE_URL."/brand/list_brand?msg=".$message);
+                exit();
+            } else {
+                $error = "Cập nhật thương hiệu thất bại";
+                header("Location:".BASE_URL."/brand/list_brand?error=".$error);
                 exit();
             }
         }

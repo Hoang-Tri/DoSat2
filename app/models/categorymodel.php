@@ -9,10 +9,9 @@
             return $this->db->select($sql);
         }
 
-        public function categorybyid($table, $id) {
-            $sql = "SELECT * FROM $table WHERE cate_pro_id =:id";
-            $data = array(":id" => $id);
-            return $this->db->select($sql, $data);
+        public function categorybyid($table, $cond) {
+            $sql = "SELECT * FROM $table WHERE $cond";
+            return $this->db->select($sql);
         }   
 
         public function insertcategory($table, $data) {
