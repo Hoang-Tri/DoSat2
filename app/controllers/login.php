@@ -14,9 +14,9 @@
             if(Session::get("login") == true) {
                 header("Location:".BASE_URL."/login/dashboard");
             }
-            $this->load->view("header");
+            $this->load->view("admin/header");
             $this->load->view("admin/login");
-            $this->load->view("footer");
+            $this->load->view("admin/footer");
         }
 
 
