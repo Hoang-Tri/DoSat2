@@ -1,4 +1,4 @@
-<aside id="sidebar" class="js-sidebar collapsed">
+<aside id="sidebar" class="js-sidebar">
     <!-- Content For Sidebar -->
     <div class="h-100">
         <div class="sidebar-logo">
@@ -28,18 +28,17 @@
                 </a>
             </li>
 
-            <!-- Trang danh mục bài viết -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed" data-bs-target="#cate_post" data-bs-toggle="collapse"
-                    aria-expanded="false"><i class="fa-solid fa-file-lines pe-2"></i>
+                    aria-expanded="false"><i class="fa-solid fa-file-pen pe-2"></i>
                     Danh mục bài viết
                 </a>
                 <ul id="cate_post" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Thêm</a>
+                        <a href="<?php echo BASE_URL ?>/post" class="sidebar-link">Thêm</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Liệt kê</a>
+                        <a href="<?php echo BASE_URL ?>/post/list_cate_post" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
             </li>
