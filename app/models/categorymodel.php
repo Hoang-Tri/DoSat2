@@ -27,7 +27,7 @@
          }
 
 
-        //  POST
+        //  CATEGORY POST
          public function insertcategory_post($table, $data) {
             return $this->db->insert($table, $data);
          }

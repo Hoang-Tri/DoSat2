@@ -196,3 +196,8 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
 }
 
 /* Login */
+.admin_post-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
