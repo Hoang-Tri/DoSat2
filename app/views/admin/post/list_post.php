@@ -18,8 +18,8 @@
                     <tr>
                         <th style="width: 2%" class="text-center">#</th>
                         <th style="width: 20%">Tiêu đề bài viết</th>
-                        <th style="width: 43%">Nội dung bài viết</th>
-                        <th style="width: 10%">Hình ảnh bài viết</th>
+                        <th style="width: 41%">Nội dung bài viết</th>
+                        <th style="width: 12%">Hình ảnh bài viết</th>
                         <th style="width: 15%">Thuộc danh mục bài viết</th>
                         <th style="width: 8%" class="text-center">Chức năng</th>
                     </tr>
