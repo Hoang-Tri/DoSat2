@@ -4,7 +4,7 @@
             <!-- Footer columns 1 -->
             <div class="footer__columns">
                 <a href="#header" class="logo">
-                    <img src="./assets/icons/logo.svg" alt="grocerymart" class="logo__img" />
+                    <img src="<?php echo BASE_URL ?>/assets/icons/logo.svg" alt="grocerymart" class="logo__img" />
                     <h2 class="logo__title">cafegrocery</h2>
                 </a>
 
@@ -68,18 +68,18 @@
                 <h3 class="footer__title">Menu</h3>
                 <ul class="footer__list">
                     <li>
-                        <a href="./index-logined.html" class="footer__link">- Home</a>
+                        <a href="<?php echo BASE_URL ?>/index-logined.html" class="footer__link">- Home</a>
                     </li>
                     <li>
                         <a href="#!" class="footer__link">- About</a>
                     </li>
 
                     <li>
-                        <a href="./sign-in.html" class="footer__link">- Sign In</a>
+                        <a href="<?php echo BASE_URL ?>/sign-in.html" class="footer__link">- Sign In</a>
                     </li>
 
                     <li>
-                        <a href="./sign-up.html" class="footer__link">- Sign Up</a>
+                        <a href="<?php echo BASE_URL ?>/sign-up.html" class="footer__link">- Sign Up</a>
                     </li>
                 </ul>
             </section>
