@@ -13,12 +13,12 @@
 <div style="margin-top: 50px" class="row">
     <div class="col-12">
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-dark table-striped table-bordered">
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
-                        <th>Tên Thương Hiệu</th>
-                        <th>Mô Tả Thương Hiệu</th>
+                        <th>Tên bài viết</th>
+                        <th>Mô Tả bài viết</th>
                         <th class="text-right">Chức năng</th>
                     </tr>
                 </thead>
