@@ -9,6 +9,8 @@
         }
         // do index ke thua DController ne duoc su dung tat ca cai gi Dctrl su dung
         public function homepage() {
+            $this->load->view("doctype");
+            $this->load->view("title-home");
             $this->load->view("header");
             $this->load->view("home");
             $this->load->view("footer");

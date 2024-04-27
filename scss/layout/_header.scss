@@ -115,6 +115,40 @@
         }
     }
 
+    &__sub-list {
+        background-color: var(--dropdown-cart-bg);
+        width: 150px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    &__sub-item {
+        position: absolute;
+        top: 30px;
+        left: 13px;
+        margin-top: -20px;
+        padding-top: 20px;    
+        opacity: 0;
+        visibility: hidden;
+        scale: 0;
+        transition: all 0.3s;
+    }
+
+    &__item:hover &__sub-item {
+        opacity: 1;
+        visibility: visible;
+        scale: 1;
+    }
+
+    &__sub-link {
+        border-radius: 5px;
+        padding: 4px 8px;
+
+        &:hover {
+            background-color: rgba($color: #0071dc, $alpha: 0.3);
+        }
+    }
+
     &__overlay {
         opacity: 0;
         visibility: hidden;
@@ -130,6 +164,7 @@
     }
 
     &__item {
+        position: relative;
         padding: 0 15px;
         &:first-child {
             padding-left: 0;
@@ -166,7 +201,6 @@
         font-size: 1.5rem;
         font-weight: 500;
         line-height: 146.667%;
-
         &:hover {
             color: #0071dc;
         }

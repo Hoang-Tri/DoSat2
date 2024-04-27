@@ -1,9 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Grocery</title>
-</head>
-<body>
-    <h2>header</h2>
+<header class="header" id="header">
+    <div class="container">
+        <div class="top-bar">
+            <!-- More -->
+            <button class="top-bar__more d-none d-lg-block">
+                <img
+                    src="<?php echo BASE_URL?>/assets/icons/more.svg"
+                    alt=""
+                    class="top-bar__more-icon icon js-toggle"
+                    toggle-target="#navbar"
+                />
+            </button>
+            <!-- Logo -->
+            <a href="<?php echo BASE_URL?>/" class="logo top-bar__logo">
+                <img src="<?php echo BASE_URL?>/assets/icons/logo.svg" alt="grocerymart" class="logo__img top-bar__img" />
+                <h1 class="logo__title top-bar__title">cafegrocery</h1>
+            </a>
+
+            <!-- NavBar -->
+            <nav id="navbar" class="navbar hide">
+                <button class="navbar__back js-toggle" toggle-target="#navbar">
+                    <img src="<?php echo BASE_URL?>/assets/icons/arrow-left.svg" alt="" class="icon" />
+                </button>
+
+                <a href="#!" class="nav-btn d-none d-sm-flex">
+                    <img src="<?php echo BASE_URL?>/assets/img/icon-navbar/buy.svg" alt="" class="icon" />
+                    <span class="nav-btn__title">Cart</span>
+                    <span class="nav-btn__qnt">3</span>
+                </a>
+                <a href="#!" class="nav-btn d-none d-sm-flex">
+                    <img src="<?php echo BASE_URL?>/assets/icons/hearth.svg" alt="" class="icon" />
+                    <span class="nav-btn__title">Private</span>
+                    <span class="nav-btn__qnt">3</span>
+                </a>
+
+                <ul class="navbar__list js-dropdown-list">
+                    <li class="navbar__item">
+                        <a href="./" class="navbar__link"> Home </a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="./#product" class="navbar__link">Category </a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="#!" class="navbar__link">Brand </a>
+                        <div class="navbar__sub-item">
+                            <ul class="navbar__sub-list">
+                                <li>
+                                    <a href="#!" class="navbar__link navbar__sub-link">1</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="navbar__link navbar__sub-link">2</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="navbar__link navbar__sub-link">3</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="navbar__link navbar__sub-link">4</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="navbar__link navbar__sub-link">5</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="navbar__item">
+                        <a href="#!" class="navbar__link">About </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div>
+
+            <!-- Actions -->
+            <div class="top-act">
+                <a href="<?php echo BASE_URL?>/sign-in.html" class="btn btn--text d-md-none">Sign In</a>
+                <a href="<?php echo BASE_URL?>/sign-up.html" class="btn btn--primary top-act__btn btn-not-margin">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</header>

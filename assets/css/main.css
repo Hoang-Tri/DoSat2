@@ -1654,6 +1654,35 @@ html {
     height: calc(100% - 114px);
   }
 }
+.navbar__sub-list {
+  background-color: var(--dropdown-cart-bg);
+  width: 150px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.navbar__sub-item {
+  position: absolute;
+  top: 30px;
+  left: 13px;
+  margin-top: -20px;
+  padding-top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  scale: 0;
+  transition: all 0.3s;
+}
+.navbar__item:hover .navbar__sub-item {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
+}
+.navbar__sub-link {
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+.navbar__sub-link:hover {
+  background-color: rgba(0, 113, 220, 0.3);
+}
 .navbar__overlay {
   opacity: 0;
   visibility: hidden;
@@ -1669,6 +1698,7 @@ html {
   }
 }
 .navbar__item {
+  position: relative;
   padding: 0 15px;
 }
 .navbar__item:first-child {
