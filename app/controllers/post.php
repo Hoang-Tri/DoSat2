@@ -268,10 +268,12 @@
 
                 if($post_img) {
                     $data['postbyid'] = $postmodel->postbyid($table, $cond);
+
                     foreach($data['postbyid'] as $key => $value) {
                         $path_unlink = "assets/uploads/post/";
                         unlink($path_unlink.$value['post_img']);
                     }
+
                     $data = array(
                         "post_title" => $post_title,
                         "post_content" => $post_content,
@@ -310,9 +312,15 @@
             $postmodel = $this->load->model("postmodel");
             $table = "post";
             $cond = "post.post_id = '$id'";
+            $post_data = $postmodel->postbyid($table, $cond); // Lấy dữ liệu bài viết trước khi xóa
+        
             $result = $postmodel->deletepost($table, $cond);
-
+            
             if($result == 1) {
+                foreach($post_data as $key => $value) {
+                    $path_unlink = "assets/uploads/post/";
+                    unlink($path_unlink.$value['post_img']);
+                }
                 header("Location:".BASE_URL."/post/list_post");
                 exit();
             } else {
@@ -320,5 +328,6 @@
                 exit();
             }
         }
+        
     }
 ?>
