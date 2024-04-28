@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+    <!-- dark -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <!-- link fonts -->
+        <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+
+        <!-- link css -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+
+        <!-- boxicons -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <!-- link scripts -->
+        <script src="./assets/js/scripts.js"></script>
+        <title>Coffee Grocery</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./template/header.html");
+        </script>
+        <div class="container home">
+            <!-- Main -->
+
+            <!-- Browse Categories -->
+            <section class="home__container">
+                <div class="home__row">
+                    <h2 class="home__heading">Blog new</h2>
+                </div>
+                <!-- List categories  -->
+                <div class="home__cate row row-cols-3 row-cols-md-1">
+                    <!-- categories item 1 -->
+                    <div class="col">
+                        <a href="#!">
+                            <article class="cate-item">
+                                <img src="./assets/img/category-item/product-1.png" alt="" class="cate-item__thumb" />
+
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">$24 - $150</h3>
+                                    <p class="cate-item__desc">New sumatra mandeling coffe blend</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- categories item  2-->
+
+                    <div class="col">
+                        <a href="#!">
+                            <article class="cate-item">
+                                <img src="./assets/img/category-item/product-2.png" alt="" class="cate-item__thumb" />
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">$37 - $160</h3>
+                                    <p class="cate-item__desc">Espresso arabica and robusta beans</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- categories item 3 -->
+                    <div class="col">
+                        <a href="#!"
+                            ><article class="cate-item">
+                                <img src="./assets/img/category-item/product-3.png" alt="" class="cate-item__thumb" />
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">$32 - $160</h3>
+                                    <p class="cate-item__desc">Lavazza top class whole bean coffee blend</p>
+                                </div>
+                            </article></a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <div class="cart blog_container">
+                <!-- cart info user address -->
+                <h2 class="cart__sub-heading">Total news</h2>
+                <div class="cart__info-separate"></div>
+                <h3 class="cart__sub-heading-lv2">Availeble Shipping method</h3>
+
+                <!-- payment delivery 1 -->
+                <a href="./blog-details.html">
+                    <article class="payment__item">
+                        <img src="./assets/img/payment/payment-delivery-1.png" alt="" class="payment__thumb" />
+                        <div class="payment__item-content">
+                            <div class="payment__item-info">
+                                <h3 class="payment__heading">Fedex Delivery</h3>
+                                <p class="payment__desc payment__desc--low">Delivery: 2-3 days work</p>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./template/footer.html");
+        </script>
+    </body>
+</html>

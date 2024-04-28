@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     <h3 class="product-card__title">
-                        <a href="#!">Coffee Beans - Espresso Arabica and Robusta Beans</a>
+                        <a href="<?php echo BASE_URL ?>/index/product_details">Coffee Beans - Espresso Arabica and Robusta Beans</a>
                     </h3>
                     <h4 class="product-card__brand">Lavazza</h4>
                     <div class="product-card__row">

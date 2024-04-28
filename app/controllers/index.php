@@ -7,7 +7,6 @@
         public function index() {
             $this->homepage();
         }
-        // do index ke thua DController ne duoc su dung tat ca cai gi Dctrl su dung
         public function homepage() {
             $this->load->view("doctype");
             $this->load->view("home/title_home");
@@ -32,6 +31,23 @@
             $this->load->view("footer");
         }
 
+        // post
+        public function post() {
+            $this->load->view("doctype");
+            $this->load->view("post/title_post");
+            $this->load->view("header");
+            $this->load->view("post/post");
+            $this->load->view("footer");
+        }
+
+        public function post_details() {
+            $this->load->view("doctype");
+            $this->load->view("post_details/title_post_details");
+            $this->load->view("header");
+            $this->load->view("post_details/post_details");   
+            $this->load->view("footer");
+        }
+
         public function sign_in() {
             $this->load->view("doctype");
             $this->load->view("sign_in/title_sign_in");
@@ -45,6 +61,8 @@
         }
 
         public function notpound() {
+            $this->load->view("doctype");
+            $this->load->view("home/title_home");
             $this->load->view("header");
             $this->load->view("404");
             $this->load->view("footer");
