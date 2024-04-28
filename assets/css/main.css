@@ -4708,4 +4708,12 @@ html {
   background-color: var(--checkout-cart-bg);
 }
 
+.blog__container {
+  margin-top: 30px;
+}
+
+.blog__content {
+  margin: 30px 0;
+}
+
 /*# sourceMappingURL=main.css.map */

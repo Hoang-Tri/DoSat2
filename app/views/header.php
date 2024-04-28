@@ -64,7 +64,17 @@
                     </li>
 
                     <li class="navbar__item">
-                        <a href="#!" class="navbar__link">Về chúng tôi </a>
+                        <a href="#!" class="navbar__link">Bài viết</a>
+                        <div class="navbar__sub-item">
+                            <ul class="navbar__sub-list">
+                                <li>
+                                    <a href="<?php echo BASE_URL ?>/index/post" class="navbar__link navbar__sub-link">Bài viết</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo BASE_URL ?>/index/post_details" class="navbar__link navbar__sub-link">Về chúng tôi</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>
