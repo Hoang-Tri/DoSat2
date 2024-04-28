@@ -1656,7 +1656,7 @@ html {
 }
 .navbar__sub-list {
   background-color: var(--dropdown-cart-bg);
-  width: 150px;
+  min-width: 200px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -4714,6 +4714,12 @@ html {
 
 .blog__content {
   margin: 30px 0;
+}
+
+.blog__thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=main.css.map */

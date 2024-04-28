@@ -117,7 +117,7 @@
 
     &__sub-list {
         background-color: var(--dropdown-cart-bg);
-        width: 150px;
+        min-width: 200px;
         border-radius: 10px;
         padding: 10px;
     }

@@ -13,21 +13,8 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo BASE_URL ?>/post_user/allpost" class="breadcrumb__item">
-                            Bài viết
-                            <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
-                        </a>
-                    </li>
-
-                    <?php 
-                    $name = "Đang cập nhật...";
-                    foreach ($postincatepost as $key => $value) {
-                        $name = $value['cate_post_name'];
-                    }    
-                    ?>
-                    <li>
                         <a href="#!" class="breadcrumb__item breadcrumb__item--active">
-                            <?php echo $name ?>
+                            Tất cả bài viết
                         </a>
                     </li>
                 </ul>
@@ -38,14 +25,14 @@
      <!-- Browse Categories -->
      <section class="home__container">
         <div class="home__row">
-            <h2 class="home__heading"><?php echo $name ?></h2>
+            <h2 class="home__heading">Tất cả bài viết</h2>
         </div>
     </section>
 
     <div class="cart blog__container">
         <!-- payment delivery 1 -->
         <?php
-        foreach ($postincatepost as $key => $value) {
+        foreach ($allpost as $key => $value) {
         ?>
         <a href="<?php echo BASE_URL ?>/post_user/post_details">
             <article class="payment__item">

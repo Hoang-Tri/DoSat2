@@ -3,7 +3,7 @@
       <div class="col-md-4 offset-md-4">
         <h2 class="text-center text-dark mt-5">Welcome back</h2>
         <div class="card my-5">
-            <form class="card-body cardbody-color p-lg-5" action="<?php echo BASE_URL ?>/login/authentication_login" method="post" class="form" autocomplete="off">
+            <form class="card-body cardbody-color p-lg-5" action="<?php echo BASE_URL ?>/admin_login/authentication_login" method="post" class="form" autocomplete="off">
             <?php 
                 if(isset($msg)) {
                     echo "<span style='color: red; font-weight:bold'>$msg</span>";

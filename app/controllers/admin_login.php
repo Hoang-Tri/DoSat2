@@ -1,5 +1,5 @@
 <?php
-    class login extends DController {
+    class Admin_login extends DController {
         public function __construct() {
             $message = array();
             $data = array();
@@ -12,7 +12,7 @@
         public function login() {
             Session::init();
             if(Session::get("login") == true) {
-                header("Location:".BASE_URL."/login/dashboard");
+                header("Location:".BASE_URL."/admin_login/dashboard");
             }
             $this->load->view("admin/header");
             $this->load->view("admin/login");
@@ -45,7 +45,7 @@
                 Session::set("login", true); //SET MOT SESSION LOGIN
                 Session::set("ad_username", $result[0]["ad_username"]);
                 Session::set("ad_id", $result[0]["ad_id"]);
-                header("Location:".BASE_URL."/login/dashboard");
+                header("Location:".BASE_URL."/admin_login/dashboard");
             }else if($count == 0) {
                 $message["msg"] = "Login is not success";
                 $this->load->view("admin/login", $message);
@@ -55,7 +55,7 @@
         public function logout() {
             Session::init();
             Session::destroy();
-            header("Location:".BASE_URL."/login");
+            header("Location:".BASE_URL."/admin_login");
             
         }
     }

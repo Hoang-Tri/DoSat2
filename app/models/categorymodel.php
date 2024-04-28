@@ -9,6 +9,11 @@
             return $this->db->select($sql);
         }
 
+        public function brand($table) {
+            $sql = "SELECT * FROM $table ORDER BY $table.brand_id DESC";
+            return $this->db->select($sql);
+        }
+
         public function categorybyid($table, $cond) {
             $sql = "SELECT * FROM $table WHERE $cond";
             return $this->db->select($sql);
@@ -34,6 +39,11 @@
 
          public function cate_post($table, $table_id) {
             $sql = "SELECT * FROM $table ORDER BY $table_id DESC";
+            return $this->db->select($sql);
+        }
+
+        public function cate_post_home($table) {
+            $sql = "SELECT * FROM $table ORDER BY $table.cate_post_id DESC";
             return $this->db->select($sql);
         }
 

@@ -9,6 +9,11 @@
             return $this->db->select($sql); 
         }
 
+        public function post_home($tbl_post) {
+            $sql = "SELECT * FROM $tbl_post ORDER BY $tbl_post.post_id DESC";
+            return $this->db->select($sql); 
+        }
+
         public function listpost($table_post, $table_cate_post) {
             $sql = "SELECT * FROM $table_post, $table_cate_post 
             WHERE $table_post.cate_post_id = $table_cate_post.cate_post_id
@@ -19,7 +24,15 @@
         public function postbyid($table, $cond) {
             $sql = "SELECT * FROM $table WHERE $cond";
             return $this->db->select($sql);
-        }   
+        } 
+        
+        public function postbyid_home($tbl_post, $tbl_cate_post, $id) {
+            $sql = "SELECT * FROM $tbl_post, $tbl_cate_post 
+            WHERE $tbl_post.cate_post_id = $tbl_cate_post.cate_post_id
+            AND $tbl_post.cate_post_id = '$id';
+            ORDER BY $tbl_post.post_id DESC";
+            return $this->db->select($sql); 
+        } 
 
         public function insertpost($table, $data) {
            return $this->db->insert($table, $data);
