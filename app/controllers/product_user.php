@@ -1,13 +1,15 @@
 <?php
-    class index extends DController {
+    class Product_user extends DController {
         public function __construct() {
             $data = array();
             parent::__construct();
         }
         public function index() {
-            $this->homepage();
+            $this->product_brand();
         }
-        public function homepage() {
+
+        // Sản phẩm theo thương hiệu
+        public function product_brand() {
             $tbl_brand = "brand";
             $tbl_post = "category_post";
 
@@ -15,25 +17,29 @@
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
-
             $this->load->view("doctype");
-            $this->load->view("home/title_home");
+            $this->load->view("product_brand/title_product");
             $this->load->view("header", $data);
-            $this->load->view("home/home");
+            $this->load->view("product_brand/product");
             $this->load->view("footer");
         }
 
-        public function sign_in() {
+        // Chi tiết sản phẩm tại đây
+        public function product_details($id = '') {
+            $tbl_brand = "brand";
+            $tbl_post = "category_post";
+
+            $categorymodel = $this->load->model("categorymodel");
+
+            $data["brand"] = $categorymodel->brand($tbl_brand);
+            $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
             $this->load->view("doctype");
-            $this->load->view("sign_in/title_sign_in");
-            $this->load->view("sign_in/sign_in");   
+            $this->load->view("product_details/title_product_details");
+            $this->load->view("header" ,$data);
+            $this->load->view("product_details/product_details");   
+            $this->load->view("footer");
         }
 
-        public function sign_up() {
-            $this->load->view("doctype");
-            $this->load->view("sign_up/title_sign_up");
-            $this->load->view("sign_up/sign_up");   
-        }
 
         public function notpound() {
             $this->load->view("doctype");

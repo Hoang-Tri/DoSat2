@@ -22,7 +22,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo BASE_URL ?>/product-detail.html" class="breadcrumb__item breadcrumb__item--active">
+                        <a href="./" class="breadcrumb__item breadcrumb__item--active">
                             Chi tiết sản phẩm
                         </a>
                     </li>

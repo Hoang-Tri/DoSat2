@@ -5,3 +5,9 @@
 .blog__content {
     margin: 30px 0;
 }
+
+.blog__thumb {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}

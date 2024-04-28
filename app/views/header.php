@@ -35,44 +35,47 @@
 
                 <ul class="navbar__list js-dropdown-list">
                     <li class="navbar__item">
-                        <a href="./" class="navbar__link"> Trang chủ </a>
+                        <a href="<?php echo BASE_URL ?>/index" class="navbar__link"> Trang chủ </a>
                     </li>
                     <li class="navbar__item">
-                        <a href="./#product" class="navbar__link">Sản phẩm </a>
+                        <a href="<?php echo BASE_URL ?>/index#product" class="navbar__link">Sản phẩm </a>
                     </li>
                     <li class="navbar__item">
                         <a href="#!" class="navbar__link"> Thương hiệu </a>
                         <div class="navbar__sub-item">
                             <ul class="navbar__sub-list">
+                                <?php 
+                                foreach($brand as $key => $value) {
+                                ?>
                                 <li>
-                                    <a href="<?php echo BASE_URL ?>/index/product" class="navbar__link navbar__sub-link">Lavazza</a>
+                                    <a href="<?php echo BASE_URL ?>/product_user/product_brand/<?php echo $value['brand_id']?>" class="navbar__link navbar__sub-link">
+                                        <?php echo $value['brand_name'] ?>
+                                    </a>
                                 </li>
-                                <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">Trung Nguyên</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">Trần Quang</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">Vina Cafe</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">Phố</a>
-                                </li>
+
+                                <?php 
+                                } 
+                                ?>
                             </ul>
                         </div>
                     </li>
 
                     <li class="navbar__item">
-                        <a href="#!" class="navbar__link">Bài viết</a>
+                        <a href="<?php echo BASE_URL ?>/post_user/allpost" class="navbar__link">Bài viết</a>
                         <div class="navbar__sub-item">
                             <ul class="navbar__sub-list">
+                            <?php 
+                                foreach($cate_post as $key => $value) {
+                            ?>
                                 <li>
-                                    <a href="<?php echo BASE_URL ?>/index/post" class="navbar__link navbar__sub-link">Bài viết</a>
+                                    <a href="<?php echo BASE_URL ?>/post_user/post/<?php echo $value['cate_post_id']?>" class="navbar__link navbar__sub-link">
+                                        <?php echo $value['cate_post_name'] ?>
+                                    </a>
                                 </li>
-                                <li>
-                                    <a href="<?php echo BASE_URL ?>/index/post_details" class="navbar__link navbar__sub-link">Về chúng tôi</a>
-                                </li>
+
+                            <?php 
+                            } 
+                            ?>
                             </ul>
                         </div>
                     </li>
