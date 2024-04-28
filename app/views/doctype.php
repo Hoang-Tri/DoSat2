@@ -18,8 +18,7 @@
         <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/fonts/stylesheet.css" />
 
         <!-- link css -->
-        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/main.css" />
-
+        <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/main.css">
         <!-- boxicons -->
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
         <!-- link scripts -->
