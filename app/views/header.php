@@ -35,36 +35,36 @@
 
                 <ul class="navbar__list js-dropdown-list">
                     <li class="navbar__item">
-                        <a href="./" class="navbar__link"> Home </a>
+                        <a href="./" class="navbar__link"> Trang chủ </a>
                     </li>
                     <li class="navbar__item">
-                        <a href="./#product" class="navbar__link">Category </a>
+                        <a href="./#product" class="navbar__link">Sản phẩm </a>
                     </li>
                     <li class="navbar__item">
-                        <a href="#!" class="navbar__link">Brand </a>
+                        <a href="#!" class="navbar__link"> Thương hiệu </a>
                         <div class="navbar__sub-item">
                             <ul class="navbar__sub-list">
                                 <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">1</a>
+                                    <a href="<?php echo BASE_URL ?>/index/product" class="navbar__link navbar__sub-link">Lavazza</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">2</a>
+                                    <a href="#!" class="navbar__link navbar__sub-link">Trung Nguyên</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">3</a>
+                                    <a href="#!" class="navbar__link navbar__sub-link">Trần Quang</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">4</a>
+                                    <a href="#!" class="navbar__link navbar__sub-link">Vina Cafe</a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="navbar__link navbar__sub-link">5</a>
+                                    <a href="#!" class="navbar__link navbar__sub-link">Phố</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
 
                     <li class="navbar__item">
-                        <a href="#!" class="navbar__link">About </a>
+                        <a href="#!" class="navbar__link">Về chúng tôi </a>
                     </li>
                 </ul>
             </nav>
@@ -73,8 +73,8 @@
 
             <!-- Actions -->
             <div class="top-act">
-                <a href="<?php echo BASE_URL?>/sign-in.html" class="btn btn--text d-md-none">Sign In</a>
-                <a href="<?php echo BASE_URL?>/sign-up.html" class="btn btn--primary top-act__btn btn-not-margin">Sign Up</a>
+                <a href="<?php echo BASE_URL?>/index/sign_in" class="btn btn--text d-md-none">Đăng nhập</a>
+                <a href="<?php echo BASE_URL?>/index/sign_up" class="btn btn--primary top-act__btn btn-not-margin"> Đăng kí</a>
             </div>
         </div>
     </div>
