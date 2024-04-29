@@ -18,10 +18,10 @@
                     <tr>
                         <th style="width: 2%" class="text-center">#</th>
                         <th style="width: 20%">Tiêu đề bài viết</th>
-                        <th style="width: 41%">Nội dung bài viết</th>
-                        <th style="width: 12%">Hình ảnh bài viết</th>
+                        <th style="width: 40%">Nội dung bài viết</th>
+                        <th style="width: 10%">Hình ảnh bài viết</th>
                         <th style="width: 15%">Thuộc danh mục bài viết</th>
-                        <th style="width: 8%" class="text-center">Chức năng</th>
+                        <th style="width: 10%" class="text-center">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
                         <td><?php echo $value_post["post_title"] ?></td>
-                        <td><?php echo $value_post["post_content"] ?></td>
+                        <td><?php echo substr($value_post["post_content"],0, 100)  ?></td>
                         <td><img class="admin_post-img" src="<?php echo BASE_URL?>/assets/uploads/post/<?php echo $value_post["post_img"] ?>" alt=""></td>
                         <td><?php echo $value_post["cate_post_name"] ?></td>
                         <td class="text-center">

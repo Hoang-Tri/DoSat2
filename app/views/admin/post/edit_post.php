@@ -1,6 +1,6 @@
 <h4 style="margin-top: 30px;">Cập nhật bài viết </h4>
 <div style="margin-top: 50px" class="row">
-    <div class="col-8">
+    <div class="col-12">
         <?php 
             foreach($postbyid as $key => $post) {
         ?>
@@ -11,7 +11,7 @@
             </div>
             <div class="mb-3">
                 <label for="post_content" class="form-label">Nội dung bài viết</label>
-                <textarea class="form-control" name="post_content" id="post_content" rows="6" placeholder="Nhập vào nội dung bài viết">
+                <textarea class="form-control edit_post" name="post_content" id="post_content" rows="6" placeholder="Nhập vào nội dung bài viết">
                     <?php echo $post['post_content'] ?>
                 </textarea>
             </div>

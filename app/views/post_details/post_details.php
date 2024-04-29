@@ -1,4 +1,12 @@
 <!-- Main -->
+<?php 
+    foreach ($post_details as $key => $post) {
+        $post_title = $post['post_title'];
+        $post_content = $post['post_content'];
+        $cate_post_name = $post['cate_post_name'];
+        $cate_post_id = $post['cate_post_id'];
+    }    
+?>
 <main class="product">
     <div class="container">
         <!-- Search -->
@@ -15,15 +23,22 @@
             <div class="breadcrumb">
                 <ul class="breadcrumb__list">
                     <li>
-                        <a href="<?php echo BASE_URL ?>/index#product" class="breadcrumb__item">
-                            Bài viết
+                        <a href="<?php echo BASE_URL ?>" class="breadcrumb__item">
+                            Trang chủ
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
                     </li>
 
                     <li>
-                        <a href="<?php echo BASE_URL ?>/product-detail.html" class="breadcrumb__item breadcrumb__item--active">
-                            Chi tiết bài viết
+                        <a href="<?php echo BASE_URL ?>/post_user/post/<?php echo $cate_post_id ?>" class="breadcrumb__item">
+                            <?php echo $cate_post_name ?>
+                            <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#!" class="breadcrumb__item breadcrumb__item--active">
+                            <?php echo $post_title ?>
                         </a>
                     </li>
                 </ul>
@@ -34,74 +49,34 @@
             <div class="row">
                 <div class="col-12">
                     <div class="text-content">
-                        <h2>Lorem ipsum dolor sit amet.</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-
-                        <ul>
-                            <li>hahahahhaahahah 1</li>
-                            <li>hahahahhaahahah 2</li>
-                            <li>hahahahhaahahah 3</li>
-                            <li>hahahahhaahahah 4</li>
-                        </ul>
-                        <blockquote>
-                            <p>
-                                <a href="#!">Lorem ipsum dolor sit amet</a> consectetur adipisicing elit. Autem
-                                maxime impedit quia, cupiditate ex doloribus voluptas facere rerum eaque quidem sed,
-                                placeat quos at! Accusantium, commodi. Aspernatur, nihil? Aliquam, magni.
-                            </p>
-                        </blockquote>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-
-                        <p>
-                            <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" />
-                            <em>Lorem ipsum dolor sit amet.</em>
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-                        <hr />
-                        <h2>Lorem ipsum dolor sit amet.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-
-                        <p>
-                            <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" />
-                            <em>Lorem ipsum dolor sit amet.</em>
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam voluptas esse
-                            necessitatibus perspiciatis nisi recusandae alias, eveniet aspernatur distinctio
-                            repellat error odit quo natus ut voluptatibus illo possimus nesciunt!
+                            <?php echo $post_content ?>
                         </p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="cart blog__container">
+        <!-- payment delivery 1 -->
+        <?php
+        foreach ($related as $key => $post) {
+        ?>
+        <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $post['post_id'] ?>">
+            <article class="payment__item">
+                <img src="<?php echo BASE_URL ?>/assets/uploads/post/<?php echo $post['post_img'] ?>" alt="" class="payment__thumb blog__thumb" />
+                <div class="payment__item-content">
+                    <div class="payment__item-info">
+                        <h3 class="payment__heading"><?php echo $post['post_title'] ?></h3>
+                        <p class="payment__desc payment__desc--low"><?php echo substr($post['post_content'],0,100) ?></p>
+                        <a style="margin-top: 10px; display: block;" href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $post['post_id'] ?>">Xem thêm >></a>
+                    </div>
+                </div>
+            </article>
+        </a>
+        <?php 
+        }
+        ?>
         </div>
     </div>
 </main>

@@ -12,13 +12,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="<?php echo BASE_URL ?>/post_user/allpost" class="breadcrumb__item">
-                            Bài viết
-                            <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
-                        </a>
-                    </li>
-
                     <?php 
                     $name = "Đang cập nhật...";
                     foreach ($postincatepost as $key => $value) {
@@ -47,13 +40,14 @@
         <?php
         foreach ($postincatepost as $key => $value) {
         ?>
-        <a href="<?php echo BASE_URL ?>/post_user/post_details">
+        <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $value['post_id'] ?>">
             <article class="payment__item">
                 <img src="<?php echo BASE_URL ?>/assets/uploads/post/<?php echo $value['post_img'] ?>" alt="" class="payment__thumb blog__thumb" />
                 <div class="payment__item-content">
                     <div class="payment__item-info">
                         <h3 class="payment__heading"><?php echo $value['post_title'] ?></h3>
-                        <p class="payment__desc payment__desc--low"><?php echo $value['post_content'] ?></p>
+                        <p class="payment__desc payment__desc--low"><?php echo substr($value['post_content'],0 ,100)  ?></p>
+                        <a style="margin-top: 10px; display: block;" href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $post['post_id'] ?>">Xem thêm >></a>
                     </div>
                 </div>
             </article>

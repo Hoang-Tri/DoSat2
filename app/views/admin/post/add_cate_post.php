@@ -21,7 +21,7 @@
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="cate_post_desc">Miêu tả danh mục bài viết</label>
-                <textarea name="cate_post_desc" id="cate_post_desc" class="form-control" required ></textarea>
+                <textarea name="cate_post_desc" id="cate_post_desc" class="form-control add_cate_post" required ></textarea>
             </div>
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Thêm danh mục bài viết</button>

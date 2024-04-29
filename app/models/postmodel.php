@@ -45,5 +45,18 @@
          public function deletepost($table, $cond) {
             return $this->db->delete($table, $cond);
          }
+
+        //  chi tiet tin tuc tai day
+        public function post_details($tbl_post, $tbl_cate_post, $cond) {
+            $sql = "SELECT * FROM $tbl_post, $tbl_cate_post 
+            WHERE $cond ORDER BY $tbl_post.post_id DESC";
+            return $this->db->select($sql); 
+        }
+
+        public function related_post_home($tbl_post, $tbl_cate_post, $cond_related) {
+            $sql = "SELECT * FROM $tbl_post, $tbl_cate_post 
+            WHERE $cond_related ORDER BY $tbl_post.post_id DESC";
+            return $this->db->select($sql);
+        }
     }
 ?>
