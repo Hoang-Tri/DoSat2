@@ -10,7 +10,7 @@
 
 <h4 style="margin-top: 30px;">Thêm bài viết</h4>
 <div style="margin-top: 50px" class="row">
-    <div class="col-6">
+    <div class="col-12">
         <form method="post" action="<?php echo BASE_URL?>/post/insert_post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="post_title" class="form-label">Tiêu đề bài viết</label>
@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="post_content" class="form-label">Nội dung bài viết</label>
-                <textarea class="form-control" name="post_content" id="post_content" rows="6" placeholder="Nhập vào nội dung bài viết"></textarea>
+                <textarea class="form-control add_post" name="post_content" id="post_content" rows="6" placeholder="Nhập vào nội dung bài viết"></textarea>
             </div>
 
             <div class="mb-3">

@@ -40,7 +40,7 @@
                 <div class="payment__item-content">
                     <div class="payment__item-info">
                         <h3 class="payment__heading"><?php echo $value['post_title'] ?></h3>
-                        <p class="payment__desc payment__desc--low"><?php echo $value['post_content'] ?></p>
+                        <p class="payment__desc payment__desc--low"><?php echo substr($value['post_content'],0 ,100)  ?></p>
                     </div>
                 </div>
             </article>

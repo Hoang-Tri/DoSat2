@@ -46,17 +46,32 @@
         }
 
         // Chi tiết bài viết tại đây
-        public function post_details() {
+        public function post_details($id = '') {
             $tbl_brand = "brand";
-            $tbl_post = "category_post";
+            $tbl_cate_post = "category_post";
+            $tbl_post = "post";
+            $cond = "$tbl_post.cate_post_id = $tbl_cate_post.cate_post_id
+            AND $tbl_post.post_id = '$id'";
+
             $categorymodel = $this->load->model("categorymodel");
+            $postmodel = $this->load->model("postmodel");
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
-            $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+            $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
+            $data["post_details"] = $postmodel->post_details($tbl_post, $tbl_cate_post, $cond);
+
+            foreach( $data["post_details"] as $key => $cate_post) {
+                $cate_post_id = $cate_post["cate_post_id"];
+            }
+            $cond_related = "$tbl_post.cate_post_id = $tbl_cate_post.cate_post_id
+            AND $tbl_cate_post.cate_post_id = '$cate_post_id' AND $tbl_post.post_id NOT IN('$id')";
+            $data["related"] = $postmodel->related_post_home($tbl_post, $tbl_cate_post, $cond_related);
+
+
             $this->load->view("doctype");
             $this->load->view("post_details/title_post_details");
             $this->load->view("header", $data);
-            $this->load->view("post_details/post_details");   
+            $this->load->view("post_details/post_details", $data);   
             $this->load->view("footer");
         }
 
