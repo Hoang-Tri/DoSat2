@@ -86,8 +86,8 @@
 
             <!-- Actions -->
             <div class="top-act">
-                <a href="<?php echo BASE_URL?>/index/sign_in" class="btn btn--text d-md-none">Đăng nhập</a>
-                <a href="<?php echo BASE_URL?>/index/sign_up" class="btn btn--primary top-act__btn btn-not-margin"> Đăng kí</a>
+                <a href="<?php echo BASE_URL?>/account_user/sign_in" class="btn btn--text d-md-none">Đăng nhập</a>
+                <a href="<?php echo BASE_URL?>/account_user/sign_up" class="btn btn--primary top-act__btn btn-not-margin"> Đăng kí</a>
             </div>
         </div>
     </div>

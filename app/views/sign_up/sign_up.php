@@ -24,15 +24,23 @@
                     </a>
                     <h1 class="auth__heading">Sign Up</h1>
                     <p class="auth__desc">Let’s create your account and Shop like a pro and save money.</p>
-
-                    <form id="form" action="<?php echo BASE_URL ?>/sign-in.html" class="form auth__form">
+                    <?php
+                        if(isset($_GET['msg'])) {
+                            $success_message = urldecode($_GET['msg']);
+                            echo "<h4 style='color: blue; font-weight: bold;'>".$success_message."</h4>";
+                        } elseif(isset($_GET['error'])) {
+                            $error_message = urldecode($_GET['error']);
+                            echo "<h4 style='color: blue; font-weight: bold;>".$error_message."</h3>";
+                        }
+                    ?>
+                    <form method="post" id="form" action="<?php echo BASE_URL ?>/account_user/insert_signup" class="form auth__form">
                         <!-- User name-->
                         <div class="form__group">
                             <div class="form__text-input">
                                 <input
                                     type="text"
                                     id="name"
-                                    name="name"
+                                    name="acc_name"
                                     rules="required"
                                     placeholder="User name"
                                     class="form__input"
@@ -48,7 +56,7 @@
                                 <input
                                     type="email"
                                     id="email"
-                                    name="email"
+                                    name="acc_email"
                                     rules="required|email"
                                     placeholder="Email"
                                     class="form__input"
@@ -64,7 +72,7 @@
                                 <input
                                     type="password"
                                     id="password"
-                                    name="password"
+                                    name="acc_password"
                                     rules="required|min:6"
                                     placeholder="Password"
                                     class="form__input"
@@ -85,16 +93,12 @@
 
                         <div class="form__group auth__btn-group">
                             <button class="btn btn--primary auth__btn form__submit-btn">Sign Up</button>
-                            <button class="btn btn--outline btn-not-margin auth__btn">
-                                <img src="<?php echo BASE_URL ?>/assets/img/auth/google.svg" alt="" class="auth__btn-icon icon" />
-                                Sign in with Gmail
-                            </button>
                         </div>
                     </form>
 
                     <p class="auth__text">
                         You have an account yet?
-                        <a href="<?php echo BASE_URL ?>/sign-in.html" class="auth__link auth__text-link">Sign In</a>
+                        <a href="<?php echo BASE_URL ?>/account_user/sign_in" class="auth__link auth__text-link">Sign In</a>
                     </p>
                 </div>
             </div>
@@ -109,7 +113,7 @@
         <script>
             Validator("#form", {
                 onSubmit: (data) => {
-                    console.log(data);
+                    // alert("Dang ki thanh cong !");
                 },
             });
             // Mong muốn khi sữ dụng thư viện này
