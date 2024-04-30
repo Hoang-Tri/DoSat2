@@ -44,6 +44,14 @@
         images_upload_handler: image_upload_handler_callback
     });
 
+    tinymce.init({
+        selector: '.add_post',
+        plugins: 'image',
+        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | image',
+        images_upload_url: '<?php echo BASE_URL ?>/upload.php',
+        images_upload_handler: image_upload_handler_callback
+    });
+
 
 
     </script>

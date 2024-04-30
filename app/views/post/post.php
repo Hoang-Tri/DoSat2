@@ -38,15 +38,15 @@
     <div class="cart blog__container">
         <!-- payment delivery 1 -->
         <?php
-        foreach ($postincatepost as $key => $value) {
+        foreach ($postincatepost as $key => $post) {
         ?>
-        <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $value['post_id'] ?>">
+        <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $post['post_id'] ?>">
             <article class="payment__item">
-                <img src="<?php echo BASE_URL ?>/assets/uploads/post/<?php echo $value['post_img'] ?>" alt="" class="payment__thumb blog__thumb" />
+                <img src="<?php echo BASE_URL ?>/assets/uploads/post/<?php echo $post['post_img'] ?>" alt="" class="payment__thumb blog__thumb" />
                 <div class="payment__item-content">
                     <div class="payment__item-info">
-                        <h3 class="payment__heading"><?php echo $value['post_title'] ?></h3>
-                        <p class="payment__desc payment__desc--low"><?php echo substr($value['post_content'],0 ,100)  ?></p>
+                        <h3 class="payment__heading"><?php echo $post['post_title'] ?></h3>
+                        <p class="payment__desc payment__desc--low"><?php echo substr($post['post_content'],0 ,100)  ?></p>
                         <a style="margin-top: 10px; display: block;" href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $post['post_id'] ?>">Xem thêm >></a>
                     </div>
                 </div>

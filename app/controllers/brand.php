@@ -7,6 +7,10 @@
 
        
         public function index() {
+            Session::init();
+            if(Session::get("login") == false) {
+                header("Location:".BASE_URL."/admin_login");
+            }
             $this->add_brand();
         }
 

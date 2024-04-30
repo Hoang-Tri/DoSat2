@@ -33,7 +33,7 @@
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
                         <td><?php echo $value_post["post_title"] ?></td>
-                        <td><?php echo substr($value_post["post_content"],0, 100)  ?></td>
+                        <td><?php echo substr($value_post["post_content"],0, 30)  ?></td>
                         <td><img class="admin_post-img" src="<?php echo BASE_URL?>/assets/uploads/post/<?php echo $value_post["post_img"] ?>" alt=""></td>
                         <td><?php echo $value_post["cate_post_name"] ?></td>
                         <td class="text-center">

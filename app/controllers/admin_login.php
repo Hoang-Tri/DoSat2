@@ -22,8 +22,10 @@
 
         // Login admin
         public function dashboard() {
-            // Kiem tra xem session login co hay khong
-            Session::checkSession();
+            Session::init();
+            if(Session::get("login") == false) {
+                header("Location:".BASE_URL."/admin_login");
+            }
             $this->load->view("admin/header");
             $this->load->view("admin/sidebar");
             $this->load->view("admin/dashboard");

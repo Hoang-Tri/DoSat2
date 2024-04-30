@@ -34,7 +34,7 @@
         <?php
         foreach ($allpost as $key => $value) {
         ?>
-        <a href="<?php echo BASE_URL ?>/post_user/post_details">
+        <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $value['post_id'] ?>">
             <article class="payment__item">
                 <img src="<?php echo BASE_URL ?>/assets/uploads/post/<?php echo $value['post_img'] ?>" alt="" class="payment__thumb blog__thumb" />
                 <div class="payment__item-content">

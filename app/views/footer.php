@@ -10,8 +10,8 @@
                     </a>
 
                     <p class="footer__desc">
-                        Just coffee is Elementor template kit for Coffee website. Its very easy to use and powered by
-                        Elementor page builder.
+                        Coffee Grocery là bộ mẫu Elementor dành cho website Coffee. Nó rất dễ sử dụng và được cung cấp bởi
+                        TFeww.
                     </p>
 
                     <div class="footer__socials">
@@ -38,7 +38,7 @@
                 </div>
                 <!-- Footer columns 2 -->
                 <section class="footer__columns">
-                    <h3 class="footer__title">Contact Info</h3>
+                    <h3 class="footer__title">Thông tin liên hệ</h3>
                     <ul class="footer__list">
                         <li>
                             <a href="#!" class="footer__link">
@@ -69,29 +69,29 @@
                     <h3 class="footer__title">Menu</h3>
                     <ul class="footer__list">
                         <li>
-                            <a href="<?php echo BASE_URL ?>/index-logined.html" class="footer__link">- Home</a>
+                            <a href="<?php echo BASE_URL ?>" class="footer__link">- Trang chủ</a>
                         </li>
                         <li>
-                            <a href="#!" class="footer__link">- About</a>
-                        </li>
-
-                        <li>
-                            <a href="<?php echo BASE_URL ?>/sign-in.html" class="footer__link">- Sign In</a>
+                            <a href="<?php echo BASE_URL ?>/post" class="footer__link">- Bài viết</a>
                         </li>
 
                         <li>
-                            <a href="<?php echo BASE_URL ?>/sign-up.html" class="footer__link">- Sign Up</a>
+                            <a href="#!" class="footer__link">- Đăng nhập</a>
+                        </li>
+
+                        <li>
+                            <a href="#!" class="footer__link">- Đăng kí</a>
                         </li>
                     </ul>
                 </section>
                 <!-- Footer columns 4 -->
 
                 <section class="footer__columns">
-                    <h3 class="footer__title">Opening Hourse</h3>
+                    <h3 class="footer__title">Thời gian phục vụ</h3>
                     <ul class="footer__list">
-                        <li><p class="footer__link">Monday-Friday: 8am-8pm</p></li>
-                        <li><p class="footer__link">Saturday: 9am-4pm</p></li>
-                        <li><p class="footer__link">Sunday: Closed</p></li>
+                        <li><p class="footer__link">Thứ 2-6: 8h sáng - 8h tối</p></li>
+                        <li><p class="footer__link">Thứ 7: 9h sáng - 4h tối</p></li>
+                        <li><p class="footer__link">Chủ nhật: Tạm nghỉ</p></li>
                     </ul>
                 </section>
             </div>
