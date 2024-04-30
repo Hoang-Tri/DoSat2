@@ -35,7 +35,7 @@
                         <input
                             type="email"
                             id="email"
-                            name="email"
+                            name="acc_email"
                             rules="required|email"
                             placeholder="Email"
                             class="form__input"
@@ -51,7 +51,7 @@
                         <input
                             type="password"
                             id="password"
-                            name="password"
+                            name="acc_password"
                             rules="required|min:6"
                             placeholder="Password"
                             class="form__input"

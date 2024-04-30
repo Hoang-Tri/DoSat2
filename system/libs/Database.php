@@ -80,5 +80,13 @@
             $statement->execute(array($username, $password));
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function checkMatchEmail($sql, $email) {
+            $statement = $this->prepare($sql);
+            $statement->bindValue(":email", $email);
+            $statement->execute();
+            return ($statement->rowCount() > 0); // Check if any rows match the email
+        }
+        
     }
 ?>
