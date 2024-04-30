@@ -14,7 +14,7 @@
 
             <!-- Trang chủ -->
             <li class="sidebar-item">
-                <a href="./" class="sidebar-link">
+                <a href="<?php echo BASE_URL ?>/admin_login/dashboard" class="sidebar-link">
                     <i class="fa-solid fa-list pe-2"></i>
                     Trang chủ
                 </a>
@@ -105,6 +105,13 @@
                         <a href="<?php echo BASE_URL ?>/order" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="<?php echo BASE_URL ?>/admin_login/logout" class="sidebar-link">
+                <i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>
+                    Đăng Xuất
+                </a>
             </li>
 
             
