@@ -28,6 +28,15 @@
             return $this->db->checkMatchEmail($sql, $email);
         }
         
+        public function login($tbl_account, $email, $password) {
+            $sql = "SELECT * FROM $tbl_account WHERE acc_email = ? AND acc_password = ?";
+            return $this->db->affectedRows($sql, $email, $password);
+        }
+
+        public function getlogin($tbl_account, $email, $password) {
+            $sql = "SELECT * FROM $tbl_account WHERE acc_email = ? AND acc_password = ?";
+            return $this->db->selectUser($sql, $email, $password);
+        }
 
         // public function updatecategory($table, $data, $cond) {
         //     return $this->db->update($table, $data, $cond);

@@ -18,7 +18,12 @@
 
             $this->load->view("doctype");
             $this->load->view("home/title_home");
-            $this->load->view("header", $data);
+            $check = Session::checkSessionAccount("account");
+            if($check) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("home/home");
             $this->load->view("footer");
         }

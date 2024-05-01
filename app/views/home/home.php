@@ -59,24 +59,17 @@
             <div class="filter-wrap">
                 <button class="filter-btn js-toggle" toggle-target="#home__filter">
                     Filter
-                    <img src="<?php echo BASE_URL ?>/assets/icons/fillter.svg" alt="" class="icon filter-btn__icon" />
+                    <img src="<?php echo BASE_URL?>/assets/icons/fillter.svg" alt="" class="icon filter-btn__icon" />
                 </button>
 
-                <!-- Filter form -->
                 <div class="filter hide" id="home__filter">
-                    <img src="<?php echo BASE_URL ?>/assets/icons/arrow-up.png" alt="" class="filter-icon" />
+                    <img src="<?php echo BASE_URL?>/assets/icons/arrow-up.png" alt="" class="filter-icon" />
                     <h3 class="filter__heading">Filter</h3>
                     <form action="" class="filter__form form">
                         <div class="filter__row filter__content">
                             <!-- Filter colums 1 -->
                             <div class="filter__col">
                                 <label for="" class="form__label">Price</label>
-                                <div class="filter__form-group">
-                                    <div
-                                        class="filter__form-slider"
-                                        style="--min-value: 10%; --max-value: 60%"
-                                    ></div>
-                                </div>
                                 <div class="filter__form-group filter__form-group--inline">
                                     <div>
                                         <label for="" class="form__label form__label--small">Minimum</label>
@@ -113,31 +106,15 @@
                                 <label for="" class="form__label">Size/Weight</label>
                                 <div class="filter__form-group">
                                     <div class="form__select-wrap">
-                                        <div class="form__select" style="--width: 158px">
-                                            500g
-                                            <img
-                                                src="<?php echo BASE_URL ?>/assets/icons/arrow-down-2.svg"
-                                                alt=""
-                                                class="form__select-arrow icon"
-                                            />
-                                        </div>
-
                                         <div class="form__select">
-                                            Gram
-                                            <img
-                                                src="<?php echo BASE_URL ?>/assets/icons/arrow-down-2.svg"
-                                                alt=""
-                                                class="form__select-arrow icon"
-                                            />
+                                            <select name="" id="" class="form__select-select">
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="filter__form-group">
-                                    <div class="form__tags">
-                                        <button class="form__tag">Small</button>
-                                        <button class="form__tag">Medium</button>
-                                        <button class="form__tag">Large</button>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +134,7 @@
                                             class="filter__form-input"
                                         />
                                         <img
-                                            src="<?php echo BASE_URL ?>/assets/icons/search.svg"
+                                            src="<?php echo BASE_URL?>/assets/icons/search.svg"
                                             alt=""
                                             class="filter__form-input-icon icon"
                                         />

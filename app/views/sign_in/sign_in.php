@@ -1,3 +1,13 @@
+<?php
+    if(isset($_GET['msg'])) {
+        $success_message = urldecode($_GET['msg']);
+        echo "<script>alert('$success_message')</script>";
+    } elseif(isset($_GET['error'])) {
+        $error_message = urldecode($_GET['error']);
+        echo "<script>alert('$error_message')</script>";
+    }
+?>
+
 <main class="auth">
     <!-- Auth intro -->
     <div class="auth__intro">
@@ -28,7 +38,7 @@
                 information.
             </p>
 
-            <form id="form" action="<?php echo BASE_URL ?>/index-logined.html" class="form auth__form">
+            <form method="post" id="form" action="<?php echo BASE_URL ?>/account_user/authentication_sign_in" class="form auth__form">
                 <!-- Email -->
                 <div class="form__group">
                     <div class="form__text-input">
@@ -78,7 +88,7 @@
 
             <p class="auth__text">
                 You don't have an account yet?
-                <a href="<?php echo BASE_URL ?>/sign-up.html" class="auth__link auth__text-link">Sign up</a>
+                <a href="<?php echo BASE_URL ?>/account_user/sign_up" class="auth__link auth__text-link">Sign up</a>
             </p>
         </div>
     </div>

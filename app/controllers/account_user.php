@@ -14,6 +14,32 @@
             $this->load->view("sign_in/sign_in");   
         }
 
+        public function authentication_sign_in() {
+            if ($_SERVER["REQUEST_METHOD"] != "POST") {
+                header("Location:".BASE_URL."/account_user");
+                exit();
+            }
+            $email = $_POST["acc_email"];
+            $password = md5($_POST["acc_password"]);
+
+            $tbl_account = "account";
+            $accountmodel = $this->load->model("accountmodel");
+
+            $count = $accountmodel->login($tbl_account, $email, $password);
+            if($count == 1) {
+                // KHI DANG KIEM TRA DANG NHAP XONG ROI
+                $result = $accountmodel->getlogin($tbl_account, $email, $password);
+                Session::init();
+                Session::set("account", true); //SET MOT SESSION LOGIN
+                Session::set("acc_email", $result[0]["acc_email"]);
+                Session::set("acc_id", $result[0]["acc_id"]);
+                header("Location:".BASE_URL);
+            }else if($count == 0) {
+                $error = "Đăng nhap tài khoản thất bại!";
+                header("Location:".BASE_URL."/account_user/sign_in?msg=".$error);
+           }
+        }
+
         public function sign_up() {
             $this->load->view("doctype");
             $this->load->view("sign_up/title_sign_up");
@@ -63,5 +89,10 @@
             }
         }
         
+        public function logout() {
+            Session::init();
+            Session::unset("account");
+            header("Location:".BASE_URL);
+        }
     }
 ?>
