@@ -272,11 +272,10 @@
                             <div class="user-menu">
                                 <div class="user-menu__wrap">
                                     <img src="<?php echo BASE_URL ?>/assets/img/avartar-header.jpg" alt="" class="user-menu__avatar" />
-
-                                    <div>
-                                        <h2 class="user-menu__name">Tfeww</h2>
-                                        <p class="user-menu__username">@tfeww9123</p>
-                                    </div>
+                                        <div>
+                                            <h2 class="user-menu__name"><?php echo Session::get("acc_name") ?></h2>
+                                            <p class="user-menu__username"><?php echo Session::get("acc_email") ?></p>
+                                        </div>
                                 </div>
 
                                 <ul class="user-menu__list">

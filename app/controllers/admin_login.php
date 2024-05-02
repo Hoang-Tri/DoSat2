@@ -56,7 +56,7 @@
 
         public function logout() {
             Session::init();
-            Session::destroy();
+            Session::unsetSession("login");
             header("Location:".BASE_URL."/admin_login");
             
         }

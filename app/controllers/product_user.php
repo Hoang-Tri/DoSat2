@@ -17,9 +17,16 @@
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+
+
             $this->load->view("doctype");
             $this->load->view("product_brand/title_product");
-            $this->load->view("header", $data);
+            session_start();
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("product_brand/product");
             $this->load->view("footer");
         }
@@ -33,19 +40,17 @@
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+
+            
             $this->load->view("doctype");
             $this->load->view("product_details/title_product_details");
-            $this->load->view("header" ,$data);
+            session_start();
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("product_details/product_details");   
-            $this->load->view("footer");
-        }
-
-
-        public function notpound() {
-            $this->load->view("doctype");
-            $this->load->view("home/title_home");
-            $this->load->view("header");
-            $this->load->view("404");
             $this->load->view("footer");
         }
     }

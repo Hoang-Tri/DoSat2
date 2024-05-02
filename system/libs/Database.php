@@ -13,7 +13,6 @@
             foreach($data as $key => $value) {
                 $statement->bindParam($key, $value);
             }
-
             $statement->execute();
             return $statement->fetchAll($fetchStyle);
         }
@@ -81,12 +80,24 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function checkMatchEmail($sql, $email) {
+        public function checkemail($sql, $email) {
+            // Chuẩn bị và thực thi câu truy vấn
             $statement = $this->prepare($sql);
             $statement->bindValue(":email", $email);
             $statement->execute();
-            return ($statement->rowCount() > 0); // Check if any rows match the email
+        
+            // Lấy số lượng hàng kết quả
+            $numRows = $statement->fetchColumn();
+        
+            // Kiểm tra xem có email trong cơ sở dữ liệu hay không
+            return ($numRows > 0) ? 1 : 0;
         }
         
+        public function getAccount($sql, $accId) {
+            $stmt = $this->prepare($sql);
+            $stmt->execute(array(':acc_id' => $accId));
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
     }
 ?>
