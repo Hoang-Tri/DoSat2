@@ -19,32 +19,19 @@
         public static function checkSession() {
             self::init();
             if(self::get("login") == false) {
-                self::destroy();
+                self::unsetSession("login");
                 header("Location:".BASE_URL."/login");
             }else {
                 
             }
         }
 
-        public static function checkSessionAccount($table) {
-            self::init();
-            if (!self::get($table)) {
-                // If session variable associated with $table is not set, unset it and redirect to home page
-                self::unset($table);
-                return false;
-            } else {
-                return true; // Return true to indicate that the session variable exists
-            }
-        }
-        
-        
-
         public static function destroy() {
             session_destroy();
         }
 
-        public static function unset($key) {
+        public static function unsetSession($key) {
             unset($_SESSION[$key]);
-        }        
+        }               
     }
 ?>

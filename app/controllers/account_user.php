@@ -9,6 +9,7 @@
         }
 
         public function sign_in() {
+
             $this->load->view("doctype");
             $this->load->view("sign_in/title_sign_in");
             $this->load->view("sign_in/sign_in");   
@@ -26,16 +27,18 @@
             $accountmodel = $this->load->model("accountmodel");
 
             $count = $accountmodel->login($tbl_account, $email, $password);
+
             if($count == 1) {
                 // KHI DANG KIEM TRA DANG NHAP XONG ROI
                 $result = $accountmodel->getlogin($tbl_account, $email, $password);
                 Session::init();
                 Session::set("account", true); //SET MOT SESSION LOGIN
                 Session::set("acc_email", $result[0]["acc_email"]);
+                Session::set("acc_name", $result[0]["acc_name"]);
                 Session::set("acc_id", $result[0]["acc_id"]);
                 header("Location:".BASE_URL);
             }else if($count == 0) {
-                $error = "Đăng nhap tài khoản thất bại!";
+                $error = "Tài khoản này không tồn tại!";
                 header("Location:".BASE_URL."/account_user/sign_in?msg=".$error);
            }
         }
@@ -54,14 +57,15 @@
             }
             $table = "account";
         
-            $acc_name = isset($_POST["acc_name"]) ? htmlspecialchars($_POST["acc_name"]) : "";
-            $acc_email = isset($_POST["acc_email"]) ? htmlspecialchars($_POST["acc_email"]) : "";
-            $acc_password = isset($_POST["acc_password"]) ? $_POST["acc_password"] : "";
+            $acc_name = $_POST["acc_name"];
+            $acc_email = $_POST["acc_email"];
+            $acc_password = md5($_POST["acc_password"]);
         
             $accountmodel = $this->load->model("accountmodel");
-            $count = $accountmodel->check_email_exists($table, $acc_email);
-            if ($count > 0) {
-                $error = "Email đã tồn tại trong hệ thống vui lòng nhập email khác!";
+
+            $checkmail = $accountmodel->checkemail($table, $acc_email);
+            if($checkmail >= 1) {
+                $error = "Tài khoản đã được đăng kí!";
                 header("Location:".BASE_URL."/account_user/sign_up?msg=".$error);
                 exit();
             }
@@ -79,19 +83,19 @@
             // Check insertion result and redirect accordingly
             if($result == 1) {
                 $message = "Đăng kí tài khoản thành công";
-                header("Location:".BASE_URL."/account_user/sign_up?error=".$message);
+                header("Location:".BASE_URL."/account_user/sign_in?msg=".$message);
                 exit();
 
             } else {
                 $error = "Đăng kí tài khoản thất bại!";
-                header("Location:".BASE_URL."/account_user/sign_up?msg=".$error);
+                header("Location:".BASE_URL."/account_user/sign_up?error=".$error);
                 exit();
             }
         }
         
         public function logout() {
             Session::init();
-            Session::unset("account");
+            Session::destroy();
             header("Location:".BASE_URL);
         }
     }

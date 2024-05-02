@@ -17,12 +17,19 @@
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
 
+
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["postincatepost"] = $postmodel->postbyid_home($tbl_post, $tbl_cate_post, $id);
+            
             $this->load->view("doctype");
             $this->load->view("post/title_post");
-            $this->load->view("header", $data);
+            session_start();
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("post/post", $data);
             $this->load->view("footer");
         }
@@ -35,12 +42,22 @@
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
 
+
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["allpost"] = $postmodel->post_home($tbl_post);
+
+            
+
+
             $this->load->view("doctype");
             $this->load->view("post/title_post");
-            $this->load->view("header", $data);
+            session_start();
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("post/all_post", $data);
             $this->load->view("footer");
         }
@@ -56,6 +73,7 @@
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
 
+
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["post_details"] = $postmodel->post_details($tbl_post, $tbl_cate_post, $cond);
@@ -70,17 +88,13 @@
 
             $this->load->view("doctype");
             $this->load->view("post_details/title_post_details");
-            $this->load->view("header", $data);
+            session_start();
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            }else {
+                $this->load->view("header", $data);
+            }
             $this->load->view("post_details/post_details", $data);   
-            $this->load->view("footer");
-        }
-
-
-        public function notpound() {
-            $this->load->view("doctype");
-            $this->load->view("home/title_home");
-            $this->load->view("header");
-            $this->load->view("404");
             $this->load->view("footer");
         }
     }
