@@ -32,10 +32,10 @@
                 <img src="<?php echo BASE_URL ?>/assets/icons/logo.svg" alt="grocerymart" class="logo__img" />
                 <h2 class="logo__title">cafegrocery</h2>
             </a>
-            <h1 class="auth__heading">Hello Again!</h1>
+            <h1 class="auth__heading">Chào mừng bạn quay lại</h1>
             <p class="auth__desc">
-                Welcome back to sign in. As a returning customer, you have access to your previously saved all
-                information.
+                Chào mừng bạn quay lại đăng nhập. Với tư cách là khách hàng cũ,
+                bạn có quyền truy cập vào tất cả thông tin đã lưu trước đó của mình.
             </p>
 
             <form method="post" id="form" action="<?php echo BASE_URL ?>/account_user/authentication_sign_in" class="form auth__form">
@@ -75,20 +75,20 @@
                 <div class="form__group form__group-inline">
                     <label class="form__checkbox">
                         <input type="checkbox" name="" id="" class="form__checkbox-input d-none" required />
-                        <span class="form__checkbox-label">Set as default card</span>
+                        <span class="form__checkbox-label">Đặt làm mặc định</span>
                     </label>
 
-                    <a href="<?php echo BASE_URL ?>/forgot-password.html" class="auth__link form__pull--right">Forgot Password?</a>
+                    <a href="<?php echo BASE_URL ?>/account_user/forgot_password" class="auth__link form__pull--right">Quên mật khẩu</a>
                 </div>
 
                 <div class="form__group auth__btn-group">
-                    <button class="btn btn--primary auth__btn form__submit-btn">Sign In</button>
+                    <button class="btn btn--primary auth__btn form__submit-btn">Đăng nhập</button>
                 </div>
             </form>
 
             <p class="auth__text">
-                You don't have an account yet?
-                <a href="<?php echo BASE_URL ?>/account_user/sign_up" class="auth__link auth__text-link">Sign up</a>
+                Bạn chưa có tài khoản?
+                <a href="<?php echo BASE_URL ?>/account_user/sign_up" class="auth__link auth__text-link">Đăng kí</a>
             </p>
         </div>
     </div>
