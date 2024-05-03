@@ -98,5 +98,95 @@
             Session::destroy();
             header("Location:".BASE_URL);
         }
+
+        // forgot password
+        public function forgot_password() {
+            $this->load->view("doctype");
+            $this->load->view("forgot_password/title_forgot_password");
+            $this->load->view("forgot_password/forgot_password");   
+        }
+
+        public function reset_password() {
+
+            if(isset($_GET["secret"])) {
+                $email = base64_decode($_GET["secret"]);
+                $accountmodel = $this->load->model("accountmodel");
+                // Check if the email exists in the database
+                $checkmail = $accountmodel->checkemail("account", $email);
+                if($checkmail == 0) {
+                    header("location: ".BASE_URL);
+                }else {
+                     $data["acc_id"] = $accountmodel->getId($email);
+                    $this->load->view("doctype");
+                    $this->load->view("reset_password/title_reset_password");
+                    $this->load->view("reset_password/reset_password", $data);   
+                }
+            }else {
+                header("location: ".BASE_URL);
+            }
+        }
+
+        public function send_mail() {
+            // Check if the 'acc_email' parameter is set in the POST request
+            if(isset($_POST["acc_email"])) {
+                $email = $_POST["acc_email"];
+                // Load the account model
+                $accountmodel = $this->load->model("accountmodel");
+                // Check if the email exists in the database
+                $checkmail = $accountmodel->checkemail("account", $email);
+                if($checkmail == 1) {
+                    // Email exists, proceed with sending the email
+                    // Instantiate the Mailer class
+                    $mailer = new Mailer();
+        
+                    // Compose the email content
+                    $title = "Password Reset Request";
+                    $email_encode = base64_encode($email);
+                    $href = BASE_URL."/account_user/reset_password?secret=".$email_encode;
+                    $content = "Vui lòng click vào <a href=".$href.">đây</a> để khôi phục mật khẩu của bạn";
+        
+                    // Send the email
+                    $send_mail_success = $mailer->sendMail($title, $content, $email);
+                    if($send_mail_success) {
+                        $message = "Chúng tôi đã gửi tin nhắn vào email của bạn!";
+                        header("Location:".BASE_URL."/account_user/sign_in?msg=".$message);
+                        exit();
+                    }
+                } else {
+                    // Email doesn't exist, redirect with error message
+                    $error = "Tài khoản không có trên hệ thống!";
+                    header("Location:".BASE_URL."/account_user/forgot_password?msg=".$error);
+                    exit();
+                }
+            } else {
+                // Email parameter not provided, handle accordingly
+                echo "Recipient email not provided.";
+            }
+        }
+
+        public function update_password($id) {
+            echo $id;
+            $accountmodel = $this->load->model("accountmodel");
+            $table = "account";
+            $cond = "account.acc_id = '$id'";
+
+            $acc_password = md5($_POST["acc_password"]);
+            $data = array(
+                "acc_password" => $acc_password
+            );
+            
+            $result = $accountmodel->updatepassword($table, $data, $cond);
+
+            if($result == 1) {
+                $message = "Cập nhật mật khẩu thành công";
+                header("Location:".BASE_URL."/account_user/sign_in?msg=".$message);
+                exit();
+            } else {
+                $error = "Cập nhật mật khẩu thất bại";
+                header("Location:".BASE_URL."/account_user/reset_password?error=".$error);
+                exit();
+            }
+        }
+        
     }
 ?>

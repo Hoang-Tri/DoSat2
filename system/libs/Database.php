@@ -99,5 +99,11 @@
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function getId($sql, $email) {
+            $stmt = $this->prepare($sql);
+            $stmt->execute(array(':acc_email' => $email));
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
     }
 ?>

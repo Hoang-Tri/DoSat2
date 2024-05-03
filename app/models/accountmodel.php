@@ -13,6 +13,11 @@
             $sql = "SELECT * FROM account WHERE acc_id = :acc_id";
             return $this->db->getAccount($sql, $accId);
         }
+
+        public function getId($email) {
+            $sql = "SELECT acc_id FROM account WHERE acc_email = :acc_id";
+            return $this->db->getAccount($sql, $email);
+        }
     
 
         public function insert_signup($table, $data) {
@@ -35,5 +40,8 @@
             return $this->db->checkemail($sql, $email);
         }
         
+        public function updatepassword($table, $data, $cond) {
+            return $this->db->update($table, $data, $cond);
+         }
     }
 ?>
