@@ -83,10 +83,10 @@
                 </a>
                 <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Thêm</a>
+                        <a href="<?php echo BASE_URL ?>/product/add_product" class="sidebar-link">Thêm</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Liệt kê</a>
+                        <a href="<?php echo BASE_URL ?>/product/list_product" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
             </li>
