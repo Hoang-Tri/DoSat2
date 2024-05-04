@@ -11,7 +11,7 @@
             ?>
 
             <div class="text-center">
-              <img src="<?php echo BASE_URL?>/assets/admin-assets/img/avatar-1.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+              <img src="<?php echo BASE_URL?>/assets/img/avatar/avatar-4.png" class="img_admin"
                 width="150px" alt="profile">
             </div>
 
