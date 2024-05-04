@@ -34,6 +34,7 @@
             }else {
                 $this->load->view("header", $data);
             }
+            $this->load->view("profile/sidebar_profile", $data);
             $this->load->view("profile/profile", $data);
             $this->load->view("footer");
         }
@@ -53,6 +54,7 @@
                 $data["user"] = $accountmodel->getAccountById($user_id);
             }else {
                 header("Location:".BASE_URL);
+                exit();
             }
             
             $data["brand"] = $categorymodel->brand($tbl_brand);
@@ -65,6 +67,7 @@
             }else {
                 $this->load->view("header", $data);
             }
+            $this->load->view("profile/sidebar_profile", $data);
             $this->load->view("profile/edit_profile", $data);
             $this->load->view("footer");
         }
