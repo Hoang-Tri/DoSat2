@@ -280,11 +280,11 @@
 
                                 <ul class="user-menu__list">
                                     <li>
-                                        <a href="<?php echo BASE_URL ?>/profile.html" class="user-menu__link">Profile</a>
+                                        <a href="<?php echo BASE_URL ?>/profile_user" class="user-menu__link">Thông tin cá nhân</a>
                                     </li>
 
                                     <li>
-                                        <a href="<?php echo BASE_URL ?>/favourite.html" class="user-menu__link">Favourite list product</a>
+                                        <a href="<?php echo BASE_URL ?>/favourite.html" class="user-menu__link">Sản phẩm yêu thích</a>
                                     </li>
 
                                     <li class="user-menu__separate">
@@ -296,7 +296,7 @@
 
                                     <li class="user-menu__separate">
                                         <a href="<?php echo BASE_URL ?>/account_user/logout" class="user-menu__link">
-                                            Log Out
+                                            Đăng xuất
                                             <img src="<?php echo BASE_URL ?>/assets/icons/logout.svg" alt="" class="user-menu__icon icon" />
                                         </a>
                                     </li>

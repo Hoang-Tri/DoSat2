@@ -40,7 +40,7 @@
             return $this->db->checkemail($sql, $email);
         }
         
-        public function updatepassword($table, $data, $cond) {
+        public function updateprofile($table, $data, $cond) {
             return $this->db->update($table, $data, $cond);
          }
     }

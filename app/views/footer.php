@@ -58,8 +58,8 @@
                         </li>
                         <li>
                             <p class="footer__link">
-                                <span class="footer__link-icon"><i class="bx bx-location-plus"></i></span>168, Nguyen Van Cu
-                                (extended), An Binh Ward, Ninh Kieu District, City. Can Tho
+                                <span class="footer__link-icon"><i class="bx bx-location-plus"></i></span>
+                                168, Nguyễn Văn Cừ (nối dài), P. An Bình, Q. Ninh Kiều, TP. Cần Thơ
                             </p>
                         </li>
                     </ul>
