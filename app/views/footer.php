@@ -72,15 +72,7 @@
                             <a href="<?php echo BASE_URL ?>" class="footer__link">- Trang chủ</a>
                         </li>
                         <li>
-                            <a href="<?php echo BASE_URL ?>/post" class="footer__link">- Bài viết</a>
-                        </li>
-
-                        <li>
-                            <a href="#!" class="footer__link">- Đăng nhập</a>
-                        </li>
-
-                        <li>
-                            <a href="#!" class="footer__link">- Đăng kí</a>
+                            <a href="<?php echo BASE_URL ?>/post_user/allpost" class="footer__link">- Bài viết</a>
                         </li>
                     </ul>
                 </section>
