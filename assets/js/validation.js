@@ -18,21 +18,24 @@ function Validator(formSelector, option = {}) {
     // validator rules
     var validatorRules = {
         required: (value) => {
-            return value ? undefined : " Please enter this field sign";
+            return value ? undefined : "Please enter this field";
         },
         email: (value) => {
             var regex =
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return regex.test(value) ? undefined : "Invalid email";
         },
+        phone: (value) => {
+            var regex = /^0[0-9]{9}$/;
+            return regex.test(value) ? undefined : "Invalid phone number";
+        },
         min: (min) => {
-            return (value) => (value.length >= min ? undefined : `Please enter on ${min} characters`);
+            return (value) => (value.length >= min ? undefined : `Please enter at least ${min} characters`);
         },
-
         max: (max) => {
-            return (value) => (value.length <= max ? undefined : `Please enter at least ${max} characters`);
+            return (value) => (value.length <= max ? undefined : `Please enter at most ${max} characters`);
         },
-    };
+    };    
 
     // Lấy element của form
     var formElement = document.querySelector(formSelector);
@@ -80,12 +83,17 @@ function Validator(formSelector, option = {}) {
         function handleValidate(e) {
             var rules = formRules[e.target.name];
             var errorMessage;
-            rules.some((rule) => {
-                errorMessage = rule(e.target.value);
-                return errorMessage;
-            });
-
-            // nếu có lỗi
+        
+            // Kiểm tra xem rules là một mảng và có ít nhất một quy tắc
+            if (Array.isArray(rules) && rules.length > 0) {
+                // Sử dụng phương thức some() chỉ khi rules là một mảng có giá trị
+                rules.some((rule) => {
+                    errorMessage = rule(e.target.value);
+                    return errorMessage;
+                });
+            }
+        
+            // Tiếp tục xử lý lỗi nếu errorMessage được gán
             if (errorMessage) {
                 var formGroup = getParent(e.target, ".form__group");
                 if (formGroup) {
@@ -98,9 +106,9 @@ function Validator(formSelector, option = {}) {
                     }
                 }
             }
-
+        
             return errorMessage;
-        }
+        }        
 
         // Hàm Clear message lỗi
         function handleClearError(e) {
