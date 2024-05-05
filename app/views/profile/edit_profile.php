@@ -49,7 +49,7 @@
                                             >
                                             <div class="form__text-input">
                                                 <input
-                                                    type="text"
+                                                    type="email"
                                                     id="email"
                                                     name="acc_email"
                                                     rules="required|email"
@@ -79,12 +79,13 @@
                                                 type="tel"
                                                 id="phone-number"
                                                 name="acc_phone"
-                                                rules="required|min:11"
-                                                value="<?php echo trim($acc_phone)?>"
+                                                rules="required|phone"
+                                                value="<?php echo $acc_phone ?>"
                                                 placeholder="Số điện thoại"
                                                 class="form__input"
                                                 required
                                             />
+
 
                                                 <img
                                                     src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg"
@@ -113,3 +114,18 @@
         </div>
     </div>
 </main>
+
+<!-- form__edit-profile -->
+
+<!-- thư viện validation mình viết -->
+<script src="<?php echo BASE_URL ?>/assets/js/validation.js"></script>
+
+<script>
+    // Gọi hàm Validator trên form
+    Validator("#form-card", {
+        onSubmit: (data) => {
+            console.log("Form data:", data);
+            // Thực hiện các hành động khác sau khi xác thực thành công
+        },
+    });
+</script>
