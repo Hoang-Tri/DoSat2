@@ -24,7 +24,7 @@
             }else {
                 $this->load->view("header", $data);
             }
-            $this->load->view("home/home");
+            $this->load->view("home/home", $data);
             $this->load->view("footer");
         }
 

@@ -4,6 +4,7 @@
     $acc_email = $user['acc_email'];
     $acc_id = $user['acc_id'];
     $acc_phone = isset($user['acc_phone']) ? $user['acc_phone'] : 'Chưa đăng kí';
+    $acc_img = isset($user['acc_img']) ? $user['acc_img'] : '';
 ?>
 
                 <!-- Right -->
@@ -16,7 +17,7 @@
                                     <h2 class="cart__heading cart__sub-heading-lv2">Hoàn tất thông tin cá nhân</h2>
                                 </a>
 
-                                <form method="post" action="<?php echo BASE_URL ?>/profile_user/update_profile/<?php echo $acc_id?>" id="form-card" class="form form-card">
+                                <form method="post" action="<?php echo BASE_URL ?>/profile_user/update_profile/<?php echo $acc_id?>" id="form-card" class="form form-card" enctype="multipart/form-data">
                                     <!-- form row 1  -->
                                     <div class="form__row form-card__row">
                                         <div class="form__group">
@@ -80,6 +81,32 @@
                                                 id="phone-number"
                                                 name="acc_phone"
                                                 rules="required|phone"
+                                                value="<?php echo $acc_phone ?>"
+                                                placeholder="Số điện thoại"
+                                                class="form__input"
+                                                required
+                                            />
+
+
+                                                <img
+                                                    src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg"
+                                                    alt=""
+                                                    class="form__input-icon form__icon"
+                                                />
+                                            </div>
+                                            <span class="form__message"></span>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <label for="phone-number" class="form__label form-card__label"
+                                                >Ảnh đại diện</label
+                                            >
+                                            <div class="form__text-input">
+                                            <input
+                                                type="file"
+                                                id="phone-number"
+                                                name="acc_img"
+                                                rules="required"
                                                 value="<?php echo $acc_phone ?>"
                                                 placeholder="Số điện thoại"
                                                 class="form__input"
