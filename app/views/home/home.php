@@ -143,9 +143,13 @@
 
                                 <div class="filter__form-group">
                                     <div class="form__tags">
-                                        <button class="form__tag">Lavazza</button>
-                                        <button class="form__tag">Nescafe</button>
-                                        <button class="form__tag">Starbucks</button>
+                                    <?php 
+                                    foreach($brand as $key => $value) {
+                                    ?>
+                                    <button class="form__tag"><?php echo $value["brand_name"] ?></button>
+                                    <?php
+                                    }
+                                    ?>
                                     </div>
                                 </div>
                             </div>

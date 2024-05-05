@@ -14,6 +14,11 @@
             return $this->db->getAccount($sql, $accId);
         }
 
+        public function accountbyid($table, $cond) {
+            $sql = "SELECT * FROM $table WHERE $cond";
+            return $this->db->select($sql);
+        } 
+
         public function getId($email) {
             $sql = "SELECT acc_id FROM account WHERE acc_email = :acc_id";
             return $this->db->getAccount($sql, $email);

@@ -4,6 +4,7 @@
     $acc_email = $user['acc_email'];
     $acc_id = $user['acc_id'];
     $acc_phone = isset($user['acc_phone']) ? $user['acc_phone'] : 'Chưa đăng kí';
+    $acc_img = isset($user['acc_img']) ? $user['acc_img'] : '';
 ?>
 
 <?php
@@ -35,7 +36,7 @@
                 <div class="col-3 col-xl-4 col-lg-5 col-md-12">
                     <aside class="profile__sidebar">
                         <div class="profile__user">
-                            <img src="<?php echo BASE_URL ?>/assets/img/avatar/avatar-1.png" alt="" class="profile__user-avatar" />
+                            <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo $acc_img ?>" alt="" class="profile__user-avatar" />
                             <h1 class="profile__user-name"><?php echo $acc_name ?></h1>
                             <p class="profile__user-desc">Registered: 17th May 2022</p>
                         </div>

@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="top-act__user">
-                    <img src="<?php echo BASE_URL ?>/assets/img/avartar-header.jpg" alt="" class="top-act__avatar" />
+                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo Session::get("acc_img") ?>" alt="" class="top-act__avatar" />
 
                     <!-- top action dropdown user-->
                     <div class="top-act__dropdown">
@@ -271,7 +271,7 @@
 
                             <div class="user-menu">
                                 <div class="user-menu__wrap">
-                                    <img src="<?php echo BASE_URL ?>/assets/img/avartar-header.jpg" alt="" class="user-menu__avatar" />
+                                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo Session::get("acc_img") ?>" alt="" class="user-menu__avatar" />
                                         <div>
                                             <h2 class="user-menu__name"><?php echo Session::get("acc_name") ?></h2>
                                             <p class="user-menu__username"><?php echo Session::get("acc_email") ?></p>

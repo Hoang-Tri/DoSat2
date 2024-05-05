@@ -78,36 +78,49 @@
                 $acc_name = $_POST["acc_name"];
                 $acc_email = $_POST["acc_email"];
                 $acc_phone = $_POST["acc_phone"];
+                $acc_img = $_FILES["acc_img"]['name'];
+
+                $tmp_img = $_FILES["acc_img"]['tmp_name'];
+                $div = explode(".", $acc_img);
+                $file_ext = strtolower(end($div));
+                $unique_img = $div[0].time().".".$file_ext;
+
+                $path_uploads = "assets/uploads/avatar/".$unique_img;
         
                 // Thêm dữ liệu vào cơ sở dữ liệu
                 $table = "account";
                 $cond = "account.acc_id = '$id'";
                 $accountmodel = $this->load->model("accountmodel");
 
-                // if($post_img) {
-                //     $data['postbyid'] = $accountmodel->postbyid($table, $cond);
-
-                //     foreach($data['postbyid'] as $key => $value) {
-                //         $path_unlink = "assets/uploads/post/";
-                //         unlink($path_unlink.$value['post_img']);
-                //     }
+                if($acc_img) {
+                    echo $acc_img;
+                    $data['accountbyid'] = $accountmodel->accountbyid($table, $cond);
+                    foreach($data['accountbyid'] as $key => $value) {
+                        $path_unlink = "assets/uploads/avatar/";
+                        unlink($path_unlink.$value['acc_img']);
+                    }
 
                     $data = array(
                         "acc_name" => $acc_name,
                         "acc_email" => $acc_email,
                         "acc_phone" => $acc_phone,
+                        "acc_img" => $unique_img,
                     );
-                //     move_uploaded_file($tmp_img, $path_uploads);
-                // }else {
-                //     $data = array(
-                //         "post_title" => $post_title,
-                //         "post_content" => $post_content,
-                //         // "post_img" => $unique_img,
-                //         "cate_post_id" => $cate_post
-                //     );
-                // }
+
+                    Session::init();
+                    Session::set("acc_img", $unique_img);
+                    move_uploaded_file($tmp_img, $path_uploads);
+                }else {
+                    echo "hahha";
+                    $data = array(
+                        "acc_name" => $acc_name,
+                        "acc_email" => $acc_email,
+                        "acc_phone" => $acc_phone,
+                    );
+                }
+
+
                 $result = $accountmodel->updateprofile($table, $data, $cond);
-                
                 // Kiểm tra kết quả và chuyển hướng người dùng đến trang sản phẩm với thông báo tương ứng
                 if($result == 1) {
                     $message = "Cập nhật vào thành công";

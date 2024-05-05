@@ -4,14 +4,16 @@
     $acc_email = $user['acc_email'];
     $acc_id = $user['acc_id'];
     $acc_phone = isset($user['acc_phone']) ? $user['acc_phone'] : 'Chưa đăng kí';
+    $acc_img = isset($user['acc_img']) ? $user['acc_img'] : '';
+    $acc_address = isset($user['acc_address']) ? $user['acc_address'] : 'Chưa đăng kí';
 ?>
                 <div class="col-9 col-xl-8 col-lg-7 col-md-12">
                     <div class="cart">
                         <div class="row gy-3">
-                            <!-- My wallet -->
+                            <!-- My wallet
                             <div class="col-12">
-                                <h2 class="cart__heading">My Wallet</h2>
-                                <p class="cart__desc payment-card__desc">Payment methods</p>
+                                <h2 class="cart__heading">Ví của tôi</h2>
+                                <p class="cart__desc payment-card__desc">Phương thức thanh toán</p>
 
                                 <div class="payment-card__list">
                                     <div class="row row-cols-3 row-cols-xl-2 row-cols-lg-1">
@@ -21,8 +23,8 @@
                                                 style="--payment-card-bg: #1e2e69"
                                             >
                                                 <div class="payment-card__top">
-                                                    <img src="<?php echo BASE_URL ?>/assets/img/payment-card/plane.svg" alt="" />
-                                                    <p class="payment-card__title">FeatherCard</p>
+                                                    <img src="<?php echo BASE_URL ?>/assets/img/payment-card/momo.svg" alt="" />
+                                                    <p class="payment-card__title">Momo</p>
                                                 </div>
 
                                                 <span class="payment-card__number">1234 4567 8901 2221</span>
@@ -99,13 +101,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- Account info -->
                             <div class="col-12">
-                                <h2 class="cart__heading">Account info</h2>
+                                <h2 class="cart__heading">Thông tin tài khoản</h2>
                                 <p class="cart__desc payment-card__desc">
-                                    Addresses, contact information and password
+                                    Địa chỉ và thông tin liên hệ
                                 </p>
 
                                 <div class="row row-cols-2 row-cols-lg-1">
@@ -132,6 +134,22 @@
                                                 <div class="account-info__content">
                                                     <h3 class="account-info__title">Số điện thoại</h3>
                                                     <p class="account-info__desc"><?php echo $acc_phone ?></p>
+                                                </div>
+                                            </article>
+                                        </a>
+                                    </div>
+
+                                    <div class="col">
+                                        <a href="#!">
+                                            <article class="account-info">
+                                                <div class="account-info__icon">
+                                                    <img src="<?php echo BASE_URL ?>/assets/icons/location.svg" alt="" class="icon" />
+                                                </div>
+                                                <div class="account-info__content">
+                                                    <h3 class="account-info__title">Địa chỉ</h3>
+                                                    <p class="account-info__desc">
+                                                        <?php echo $acc_address ?>
+                                                    </p>
                                                 </div>
                                             </article>
                                         </a>
