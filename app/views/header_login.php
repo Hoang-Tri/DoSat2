@@ -1,3 +1,12 @@
+<!-- lấy thông tin user  -->
+<?php 
+    $acc_name = $user['acc_name'];
+    $acc_email = $user['acc_email'];
+    $acc_id = $user['acc_id'];
+    $acc_phone = isset($user['acc_phone']) ? $user['acc_phone'] : 'Chưa đăng kí';
+    $acc_img = isset($user['acc_img']) ? $user['acc_img'] : '';
+    $acc_address = isset($user['acc_address']) ? $user['acc_address'] : 'Chưa đăng kí';
+?>
 <header class="header" id="header">
     <div class="container">
         <div class="top-bar">
@@ -258,7 +267,7 @@
                 </div>
 
                 <div class="top-act__user">
-                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo Session::get("acc_img") ?>" alt="" class="top-act__avatar" />
+                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo $acc_img ?>" alt="" class="top-act__avatar" />
 
                     <!-- top action dropdown user-->
                     <div class="top-act__dropdown">
@@ -271,10 +280,10 @@
 
                             <div class="user-menu">
                                 <div class="user-menu__wrap">
-                                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo Session::get("acc_img") ?>" alt="" class="user-menu__avatar" />
+                                    <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo $acc_img ?>" alt="" class="user-menu__avatar" />
                                         <div>
-                                            <h2 class="user-menu__name"><?php echo Session::get("acc_name") ?></h2>
-                                            <p class="user-menu__username"><?php echo Session::get("acc_email") ?></p>
+                                            <h2 class="user-menu__name"><?php echo $acc_name ?></h2>
+                                            <p class="user-menu__username"><?php echo $acc_email ?></p>
                                         </div>
                                 </div>
 
