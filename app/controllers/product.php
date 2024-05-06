@@ -97,13 +97,34 @@
             $this->load->view("admin/footer");
         }
 
+        // public function delete_product($id) { 
+        //     $productmodel = $this->load->model("productmodel");
+        //     $table = "product";
+        //     $cond = "product.pro_id = '$id'";
+        //     $result = $productmodel-> deleteproduct($table,$cond);
+
+        //     if($result == 1) {
+        //         header("Location:".BASE_URL."/product/list_product");
+        //         exit();
+        //     } else {
+        //         header("Location:".BASE_URL."/product/list_product");
+        //         exit();
+        //     }
+        // }
+        //
         public function delete_product($id) {
             $productmodel = $this->load->model("productmodel");
             $table = "product";
             $cond = "product.pro_id = '$id'";
-            $result = $productmodel-> deleteproduct($table,$cond);
-
+            $product_data = $productmodel->productbyid($table, $cond);
+        
+            $result = $productmodel->deleteproduct($table, $cond);
+            
             if($result == 1) {
+                foreach($product_data as $key => $value) {
+                    $path_unlink = "assets/uploads/product/";
+                    unlink($path_unlink.$value['pro_image']);
+                }
                 header("Location:".BASE_URL."/product/list_product");
                 exit();
             } else {
@@ -161,7 +182,7 @@
                         'pro_desc' => $desc,
                         'pro_price' => $price,
                         'pro_quantity' => $quantity,
-                        'pro_image' => $image
+                        'pro_image' => $unique_image
                     );
                     move_uploaded_file($tmp_image, $path_uploads);
                 }

@@ -21,5 +21,16 @@
         public function deleteproduct($table,$cond){
             return $this->db->delete($table,$cond);
         }
+        //Lấy ra sản phẩm
+        public function productbyid_home($tbl_product, $id) {
+            $sql = "SELECT * FROM $tbl_product
+            WHERE $tbl_product.pro_id = '$id';
+            ORDER BY $tbl_product.pro_id DESC";
+            return $this->db->select($sql); 
+        } 
+        public function product_home($tbl_product){
+            $sql = "SELECT * FROM $tbl_product ORDER BY $tbl_product.pro_id DESC";
+            return $this->db->select($sql);
+        }
     }
 ?>
