@@ -8,17 +8,21 @@
             $this->homepage();
         }
         public function homepage() {
+            session_start();
             $tbl_brand = "brand";
             $tbl_post = "category_post";
+            $tbl_product = "product";
             
             $categorymodel = $this->load->model("categorymodel");            
+            $productmodel = $this->load->model("productmodel");            
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+            $data["productall"] = $productmodel->product_home($tbl_product);
             
             
+
             $this->load->view("doctype");
             $this->load->view("home/title_home");
-            session_start();
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {

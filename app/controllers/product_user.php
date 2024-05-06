@@ -54,23 +54,27 @@
             $this->load->view("footer");
         }
         //Lấy ra tất cả sản phẩm
-        public function allproduct(){
-            $tbl_product = "product";
-            $tbl_brand = "brand";
+        // public function allproduct(){
+        //     session_start();
+        //     $tbl_product = "product";
+        //     $tbl_brand = "brand";
 
-            $categorymodel = $this->load->model("categorymodel");
-            $productmodel = $this->load->model("productmodel");
-            $data["brand"] = $categorymodel->brand($tbl_brand);
-            $data["allproduct"] = $productmodel->product_home($tbl_product);
+        //     $categorymodel = $this->load->model("categorymodel");
+        //     $productmodel = $this->load->model("productmodel");
 
-            session_start();
-            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
-                $this->load->view("header_login", $data);
-            }else {
-                $this->load->view("header", $data);
-            }
-            $this->load->view("home/home", $data);
-            $this->load->view("footer");
-        }
+        //     $data["brand"] = $categorymodel->brand($tbl_brand);
+        //     $data["allproduct"] = $productmodel->product_home($tbl_product);
+            
+        //     $this->load->view("doctype");
+        //     $this->load->view("home/title_home");
+
+        //     if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+        //         $this->load->view("header_login", $data);
+        //     }else {
+        //         $this->load->view("header", $data);
+        //     }
+        //     $this->load->view("home/home", $data);
+        //     $this->load->view("footer");
+        // }
     }
 ?>

@@ -172,13 +172,13 @@
         <div class="row row-cols-5 row-cols-lg-2 row-cols-sm-1 g-3">
             <!-- Product card 1 -->
             <?php
-                foreach ($allproduct as $key => $pro) {
+                foreach($productall as $key => $pro) {
             ?>
                 <div class="col">
                     <article class="product-card">
                         <div class="product-card__img-wrap">
                             <a href="<?php echo BASE_URL ?>/product_user/product_details">
-                                <img src="<?php echo BASE_URL ?>/assets/img/product/<?php echo $pro['pro_image'] ?>" alt="" class="product-card__thumb" />
+                                <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>" alt="" class="product-card__thumb" />
                             </a>
                             <button class="like-btn product-card__like-btn">
                                 <img src="<?php echo BASE_URL ?>/assets/icons/hearth.svg" alt="" class="like-btn__icon icon" />
