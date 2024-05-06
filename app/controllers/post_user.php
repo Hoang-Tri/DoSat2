@@ -10,12 +10,23 @@
 
         // List ra danh mục bài viết (blog)
         public function post($id = '') {
+            session_start();
+
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_post = "post";
 
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
+            $accountmodel = $this->load->model("accountmodel");
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id'])) {
+                $user_id = $_SESSION['acc_id'];
+                $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                header("Location:".BASE_URL);
+            }
 
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
@@ -24,7 +35,6 @@
             
             $this->load->view("doctype");
             $this->load->view("post/title_post");
-            session_start();
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {
@@ -35,12 +45,23 @@
         }
 
         public function allpost() {
+            session_start();
+
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_post = "post";
 
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
+            $accountmodel = $this->load->model("accountmodel");
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id'])) {
+                $user_id = $_SESSION['acc_id'];
+                $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                header("Location:".BASE_URL);
+            }
 
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
@@ -52,18 +73,21 @@
 
             $this->load->view("doctype");
             $this->load->view("post/title_post");
-            session_start();
+
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {
                 $this->load->view("header", $data);
             }
+
             $this->load->view("post/all_post", $data);
             $this->load->view("footer");
         }
 
         // Chi tiết bài viết tại đây
         public function post_details($id = '') {
+            session_start();
+
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_post = "post";
@@ -72,6 +96,15 @@
 
             $categorymodel = $this->load->model("categorymodel");
             $postmodel = $this->load->model("postmodel");
+            $accountmodel = $this->load->model("accountmodel");
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id'])) {
+                $user_id = $_SESSION['acc_id'];
+                $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                header("Location:".BASE_URL);
+            }
 
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
@@ -88,7 +121,7 @@
 
             $this->load->view("doctype");
             $this->load->view("post_details/title_post_details");
-            session_start();
+            
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {

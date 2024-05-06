@@ -45,7 +45,6 @@
             $tbl_post = "category_post";
             
             $categorymodel = $this->load->model("categorymodel");     
-            
             $accountmodel = $this->load->model("accountmodel");
 
             // lấy id của user đang đăng nhập
