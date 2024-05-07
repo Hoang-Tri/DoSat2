@@ -28,8 +28,9 @@
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
             $data["productall"] = $productmodel->product_home($tbl_product);
-        
-            // Load các view
+            
+            
+
             $this->load->view("doctype");
             $this->load->view("home/title_home");
             

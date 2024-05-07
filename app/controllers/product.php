@@ -18,10 +18,16 @@
             $this->load->view("admin/header");
             $this->load->view("admin/sidebar");
 
-            $table = "product";
-            $productmodel = $this->load->model('productmodel');
+            // $table = "product";
+            // $productmodel = $this->load->model('productmodel');
 
-            $this->load->view("admin/product/add_product");
+            $table = "brand";
+            $table_brand_id = "brand.brand_id";
+            $productmodel = $this->load->model("productmodel");
+
+            $data["brand"] = $productmodel->product($table, $table_brand_id);
+
+            $this->load->view("admin/product/add_product",$data);
             $this->load->view("admin/footer");
         }
         public function insert_product() {
@@ -31,7 +37,8 @@
                 $desc = $_POST['pro_desc'];
                 $price = $_POST['pro_price'];
                 $quantity = $_POST['pro_quantity'];
-        
+                $brand = $_POST['pro_brand_id'];
+                
                 // File upload handling
                 $image = $_FILES['pro_image']['name'];
                 $tmp_image = $_FILES['pro_image']['tmp_name'];
@@ -58,7 +65,9 @@
                     'pro_desc' => $desc,
                     'pro_price' => $price,
                     'pro_quantity' => $quantity,
-                    'pro_image' => $image
+                    'pro_image' => $image,
+                    'pro_brand_id' => $brand
+
                 );
         
                 // Insert product into database
@@ -88,10 +97,10 @@
             $this->load->view("admin/sidebar");
 
             $table = "product";
-            $table_id = "product.pro_id";
+            $table_brand = "brand";
             $productmodel = $this->load->model("productmodel");
 
-            $data["product"] = $productmodel->product($table, $table_id);
+            $data["product"] = $productmodel->listproduct($table, $table_brand);
 
             $this->load->view("admin/product/list_product", $data);
             $this->load->view("admin/footer");
@@ -135,9 +144,14 @@
 
         public function edit_product($id) {
             $table = "product";
+            $table_brand = "brand";
             $cond = "product.pro_id = '$id'";
+            $table_id = "brand_id";
+
             $productmodel = $this->load->model("productmodel");
+            $data['brand'] = $productmodel->brand($table_brand, $table_id);
             $data['productbyid'] = $productmodel->productbyid($table, $cond);
+
             $this->load->view("admin/header");
             $this->load->view("admin/sidebar");
             $this->load->view("admin/product/edit_product", $data);
@@ -155,6 +169,8 @@
                 $desc = $_POST['pro_desc'];
                 $price = $_POST['pro_price'];
                 $quantity = $_POST['pro_quantity'];
+                $brand = $_POST['pro_brand_id'];
+                
                 $image = $_FILES['pro_image']['name'];
                 $tmp_image = $_FILES['pro_image']['tmp_name'];
                 $div = explode('.',$image);
@@ -164,9 +180,9 @@
                 $path_uploads = "assets/uploads/product/".$unique_image;
 
 
-                if (empty($title) || empty($desc) || empty($price) || empty($quantity) || empty($image)) {
+                if (empty($title) || empty($desc) || empty($price) || empty($quantity)) {
                     $error = "Please fill in all fields.";
-                   header("Location:".BASE_URL."/product/add_product?error=".urlencode($error));
+                    header("Location:".BASE_URL."/product/add_product?error=".urlencode($error));
                     exit();
                 }
 
@@ -182,7 +198,8 @@
                         'pro_desc' => $desc,
                         'pro_price' => $price,
                         'pro_quantity' => $quantity,
-                        'pro_image' => $unique_image
+                        'pro_image' => $unique_image,
+                        'pro_brand_id' => $brand
                     );
                     move_uploaded_file($tmp_image, $path_uploads);
                 }
@@ -196,6 +213,8 @@
                         'pro_desc' => $desc,
                         'pro_price' => $price,
                         'pro_quantity' => $quantity,
+                        'pro_brand_id' => $brand
+
                     );
                 } 
             } else {

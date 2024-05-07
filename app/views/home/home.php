@@ -188,9 +188,9 @@
                         <h3 class="product-card__title">
                             <a href="<?php echo BASE_URL ?>/product_user/product_details"><?php echo $pro['pro_title'] ?></a>
                         </h3>
-                        <h4 class="product-card__brand">Lavazza</h4>
+                        <h4 class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
                         <div class="product-card__row">
-                            <span class="product-card__price"><?php echo $pro['pro_price'] ?></span>
+                            <span class="product-card__price"><?php echo number_format( $pro['pro_price'],0,',','.' ).'đ'?></span>
                             <img src="<?php echo BASE_URL ?>/assets/icons/start.svg" alt="" class="product-card__start" />
                             <span class="product-card__score">4.3</span>
                         </div>
