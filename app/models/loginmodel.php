@@ -14,6 +14,8 @@
             $sql = "SELECT * FROM $tbl_admin WHERE ad_username = ? AND ad_password = ?";
             return $this->db->selectUser($sql, $username, $password);
         }
+
+        
         
     }
 ?>

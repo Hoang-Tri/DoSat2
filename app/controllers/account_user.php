@@ -165,7 +165,6 @@
         }
 
         public function update_password($id) {
-            echo $id;
             $accountmodel = $this->load->model("accountmodel");
             $table = "account";
             $cond = "account.acc_id = '$id'";
@@ -176,7 +175,6 @@
             );
             
             $result = $accountmodel->updatepassword($table, $data, $cond);
-
             if($result == 1) {
                 $message = "Cập nhật mật khẩu thành công";
                 header("Location:".BASE_URL."/account_user/sign_in?msg=".$message);
