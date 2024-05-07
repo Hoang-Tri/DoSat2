@@ -334,3 +334,43 @@ window.addEventListener("template-loaded", () => {
 
 const isDark = localStorage.dark === "true";
 document.querySelector("html").classList.toggle("dark", isDark);
+
+
+// Quantity
+window.addEventListener("template-loaded", () => {
+    // Lấy ra tất cả các phần tử .cart__item và chuyển đổi thành mảng
+    var cartItems = Array.from(document.querySelectorAll('.cart__item'));
+
+    // Lặp qua mỗi phần tử .cart__item
+    cartItems.forEach(function(cartItem) {
+        // Lấy ra các phần tử con trong từng .cart__item
+        const minusBtn = cartItem.querySelector('.cart__quantity.minus');
+        const plusBtn = cartItem.querySelector('.cart__quantity.plus');
+        const quantitySpan = cartItem.querySelector('.cart__quantity-number');
+        const quantityInput = cartItem.querySelector('.cart__quantity-input');
+
+        quantityInput.value = parseInt(quantitySpan.textContent);
+
+        // Xử lý sự kiện khi nhấn vào nút giảm
+        minusBtn.onclick = function() {
+            let currentValue = parseInt(quantitySpan.textContent);
+            if (currentValue > 1) {
+                quantitySpan.textContent = currentValue - 1;
+                quantityInput.value = currentValue - 1; // Cập nhật giá trị trong input hidden
+            }
+        };
+
+        // Xử lý sự kiện khi nhấn vào nút tăng
+        plusBtn.onclick = function() {
+            let currentValue = parseInt(quantitySpan.textContent);
+            
+            quantitySpan.textContent = currentValue + 1;
+            quantityInput.value = currentValue + 1; // Cập nhật giá trị trong input hidden
+        };
+
+    });
+});
+
+
+
+
