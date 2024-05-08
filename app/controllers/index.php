@@ -27,7 +27,7 @@
             // Lấy dữ liệu từ các bảng
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
-            $data["productall"] = $productmodel->product_home($tbl_product);
+            $data["productall"] = $productmodel->productall_home($tbl_product, $tbl_brand);
             
             
 

@@ -58,6 +58,7 @@
         </div>
 
         <div class="cart blog__container">
+        <h2 class="cart__heading">Bài viết liên quan</h2>
         <!-- payment delivery 1 -->
         <?php
         foreach ($related as $key => $post) {
