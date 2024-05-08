@@ -31,14 +31,13 @@
         public function deleteproduct($table,$cond){
             return $this->db->delete($table,$cond);
         }
-        //Lấy ra sản phẩm
-        public function productbyid_home($tbl_product, $id) {
-            $sql = "SELECT * FROM $tbl_product
-            WHERE $tbl_product.pro_id = '$id';
+        public function productbyid_home($tbl_brand, $tbl_product, $id) {
+            $sql = "SELECT * FROM $tbl_brand, $tbl_product 
+            WHERE $tbl_product.pro_brand_id = $tbl_brand.brand_id
+            AND $tbl_product.pro_brand_id = '$id';
             ORDER BY $tbl_product.pro_id DESC";
             return $this->db->select($sql); 
         } 
-
         public function productall_home($tbl_product, $table_brand) {
             $sql = "SELECT * FROM $tbl_product, $table_brand 
             WHERE $tbl_product.pro_brand_id = $table_brand.brand_id;
