@@ -27,16 +27,10 @@
             </div>
         </div>
     </section>
-
-     <!-- Browse Categories -->
-     <section class="home__container">
-        <div class="home__row">
-            <h2 class="home__heading"><?php echo $name ?></h2>
-        </div>
-    </section>
-
+        
     <div class="cart blog__container">
-        <!-- payment delivery 1 -->
+        <h2 class="home__heading"><?php echo $name ?></h2>
+            <!-- payment delivery 1 -->
         <?php
         foreach ($postincatepost as $key => $post) {
         ?>

@@ -18,17 +18,22 @@
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
                     </li>
-
+                    <?php 
+                    $name = "Đang cập nhật...";
+                    foreach ($proinbrand as $key => $value) {
+                        $name = $value['brand_name'];
+                    }    
+                    ?>
                     <li>
                         <a href="./" class="breadcrumb__item breadcrumb__item--active">
-                            Tên thương hiệu
+                            <?php echo $name ?>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="home__row">
-            <h2 class="home__heading">Sản phẩm của thương hiệu</h2>
+        <div class="home__row" style="margin-top: 20px">
+            <h2 class="home__heading"><?php echo $name ?></h2>
         </div>
         <!-- List products -->
         <div class="row row-cols-5 row-cols-lg-2 row-cols-sm-1 g-3">

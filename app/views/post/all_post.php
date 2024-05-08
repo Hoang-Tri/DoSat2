@@ -21,15 +21,9 @@
             </div>
         </div>
     </section>
-
-     <!-- Browse Categories -->
-     <section class="home__container">
-        <div class="home__row">
-            <h2 class="home__heading">Tất cả bài viết</h2>
-        </div>
-    </section>
-
+        
     <div class="cart blog__container">
+        <h2 class="home__heading">Tất cả bài viết</h2>
         <!-- payment delivery 1 -->
         <?php
         foreach ($allpost as $key => $value) {

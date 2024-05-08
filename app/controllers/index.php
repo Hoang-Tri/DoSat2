@@ -23,6 +23,7 @@
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
             }
+
             
             // Lấy dữ liệu từ các bảng
             $data["brand"] = $categorymodel->brand($tbl_brand);
