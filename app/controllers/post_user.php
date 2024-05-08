@@ -24,8 +24,6 @@
             if(isset($_SESSION['acc_id'])) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
-            }else {
-                header("Location:".BASE_URL);
             }
 
 
@@ -59,8 +57,6 @@
             if(isset($_SESSION['acc_id'])) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
-            }else {
-                header("Location:".BASE_URL);
             }
 
 
@@ -102,8 +98,6 @@
             if(isset($_SESSION['acc_id'])) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
-            }else {
-                header("Location:".BASE_URL);
             }
 
 
