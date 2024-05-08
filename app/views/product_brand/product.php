@@ -27,18 +27,21 @@
                 </ul>
             </div>
         </div>
-
         <div class="home__row">
-            <h2 class="home__heading">Sản phẩm của tên thương hiệu</h2>
+            <h2 class="home__heading">Sản phẩm của thương hiệu</h2>
         </div>
         <!-- List products -->
         <div class="row row-cols-5 row-cols-lg-2 row-cols-sm-1 g-3">
             <!-- Product card 1 -->
+            <?php
+                foreach($proinbrand as $key => $product) {
+
+            ?>
             <div class="col">
                 <article class="product-card">
                     <div class="product-card__img-wrap">
                         <a href="<?php echo BASE_URL ?>/product_user/product_details">
-                            <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" class="product-card__thumb" />
+                            <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="product-card__thumb" />
                         </a>
                         <button class="like-btn product-card__like-btn">
                             <img src="<?php echo BASE_URL ?>/assets/icons/hearth.svg" alt="" class="like-btn__icon icon" />
@@ -46,16 +49,19 @@
                         </button>
                     </div>
                     <h3 class="product-card__title">
-                        <a href="<?php echo BASE_URL ?>/product_user/product_details">Coffee Beans - Espresso Arabica and Robusta Beans</a>
+                        <a href="<?php echo BASE_URL ?>/product_user/product_details"><?php echo $product['pro_title'] ?></a>
                     </h3>
-                    <h4 class="product-card__brand">Lavazza</h4>
+                    <h4 class="product-card__brand"><?php echo $product['brand_name'] ?></h4>
                     <div class="product-card__row">
-                        <span class="product-card__price">$47.00</span>
+                        <span class="product-card__price"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></span>
                         <img src="<?php echo BASE_URL ?>/assets/icons/start.svg" alt="" class="product-card__start" />
                         <span class="product-card__score">4.3</span>
                     </div>
                 </article>
             </div>
+            <?php 
+                }
+            ?>
         </div>
     </section>
 </div>
