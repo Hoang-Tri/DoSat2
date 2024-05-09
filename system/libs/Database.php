@@ -92,6 +92,19 @@
             // Kiểm tra xem có email trong cơ sở dữ liệu hay không
             return ($numRows > 0) ? 1 : 0;
         }
+
+        public function checkid($sql, $id) {
+            // Chuẩn bị và thực thi câu truy vấn
+            $statement = $this->prepare($sql);
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+        
+            // Lấy số lượng hàng kết quả
+            $numRows = $statement->fetchColumn();
+        
+            // Kiểm tra xem có email trong cơ sở dữ liệu hay không
+            return ($numRows > 0) ? 1 : 0;
+        }
         
         public function getAccount($sql, $accId) {
             $stmt = $this->prepare($sql);

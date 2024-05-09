@@ -94,35 +94,41 @@
             $postmodel = $this->load->model("postmodel");
             $accountmodel = $this->load->model("accountmodel");
 
-            // lấy id của user đang đăng nhập
-            if(isset($_SESSION['acc_id'])) {
-                $user_id = $_SESSION['acc_id'];
-                $data["user"] = $accountmodel->getAccountById($user_id);
-            }
+            $checkid = $postmodel->getId($tbl_post, $id);
+            if($checkid == 1) {
 
-
-            $data["brand"] = $categorymodel->brand($tbl_brand);
-            $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
-            $data["post_details"] = $postmodel->post_details($tbl_post, $tbl_cate_post, $cond);
-
-            foreach( $data["post_details"] as $key => $cate_post) {
-                $cate_post_id = $cate_post["cate_post_id"];
-            }
-            $cond_related = "$tbl_post.cate_post_id = $tbl_cate_post.cate_post_id
-            AND $tbl_cate_post.cate_post_id = '$cate_post_id' AND $tbl_post.post_id NOT IN('$id')";
-            $data["related"] = $postmodel->related_post_home($tbl_post, $tbl_cate_post, $cond_related);
-
-
-            $this->load->view("doctype");
-            $this->load->view("post_details/title_post_details");
-            
-            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
-                $this->load->view("header_login", $data);
+                // lấy id của user đang đăng nhập
+                if(isset($_SESSION['acc_id'])) {
+                    $user_id = $_SESSION['acc_id'];
+                    $data["user"] = $accountmodel->getAccountById($user_id);
+                }
+    
+    
+                $data["brand"] = $categorymodel->brand($tbl_brand);
+                $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
+                $data["post_details"] = $postmodel->post_details($tbl_post, $tbl_cate_post, $cond);
+    
+                foreach( $data["post_details"] as $key => $cate_post) {
+                    $cate_post_id = $cate_post["cate_post_id"];
+                }
+                $cond_related = "$tbl_post.cate_post_id = $tbl_cate_post.cate_post_id
+                AND $tbl_cate_post.cate_post_id = '$cate_post_id' AND $tbl_post.post_id NOT IN('$id')";
+                $data["related"] = $postmodel->related_post_home($tbl_post, $tbl_cate_post, $cond_related);
+    
+    
+                $this->load->view("doctype");
+                $this->load->view("post_details/title_post_details");
+                
+                if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                    $this->load->view("header_login", $data);
+                }else {
+                    $this->load->view("header", $data);
+                }
+                $this->load->view("post_details/post_details", $data);   
+                $this->load->view("footer");
             }else {
-                $this->load->view("header", $data);
+                header("Location:".BASE_URL."/post_user/allpost");
             }
-            $this->load->view("post_details/post_details", $data);   
-            $this->load->view("footer");
         }
     }
 ?>
