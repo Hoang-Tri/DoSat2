@@ -36,7 +36,7 @@
                     <tr>
                         <td class="text-center"><?php echo $id ?></td>
                         <td><?php echo $pro['pro_title'] ?></td>
-                        <td><?php echo $pro['pro_desc'] ?></td>
+                        <td><?php echo substr($pro["pro_desc"],0, 30)  ?></td>
                         <td><?php echo number_format( $pro['pro_price'],0,',','.' ).'đ'?></td>
                         <td><?php echo $pro['pro_quantity'] ?></td>
                         <td><img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>" height = "100" width = "100"> </td>

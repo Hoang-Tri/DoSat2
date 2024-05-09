@@ -49,5 +49,17 @@
             $sql = "SELECT * FROM $tbl_product ORDER BY $tbl_product.pro_id DESC";
             return $this->db->select($sql);
         }
+        //Chi tiet san pham
+        public function product_details($tbl_product, $tbl_brand, $cond) {
+            $sql = "SELECT * FROM $tbl_product, $tbl_brand 
+            WHERE $cond ORDER BY $tbl_product.pro_id DESC";
+            return $this->db->select($sql); 
+        }
+
+        public function related_product_home($tbl_product, $tbl_brand, $cond_related) {
+            $sql = "SELECT * FROM $tbl_product, $tbl_brand 
+            WHERE $cond_related ORDER BY $tbl_product.pro_id DESC";
+            return $this->db->select($sql);
+        }
     }
 ?>

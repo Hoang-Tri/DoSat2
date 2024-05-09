@@ -45,7 +45,7 @@
             <div class="col">
                 <article class="product-card">
                     <div class="product-card__img-wrap">
-                        <a href="<?php echo BASE_URL ?>/product_user/product_details">
+                        <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $product['pro_id'] ?>">
                             <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="product-card__thumb" />
                         </a>
                         <button class="like-btn product-card__like-btn">
@@ -54,7 +54,7 @@
                         </button>
                     </div>
                     <h3 class="product-card__title">
-                        <a href="<?php echo BASE_URL ?>/product_user/product_details"><?php echo $product['pro_title'] ?></a>
+                        <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $product['pro_id'] ?>"><?php echo $product['pro_title'] ?></a>
                     </h3>
                     <h4 class="product-card__brand"><?php echo $product['brand_name'] ?></h4>
                     <div class="product-card__row">
