@@ -10,7 +10,7 @@
 <script src="<?php echo BASE_URL ?>/assets/admin-assets/js/script.js"></script>
 <script src="https://cdn.tiny.cloud/1/comip58lhd0os8orcneq0smt4o5hf7k77024kcp65j2tqon3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script>
+<script>
     const image_upload_handler_callback = (blobInfo, progress) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
@@ -36,39 +36,28 @@
         });
     };
 
-    tinymce.init({
-        selector: '.edit_post',
+    const initTinyMCE = (selector) => {
+        tinymce.init({
+        selector: selector,
         plugins: 'image',
         toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | image',
         images_upload_url: '<?php echo BASE_URL ?>/upload.php',
-        images_upload_handler: image_upload_handler_callback
+        images_upload_handler: image_upload_handler_callback,
+        relative_urls: false, // Vô hiệu hóa URL tương đối
+        remove_script_host: false, // Đảm bảo rằng máy chủ tập lệnh không bị loại bỏ
+        document_base_url: '<?php echo BASE_URL ?>', // Đặt đường dẫn gốc của tài liệu
     });
 
-    tinymce.init({
-        selector: '.add_post',
-        plugins: 'image',
-        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | image',
-        images_upload_url: '<?php echo BASE_URL ?>/upload.php',
-        images_upload_handler: image_upload_handler_callback
-    });
+    };
 
-    //
-    tinymce.init({
-        selector: '.add_product',
-        plugins: 'image',
-        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | image',
-        images_upload_url: '<?php echo BASE_URL ?>/upload.php',
-        images_upload_handler: image_upload_handler_callback
-    });
-    
-    tinymce.init({
-        selector: '.edit_product',
-        plugins: 'image',
-        toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | image',
-        images_upload_url: '<?php echo BASE_URL ?>/upload.php',
-        images_upload_handler: image_upload_handler_callback
-    });
-    </script>
+    // Initialize TinyMCE for editing
+    initTinyMCE('.edit_post');
+    initTinyMCE('.add_post');
+    initTinyMCE('.add_product');
+    initTinyMCE('.edit_product');
+</script>
+
+
 </body>
 
 </html>

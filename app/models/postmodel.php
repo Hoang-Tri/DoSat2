@@ -58,5 +58,10 @@
             WHERE $cond_related ORDER BY $tbl_post.post_id DESC";
             return $this->db->select($sql);
         }
+
+        public function getId($tbl_product, $id) {
+            $sql = "SELECT COUNT(*) AS num_rows FROM $tbl_product WHERE post_id = :id";
+            return $this->db->checkid($sql, $id);
+        }
     }
 ?>

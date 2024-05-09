@@ -4,7 +4,7 @@
         echo "<h4 style='color: blue; font-weight: bold;'>".$success_message."</h4>";
     } elseif(isset($_GET['error'])) {
         $error_message = urldecode($_GET['error']);
-        echo "<h4 style='color: blue; font-weight: bold;>".$error_message."</h3>";
+        echo "<h4 style='color: blue; font-weight: bold;>".$error_message."</h4>";
     }
 ?>
 

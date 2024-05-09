@@ -61,5 +61,10 @@
             WHERE $cond_related ORDER BY $tbl_product.pro_id DESC";
             return $this->db->select($sql);
         }
+
+        public function getId($tbl_product, $id) {
+            $sql = "SELECT COUNT(*) AS num_rows FROM $tbl_product WHERE pro_id = :id";
+            return $this->db->checkid($sql, $id);
+        }
     }
 ?>
