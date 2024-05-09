@@ -17,7 +17,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="pro_desc">Mô tả sản phẩm</label>
-                <textarea name="pro_desc" rows="5" style="resize:none" class="form-control" id="pro_desc"></textarea>
+                <textarea class="form-control add_product" name="pro_desc" id="pro_id" rows="6" placeholder="Nhập vào nội dung"></textarea>
             </div>
             <div class="form-group mb-3">
                 <label for="pro_price">Giá sản phẩm</label>
@@ -41,7 +41,6 @@
                     <?php 
                     } 
                     ?>
-
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

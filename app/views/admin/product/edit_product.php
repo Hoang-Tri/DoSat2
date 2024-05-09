@@ -20,7 +20,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="pwd">Mô tả sản phẩm</label>
-                <textarea name="pro_desc" rows="5" style="resize:none" class="form-control"><?php echo $pro['pro_desc'] ?></textarea>
+                <textarea name="pro_desc" rows="5" style="resize:none" class="form-control edit_product"><?php echo $pro['pro_desc'] ?></textarea>
             </div>
             <div class="form-group mb-3">
                 <label for="email">Giá sản phẩm</label>

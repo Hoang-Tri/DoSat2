@@ -177,7 +177,7 @@
                 <div class="col">
                     <article class="product-card">
                         <div class="product-card__img-wrap">
-                            <a href="<?php echo BASE_URL ?>/product_user/product_details">
+                            <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id'] ?>">
                                 <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>" alt="" class="product-card__thumb" />
                             </a>
                             <button class="like-btn product-card__like-btn">

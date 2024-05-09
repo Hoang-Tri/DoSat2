@@ -1,4 +1,16 @@
 <!-- Main -->
+<?php 
+    foreach ($product_details as $key => $product) {
+        $title = $product['pro_title'];
+        $desc = $product['pro_desc'];
+        $price = $product['pro_price'];
+        $quantity = $product['pro_quantity'];
+        $image = $product['pro_image'];
+        $brand = $product['pro_brand_id'];
+        $brand_name = $product['brand_name'];
+    }    
+?>
+
 <main class="product">
     <div class="container">
         <!-- Search -->
@@ -15,15 +27,15 @@
             <div class="breadcrumb">
                 <ul class="breadcrumb__list">
                     <li>
-                        <a href="<?php echo BASE_URL ?>/index#product" class="breadcrumb__item">
-                            Sản phẩm
+                        <a href="<?php echo BASE_URL ?>/index-logined.html#product" class="breadcrumb__item">
+                            Categories
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
                     </li>
 
                     <li>
-                        <a href="./" class="breadcrumb__item breadcrumb__item--active">
-                            Chi tiết sản phẩm
+                        <a href="<?php echo BASE_URL ?>/product-detail.html" class="breadcrumb__item breadcrumb__item--active">
+                            Product details
                         </a>
                     </li>
                 </ul>
@@ -38,7 +50,7 @@
                             <div class="product-preview__list">
                                 <div class="product-preview__item">
                                     <img
-                                        src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
+                                        src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $image ?>"
                                         alt=""
                                         class="product-preview__img"
                                     />
@@ -70,7 +82,7 @@
 
                         <div class="product-preview__thumbs">
                             <img
-                                src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
+                                src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $image ?>"
                                 alt=""
                                 class="product-preview__thumbs-img product-preview__thumbs-img--current"
                             />
@@ -96,7 +108,7 @@
                 </div>
                 <div class="col-7 col-lx-6 col-lg-12">
                     <div class="product-info">
-                        <h1 class="product-info__heading">Coffee Beans - Espresso Arabica and Robusta Beans</h1>
+                        <h1 class="product-info__heading"><?php echo $title ?></h1>
                         <div class="row">
                             <div class="col-6 col-xl-5 col-lg-12">
                                 <div class="product-prop">
@@ -168,7 +180,7 @@
 
                                 <div class="product-info__card">
                                     <div class="product-info__row">
-                                        <span class="product-info__price">$500.00</span>
+                                        <span class="product-info__price"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
                                         <span class="product-info__tax">10%</span>
                                     </div>
 
@@ -213,79 +225,7 @@
                         <div class="row">
                             <div class="col-8 col-lg-12">
                                 <div class="text-content">
-                                    <h2>Lorem ipsum dolor sit amet.</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-
-                                    <h3>Lorem ipsum dolor sit amet.</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-
-                                    <ul>
-                                        <li>hahahahhaahahah 1</li>
-                                        <li>hahahahhaahahah 2</li>
-                                        <li>hahahahhaahahah 3</li>
-                                        <li>hahahahhaahahah 4</li>
-                                    </ul>
-                                    <blockquote>
-                                        <p>
-                                            <a href="#!">Lorem ipsum dolor sit amet</a> consectetur adipisicing
-                                            elit. Autem maxime impedit quia, cupiditate ex doloribus voluptas
-                                            facere rerum eaque quidem sed, placeat quos at! Accusantium,
-                                            commodi. Aspernatur, nihil? Aliquam, magni.
-                                        </p>
-                                    </blockquote>
-                                    <h3>Lorem ipsum dolor sit amet.</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-
-                                    <p>
-                                        <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" />
-                                        <em>Lorem ipsum dolor sit amet.</em>
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-                                    <hr />
-                                    <h2>Lorem ipsum dolor sit amet.</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-
-                                    <p>
-                                        <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" />
-                                        <em>Lorem ipsum dolor sit amet.</em>
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui magnam
-                                        voluptas esse necessitatibus perspiciatis nisi recusandae alias, eveniet
-                                        aspernatur distinctio repellat error odit quo natus ut voluptatibus illo
-                                        possimus nesciunt!
-                                    </p>
+                                    <?php echo $desc ?>  
                                 </div>
                             </div>
                             <div class="col-4 d-lg-none">
@@ -391,12 +331,15 @@
                         <!-- List products -->
                         <div class="row row-cols-5 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-2">
                             <!-- Product card 1 -->
+                            <?php
+                                foreach ($related as $key => $pro) {
+                            ?>
                             <div class="col">
                                 <article class="product-card">
                                     <div class="product-card__img-wrap">
-                                        <a href="<?php echo BASE_URL ?>/index/product_details">
+                                        <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id']?>">
                                             <img
-                                                src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
+                                                src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>"
                                                 alt=""
                                                 class="product-card__thumb"
                                             />
@@ -415,11 +358,11 @@
                                         </button>
                                     </div>
                                     <h3 class="product-card__title">
-                                        <a href="#!">Coffee Beans - Espresso Arabica and Robusta Beans</a>
+                                        <a href="#!"><?php echo $pro['pro_title'] ?></a>
                                     </h3>
-                                    <h4 class="product-card__brand">Lavazza</h4>
+                                    <h4 class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
                                     <div class="product-card__row">
-                                        <span class="product-card__price">$47.00</span>
+                                        <span class="product-card__price"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></span>
                                         <img
                                             src="<?php echo BASE_URL ?>/assets/icons/start.svg"
                                             alt=""
@@ -429,6 +372,9 @@
                                     </div>
                                 </article>
                             </div>
+                            <?php 
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

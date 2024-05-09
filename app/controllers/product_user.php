@@ -45,11 +45,18 @@
         // Chi tiết sản phẩm tại đây
         public function product_details($id = '') {
             session_start();
+            
             $tbl_brand = "brand";
-            $tbl_post = "category_post";
+            $tbl_cate_post = "category_post";
+            $tbl_product = "product";
+            
+            $cond = "$tbl_product.pro_brand_id = $tbl_brand.brand_id
+            AND $tbl_product.pro_id = '$id'";
 
+            $productmodel = $this->load->model("productmodel");
             $categorymodel = $this->load->model("categorymodel");
             $accountmodel = $this->load->model("accountmodel");
+            $postmodel = $this->load->model("postmodel");
 
             // lấy id của user đang đăng nhập
             if(isset($_SESSION['acc_id'])) {
@@ -58,18 +65,29 @@
             }
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
-            $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+            $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
+            $data["product_details"] = $productmodel->product_details($tbl_product, $tbl_brand, $cond);
 
-            
+            // print_r($data['product_details']);
+            foreach( $data["product_details"] as $key => $brand) {
+                $brand_id = $brand["brand_id"];
+            }
+            $cond_related = "$tbl_product.pro_brand_id = $tbl_brand.brand_id 
+            AND $tbl_brand.brand_id = '$brand_id' AND $tbl_product.pro_id NOT IN('$id')";
+            $data["related"] = $productmodel->related_product_home($tbl_product, $tbl_brand, $cond_related);
+
+
             $this->load->view("doctype");
             $this->load->view("product_details/title_product_details");
+            
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {
                 $this->load->view("header", $data);
             }
-            $this->load->view("product_details/product_details");   
+            $this->load->view("product_details/product_details", $data);   
             $this->load->view("footer");
+
         }
     }
 ?>
