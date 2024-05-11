@@ -12,20 +12,27 @@
             $tbl_brand = "brand";
             $tbl_post = "category_post";
             $tbl_product = "product";
+            $tbl_cart = 'cart';
             
             // Load các model
             $categorymodel = $this->load->model("categorymodel");            
             $productmodel = $this->load->model("productmodel");
             $accountmodel = $this->load->model("accountmodel");
-        
-            // Kiểm tra session và lấy id của user đang đăng nhập
-            if(isset($_SESSION['acc_id'])) {
+            $cartmodel = $this->load->model("cartmodel");
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                $user_id = -1;
             }
+
+            $cond_cart = "cart.acc_id = '$user_id'";
 
             
             // Lấy dữ liệu từ các bảng
+            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
             $data["productall"] = $productmodel->productall_home($tbl_product, $tbl_brand);

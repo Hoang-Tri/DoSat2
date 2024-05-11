@@ -1,3 +1,12 @@
+<?php
+    if(isset($_GET['msg'])) {
+        $success_message = urldecode($_GET['msg']);
+        echo "<script>alert('$success_message')</script>";
+    } elseif(isset($_GET['error'])) {
+        $error_message = urldecode($_GET['error']);
+        echo "<script>alert('$error_message')</script>";
+    }
+?>
  <!-- Main -->
  <main class="checkout">
     <div class="container">
@@ -36,19 +45,26 @@
                     <div class="cart">
                         <div class="cart__list">
                             <!-- Item 1 -->
+                            <?php 
+                                $sub_totals = 0;
+                                $item = 0;
+                                foreach($cart as $key => $value) {
+                                    $sub_totals += $value['pro_price'] * $value['cart_pro_quantity'];
+                                    $item += $value['cart_pro_quantity'];
+                            ?>
                             <article class="cart__item">
                                 <a href="<?php echo BASE_URL ?>/product-detail.html" class="cart__thumb">
-                                    <img src="<?php echo BASE_URL ?>/assets/img/product/item-1.png" alt="" class="cart__thumb-img" />
+                                    <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $value['pro_image'] ?>" alt="" class="cart__thumb-img" />
                                 </a>
                                 <div class="cart__info">
                                     <div class="cart__info-left">
                                         <h2 class="cart__info-title">
                                             <a href="<?php echo BASE_URL ?>/product-detail.html">
-                                                Coffee Beans - Espresso Arabica and Robusta Beans</a
-                                            >
+                                                <?php echo $value['pro_title'] ?>
+                                            </a>
                                         </h2>
                                         <p class="cart__price">
-                                            $47.00 | <span class="cart__price-stock">In Stock</span>
+                                        <?php echo number_format ($value['pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock">In Stock</span>
                                         </p>
 
                                         <div class="cart__row cart__row-ctrl">
@@ -58,7 +74,7 @@
                                                 <button class="cart__quantity minus">
                                                     <img src="<?php echo BASE_URL ?>/assets/icons/minus.svg" alt="" class="icon" />
                                                 </button>
-                                                <span class="cart__quantity-number">1</span>
+                                                <span class="cart__quantity-number"><?php echo $value['cart_pro_quantity'] ?></span>
                                                 <input type="hidden" name="quantity" class="cart__quantity-input">
                                                 <button class="cart__quantity plus">
                                                     <img src="<?php echo BASE_URL ?>/assets/icons/plus.svg" alt="" class="icon" />
@@ -67,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="cart__info-right">
-                                        <span class="cart__total">$47.00</span>
+                                        <span class="cart__total"><?php echo number_format ($value['pro_price'],0,',','.' ).'đ'?></span>
 
                                         <div class="cart__row cart__row-btn">
                                             <button class="cart__btn">
@@ -83,11 +99,15 @@
                                     </div>
                                 </div>
                             </article>
+
+                            <?php
+                                }
+                            ?>
                         </div>
 
                         <div class="cart__bottom d-md-none">
                             <div class="row">
-                                <div class="col-8 col-lg-7">
+                                <div class="col-6">
                                     <a href="#!" class="cart__bottom-continue-link">
                                         <div class="cart__bottom-continue">
                                             <img
@@ -100,23 +120,23 @@
                                     </a>
                                 </div>
 
-                                <div class="col-4 col-lg-5">
+                                <div class="col-6">
                                     <div class="cart__checkout">
                                         <div class="cart__info-row">
-                                            <span>Subtotal:</span>
-                                            <span>$191.65</span>
+                                            <span>Tổng tiền hàng:</span>
+                                            <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                                         </div>
 
                                         <div class="cart__info-row">
-                                            <span>Shipping:</span>
+                                            <span>Vận chuyển:</span>
                                             <span>$10.00</span>
                                         </div>
 
                                         <div class="cart__info-separate"></div>
 
                                         <div class="cart__info-row cart__info-row--bold">
-                                            <span>Total:</span>
-                                            <span>$201.65</span>
+                                            <span>Tổng thanh toán:</span>
+                                            <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -128,29 +148,29 @@
                     <div class="cart">
                         <div class="cart__checkout">
                             <div class="cart__info-row">
-                                <span>Subtotal <span class="cart__info-row-sub">(items)</span></span>
-                                <span>3</span>
+                                <span>Tổng thu <span class="cart__info-row-sub">(hàng)</span></span>
+                                <span><?php echo $item ?></span>
                             </div>
 
                             <div class="cart__info-row">
-                                <span>Price <span class="cart__info-row-sub">(Total)</span></span>
-                                <span>$191.65</span>
+                                <span>Giá <span class="cart__info-row-sub">(tổng)</span></span>
+                                <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                             </div>
 
                             <div class="cart__info-row">
-                                <span>Shipping</span>
+                                <span>Vận chuyển</span>
                                 <span>$10.00</span>
                             </div>
 
                             <div class="cart__info-separate"></div>
 
                             <div class="cart__info-row">
-                                <span>Estimated Total</span>
+                                <span>Tổng thanh toán</span>
                                 <span>$201.65</span>
                             </div>
 
                             <a href="<?php echo BASE_URL ?>/shipping.html" class="btn btn--primary btn--rounded cart__checkout-btn"
-                                >Continue to payment</a
+                                >Tiếp tục thanh toán</a
                             >
                         </div>
                     </div>
