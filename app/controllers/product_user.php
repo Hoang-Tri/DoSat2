@@ -15,17 +15,26 @@
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_product = "product";
+            $tbl_cart = 'cart';
 
             $productmodel = $this->load->model("productmodel");
             $categorymodel = $this->load->model("categorymodel");
             $accountmodel = $this->load->model("accountmodel");
+            $cartmodel = $this->load->model("cartmodel");
 
             // lấy id của user đang đăng nhập
-            if(isset($_SESSION['acc_id'])) {
+            if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                $user_id = -1;
             }
 
+            $cond_cart = "cart.acc_id = '$user_id'";
+
+            
+            // Lấy dữ liệu từ các bảng
+            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["proinbrand"] = $productmodel->productbyid_home($tbl_brand, $tbl_product, $id);
@@ -43,13 +52,12 @@
 
         // Chi tiết sản phẩm tại đây
         public function product_details($id = '') {
-           
-
             session_start();
             
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_product = "product";
+            $tbl_cart = 'cart';
             
             $cond = "$tbl_product.pro_brand_id = $tbl_brand.brand_id
             AND $tbl_product.pro_id = '$id'";
@@ -57,15 +65,25 @@
             $productmodel = $this->load->model("productmodel");
             $categorymodel = $this->load->model("categorymodel");
             $accountmodel = $this->load->model("accountmodel");
+            $cartmodel = $this->load->model("cartmodel");
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
+                $user_id = $_SESSION['acc_id'];
+                $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                $user_id = -1;
+            }
+
+            $cond_cart = "cart.acc_id = '$user_id'";
+
+            
+            // Lấy dữ liệu từ các bảng
+            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
             
             $checkid = $productmodel->getId($tbl_product, $id);
             if($checkid == 1) {
-                // lấy id của user đang đăng nhập
-                if(isset($_SESSION['acc_id'])) {
-                    $user_id = $_SESSION['acc_id'];
-                    $data["user"] = $accountmodel->getAccountById($user_id);
-                }
-    
+                
                 $data["brand"] = $categorymodel->brand($tbl_brand);
                 $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
                 $data["product_details"] = $productmodel->product_details($tbl_product, $tbl_brand, $cond);

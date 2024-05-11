@@ -185,81 +185,33 @@
                                 <img src="<?php echo BASE_URL ?>/assets/icons/dropdown-arrow.svg" alt="" class="dropdown-cart__img" />
                                 <div class="dropdown-cart__row">
                                     <h2 class="dropdown-cart__heading">You have 3 item</h2>
-                                    <a href="<?php echo BASE_URL ?>/checkout.html" class="dropdown-cart__view-all">See All</a>
+                                    <a href="<?php echo BASE_URL ?>/cart_user" class="dropdown-cart__view-all">Xem tất cả</a>
                                 </div>
                                 <div class="dropdown-cart__wrap">
                                     <div class="row row-cols-3 gx-2">
                                         <!-- drop down item cart 1 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Lavazza Coffee Blends</h4>
-                                                <span class="dropdown-cart__item-price"> $329.00</span>
-                                            </article>
-                                        </div>
+                                        <?php
+                                            $max_items = min(count($cart), 3);
+                                            for ($i = 0; $i < $max_items; $i++) {
+                                        ?>
+                                            <div class="col">
+                                                <article class="dropdown-cart__item">
+                                                    <div class="dropdown-cart__thumb">
+                                                        <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $cart[$i]['pro_image'] ?>" alt="" class="dropdown-cart__thumb-img" />
+                                                    </div>
+                                                    <h4 class="dropdown-cart__item-title"><?php echo $cart[$i]['pro_title']?> </h4>
+                                                    <span class="dropdown-cart__item-price"><?php echo number_format($cart[$i]['pro_price'], 0, ',', '.') . 'đ'?></span>
+                                                </article>
+                                            </div>
+                                        <?php 
+                                            }
+                                        ?>
 
-                                        <!-- drop down item cart 2 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-2.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Coffee Beans Espresso</h4>
-                                                <span class="dropdown-cart__item-price"> $39.99</span>
-                                            </article>
-                                        </div>
-
-                                        <!-- drop down item cart 3 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-3.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Qualità Oro Mountain</h4>
-                                                <span class="dropdown-cart__item-price">$47.00</span>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-cart__bottom">
-                                    <div class="dropdown-cart__row">
-                                        <span class="dropdown-cart__label">Subtotal:</span>
-                                        <span class="dropdown-cart__label">$415.99</span>
-                                    </div>
-
-                                    <div class="dropdown-cart__row">
-                                        <span class="dropdown-cart__label">Texes:</span>
-                                        <span class="dropdown-cart__label">Free</span>
-                                    </div>
-
-                                    <div class="dropdown-cart__row">
-                                        <span class="dropdown-cart__label">Shipping:</span>
-                                        <span class="dropdown-cart__label">$10.00</span>
-                                    </div>
-
-                                    <div class="dropdown-cart__row dropdown-cart__row--bold">
-                                        <span class="dropdown-cart__label">Total Price:</span>
-                                        <span class="dropdown-cart__label">$425.99</span>
                                     </div>
                                 </div>
 
                                 <div class="dropdown-cart__checkout">
-                                    <a href="<?php echo BASE_URL ?>/checkout.html" class="btn btn--primary btn--rounded">Check Out All</a>
+                                    <a href="<?php echo BASE_URL ?>/cart_user" class="btn btn--primary btn--rounded">Thanh toán tất cả</a>
                                 </div>
                             </div>
                         </div>

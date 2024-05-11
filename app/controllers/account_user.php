@@ -33,8 +33,6 @@
                 $result = $accountmodel->getlogin($tbl_account, $email, $password);
                 Session::init();
                 Session::set("account", true); //SET MOT SESSION LOGIN
-                Session::set("acc_email", $result[0]["acc_email"]);
-                Session::set("acc_name", $result[0]["acc_name"]);
                 Session::set("acc_id", $result[0]["acc_id"]);
                 header("Location:".BASE_URL);
             }else if($count == 0) {
@@ -95,7 +93,8 @@
         
         public function logout() {
             Session::init();
-            Session::destroy();
+            Session::unsetSession('account');
+            Session::unsetSession('acc_id');
             header("Location:".BASE_URL);
         }
 

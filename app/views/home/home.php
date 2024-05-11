@@ -186,7 +186,7 @@
                             </button>
                         </div>
                         <h3 class="product-card__title">
-                            <a href="<?php echo BASE_URL ?>/product_user/product_details"><?php echo $pro['pro_title'] ?></a>
+                            <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id'] ?>"><?php echo $pro['pro_title'] ?></a>
                         </h3>
                         <h4 class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
                         <div class="product-card__row">
