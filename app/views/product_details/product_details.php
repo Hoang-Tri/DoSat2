@@ -5,10 +5,12 @@
         $desc = $product['pro_desc'];
         $price = $product['pro_price'];
         $quantity = $product['pro_quantity'];
+        $size = $product['pro_size'];
         $image = $product['pro_image'];
         $brand = $product['pro_brand_id'];
         $brand_name = $product['brand_name'];
         $id = $product['pro_id'];
+        $sizeArray = explode(',', $size);
     }    
 ?>
 
@@ -128,27 +130,40 @@
                                         </div>
                                     </div>
                                     <!-- form filter size-weight -->
-                                    <form action="" class="form">
+                                    <form action="#" method="GET" class="form" id="myForm">
                                         <div class="product-filter">
                                             <label for="" class="form__label">Size/Weight</label>
                                             <div class="filter__form-group">
                                                 <div class="form__select-wrap">
                                                     <div class="form__select">
-                                                        <select name="" id="" class="form__select-select">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5</option>
+                                                        <select name="cart_pro_size" id="cart_pro_size" class="form__select-select">
+                                                            <option value="">Chọn Khối lượng</option>
+                                                            <?php 
+                                                                foreach($sizeArray as $key => $value) {
+                                                                    $value = trim($value);
+                                                            ?>
+                                                            <option value="<?php echo $value ?>" <?php if(isset($_GET['cart_pro_size']) && $_GET['cart_pro_size'] == $value) echo "selected"; ?>>
+                                                                <?php echo $value ?>
+                                                            </option>
+                                                            <?php 
+                                                                }
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Hidden submit button -->
+                                        <button type="submit" id="submitBtn" style="display: none;"></button>
                                     </form>
                                 </div>
                                 <!-- col 2 -->
                                 <div class="col-6 col-xl-7 col-lg-12">
+                                    <form action="<?php echo BASE_URL ?>/cart_user/addtocart" method="post">
+                                        <input type="hidden" value="<?php echo $id ?>" name="pro_id">
+                                        <input type="hidden" value="<?php echo $_SESSION['acc_id'] ?>" name="acc_id">
+                                        <input type="hidden" value="1" name="cart_pro_quantity">
                                     <div class="product-props">
                                         <div class="product-prop">
                                             <img
@@ -189,6 +204,19 @@
     
                                     <div class="product-info__card">
                                         <div class="product-info__row">
+                                        <?php 
+                                            $selectedSize = isset($_GET['cart_pro_size']) ? $_GET['cart_pro_size'] : null;
+
+                                            // Define size percent for each size
+                                            $size_percent = [
+                                                'S' => 1,
+                                                'M' => 1.8, 
+                                                'XL' => 2.2
+                                            ];
+
+                                            $price *= $size_percent[$selectedSize];
+                                        ?>
+
                                             <span class="product-info__price"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
                                             <span class="product-info__tax">10%</span>
                                         </div>
@@ -213,10 +241,10 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -392,3 +420,11 @@
         </div>
     </div>
 </main>
+
+<script>
+    // Add event listener to the select element
+    document.getElementById("cart_pro_size").addEventListener("change", function() {
+        // Submit the form when an option is selected
+        document.getElementById("submitBtn").click();
+    });
+</script>

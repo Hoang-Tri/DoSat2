@@ -31,6 +31,10 @@
                 <input type="text" value="<?php echo $pro['pro_quantity'] ?>" name="pro_quantity" class="form-control" >
             </div>
             <div class="form-group mb-3">
+                <label for="email">Size/Weight</label>
+                <input type="text" value="<?php echo $pro['pro_size'] ?>" name="pro_size" class="form-control" >
+            </div>
+            <div class="form-group mb-3">
                 <label for="email">Hình ảnh sản phẩm</label>
                 <input type="file" value="<?php echo $pro['pro_image'] ?>" name="pro_image" class="form-control" >
                 <p><img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>" height = "100" width = "100"> </p>
