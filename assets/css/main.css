@@ -2808,7 +2808,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: var(--width, 200px);
   height: calc(100% - 10px);
   cursor: pointer;
 }
@@ -2838,11 +2837,7 @@ html {
 .form__select-dialog {
   visibility: hidden;
   opacity: 0;
-  top: 0;
   max-height: 400px;
-  width: min(var(--modal-width, 600px), 100% - 60px);
-  position: absolute;
-  left: 30px;
   border: 1px solid #d2d1d6;
   background-color: var(--dialog-form-bg);
   border-radius: 10px;
@@ -2868,7 +2863,6 @@ html {
 .form__select-dialog.show {
   visibility: visible;
   opacity: 1;
-  top: 30px;
   translate: 0 -5px;
 }
 .form__close {

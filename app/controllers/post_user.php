@@ -33,7 +33,8 @@
             $cond_cart = "cart.acc_id = '$user_id'";
 
             // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
+                        $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $tbl_brand, $cond_cart);
+
 
 
             $data["brand"] = $categorymodel->brand($tbl_brand);
@@ -75,7 +76,8 @@
             $cond_cart = "cart.acc_id = '$user_id'";
 
             // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
+                        $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $tbl_brand, $cond_cart);
+
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["allpost"] = $postmodel->post_home($tbl_post);
@@ -125,7 +127,7 @@
 
             
             // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
+            $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
 
             $checkid = $postmodel->getId($tbl_post, $id);
             if($checkid == 1) {

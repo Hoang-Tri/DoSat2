@@ -34,7 +34,7 @@
 
             
             // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
+            $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["proinbrand"] = $productmodel->productbyid_home($tbl_brand, $tbl_product, $id);
@@ -79,7 +79,7 @@
 
             
             // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart_acc($tbl_cart,"product", $cond_cart);
+            $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
             
             $checkid = $productmodel->getId($tbl_product, $id);
             if($checkid == 1) {
@@ -115,4 +115,3 @@
 
 
     }
-?>
