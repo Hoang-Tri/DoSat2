@@ -197,16 +197,15 @@
                                             <div class="col">
                                                 <article class="dropdown-cart__item">
                                                     <div class="dropdown-cart__thumb">
-                                                        <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $cart[$i]['pro_image'] ?>" alt="" class="dropdown-cart__thumb-img" />
+                                                        <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $cart[$i]['cart_pro_img'] ?>" alt="" class="dropdown-cart__thumb-img" />
                                                     </div>
-                                                    <h4 class="dropdown-cart__item-title"><?php echo $cart[$i]['pro_title']?> </h4>
-                                                    <span class="dropdown-cart__item-price"><?php echo number_format($cart[$i]['pro_price'], 0, ',', '.') . 'đ'?></span>
+                                                    <h4 class="dropdown-cart__item-title"><?php echo $cart[$i]['cart_pro_title']?> </h4>
+                                                    <span class="dropdown-cart__item-price"><?php echo number_format($cart[$i]['cart_pro_price'], 0, ',', '.') . 'đ'?></span>
                                                 </article>
                                             </div>
                                         <?php 
                                             }
                                         ?>
-
                                     </div>
                                 </div>
 

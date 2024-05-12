@@ -49,57 +49,52 @@
                                 $sub_totals = 0;
                                 $item = 0;
                                 foreach($cart as $key => $value) {
-                                    $sub_totals += $value['pro_price'] * $value['cart_pro_quantity'];
+                                    $sub_totals += $value['cart_pro_price'] * $value['cart_pro_quantity'];
                                     $item += $value['cart_pro_quantity'];
                             ?>
                             <article class="cart__item">
-                                <a href="<?php echo BASE_URL ?>/product-detail.html" class="cart__thumb">
-                                    <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $value['pro_image'] ?>" alt="" class="cart__thumb-img" />
+                                <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $value['pro_id']?>" class="cart__thumb">
+                                    <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $value['cart_pro_img'] ?>" alt="" class="cart__thumb-img" />
                                 </a>
                                 <div class="cart__info">
                                     <div class="cart__info-left">
                                         <h2 class="cart__info-title">
-                                            <a href="<?php echo BASE_URL ?>/product-detail.html">
-                                                <?php echo $value['pro_title'] ?>
+                                            <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $value['pro_id']?>">
+                                                <?php echo $value['cart_pro_title'] ?>
                                             </a>
                                         </h2>
                                         <p class="cart__price">
-                                        <?php echo number_format ($value['pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock">In Stock</span>
+                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock">In Stock</span>
                                         </p>
 
                                         <div class="cart__row cart__row-ctrl">
-                                            <div class="cart__input">LavAzza</div>
-
-                                            <div class="cart__input">
-                                                <button class="cart__quantity minus">
-                                                    <img src="<?php echo BASE_URL ?>/assets/icons/minus.svg" alt="" class="icon" />
-                                                </button>
-                                                <span class="cart__quantity-number"><?php echo $value['cart_pro_quantity'] ?></span>
-                                                <input type="hidden" name="quantity" class="cart__quantity-input">
-                                                <button class="cart__quantity plus">
-                                                    <img src="<?php echo BASE_URL ?>/assets/icons/plus.svg" alt="" class="icon" />
-                                                </button>
-                                            </div>
+                                            <div class="cart__input"><?php echo $value['cart_brand_name'] ?></div>
+                                            <form method="post" action="<?php echo BASE_URL ?>/cart_user/update_cart/<?php echo $value['cart_id'] ?>">
+                                                <div class="cart__input">
+                                                    <button class="cart__quantity minus">
+                                                        <img src="<?php echo BASE_URL ?>/assets/icons/minus.svg" alt="" class="icon" />
+                                                    </button>
+                                                    <span class="cart__quantity-number"><?php echo $value['cart_pro_quantity'] ?></span>
+                                                    <input type="hidden" name="cart_pro_quantity" class="cart__quantity-input" value="<?php echo $value['cart_pro_quantity'] ?>">
+                                                    <button class="cart__quantity plus">
+                                                        <img src="<?php echo BASE_URL ?>/assets/icons/plus.svg" alt="" class="icon" />
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="cart__info-right">
-                                        <span class="cart__total"><?php echo number_format ($value['pro_price'],0,',','.' ).'đ'?></span>
+                                        <span class="cart__total"><?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?></span>
 
                                         <div class="cart__row cart__row-btn">
-                                            <button class="cart__btn">
-                                                <img src="<?php echo BASE_URL ?>/assets/icons/hearth-2.svg" alt="" />
-                                                Thích
-                                            </button>
-
-                                            <button class="cart__btn js-toggle" toggle-target="#modal-delete">
+                                            <a href="<?php echo BASE_URL ?>/cart_user/delete_cart/<?php echo $value['cart_id'] ?>" class="cart__btn">
                                                 <img src="<?php echo BASE_URL ?>/assets/icons/trash.svg" alt="" />
                                                 Xoá
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </article>
-
                             <?php
                                 }
                             ?>
@@ -108,7 +103,7 @@
                         <div class="cart__bottom d-md-none">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="#!" class="cart__bottom-continue-link">
+                                    <a href="<?php echo BASE_URL ?>#product" class="cart__bottom-continue-link">
                                         <div class="cart__bottom-continue">
                                             <img
                                                 src="<?php echo BASE_URL ?>/assets/icons/arrow-down-2.svg"
@@ -169,7 +164,7 @@
                                 <span>$201.65</span>
                             </div>
 
-                            <a href="<?php echo BASE_URL ?>/shipping.html" class="btn btn--primary btn--rounded cart__checkout-btn"
+                            <a href="<?php echo BASE_URL ?>/shipping_user" class="btn btn--primary btn--rounded cart__checkout-btn"
                                 >Tiếp tục thanh toán</a
                             >
                         </div>
@@ -194,14 +189,3 @@
         </div>
     </div>
 </main>
-
-<div class="modal modal--small hide" id="modal-delete">
-    <div class="modal__inner">
-        <h4 class="modal__text">The product will be removed from the cart</h4>
-        <div class="modal__bottom">
-            <button class="btn btn--outline modal__btn js-toggle" toggle-target="#modal-delete">Cancel</button>
-            <button class="btn btn--dange modal__btn btn-not-margin">Delete</button>
-        </div>
-    </div>
-    <div class="modal__opacity js-toggle" toggle-target="#modal-delete"></div>
-</div>

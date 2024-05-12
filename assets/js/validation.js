@@ -18,22 +18,22 @@ function Validator(formSelector, option = {}) {
     // validator rules
     var validatorRules = {
         required: (value) => {
-            return value ? undefined : "Please enter this field";
+            return value ? undefined : "Vui lòng nhập trường này";
         },
         email: (value) => {
             var regex =
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return regex.test(value) ? undefined : "Invalid email";
+            return regex.test(value) ? undefined : "Vui lòng nhập đúng email";
         },
         phone: (value) => {
             var regex = /^0[0-9]{9}$/;
-            return regex.test(value) ? undefined : "Invalid phone number";
+            return regex.test(value) ? undefined : "Vui lòng nhập đúng số điện thoại";
         },
         min: (min) => {
-            return (value) => (value.length >= min ? undefined : `Please enter at least ${min} characters`);
+            return (value) => (value.length >= min ? undefined : `Vui lòng nhập tối thiểu ${min} ký tự`);
         },
         max: (max) => {
-            return (value) => (value.length <= max ? undefined : `Please enter at most ${max} characters`);
+            return (value) => (value.length <= max ? undefined : `Vui lòng nhập tối đa ${max} ký tự`);
         },
     };    
 

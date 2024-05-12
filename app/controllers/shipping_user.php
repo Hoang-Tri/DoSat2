@@ -1,31 +1,33 @@
 <?php
-    class Cart_user extends DController {
+    class Shipping_user extends DController {
         public function __construct() {
             $data = array();
             parent::__construct();
         }
         public function index() {
-            $this->cart();
+            $this->shipping();
         }
 
         // List ra danh mục bài viết (blog)
-        public function cart() {
+        public function shipping() {
             session_start();
 
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_cart = 'cart';
+            $tbl_tinhthanhpho = 'tbl_tinhthanhpho';
 
             $categorymodel = $this->load->model("categorymodel");
             $accountmodel = $this->load->model("accountmodel");
             $cartmodel = $this->load->model("cartmodel");
+            $addressmodel = $this->load->model("addressmodel");
 
             // lấy id của user đang đăng nhập
             if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
             }else {
-                $user_id = -1;
+                header('Location:'.BASE_URL);
             }
             $cond_cart = "cart.acc_id = '$user_id'";
 
@@ -33,15 +35,16 @@
             $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
+            $data["city"] = $addressmodel->getaddress($tbl_tinhthanhpho);
             
             $this->load->view("doctype");
-            $this->load->view("cart/title_cart");
+            $this->load->view("shipping/title_shipping");
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
                 $this->load->view("header_login", $data);
             }else {
                 $this->load->view("header", $data);
             }
-            $this->load->view("cart/cart", $data);
+            $this->load->view("shipping/shipping", $data);
             $this->load->view("footer");
         }
         

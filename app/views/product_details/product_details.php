@@ -110,6 +110,10 @@
                 <div class="col-7 col-lx-6 col-lg-12">
                     <form action="<?php echo BASE_URL ?>/cart_user/addtocart" method="post">
                         <input type="hidden" value="<?php echo $id ?>" name="pro_id">
+                        <input type="hidden" value="<?php echo $brand_name ?>" name="cart_brand_name">
+                        <input type="hidden" value="<?php echo $title ?>" name="cart_pro_title">
+                        <input type="hidden" value="<?php echo $image ?>" name="cart_pro_img">
+                        <input type="hidden" value="<?php echo $price ?>" name="cart_pro_price">
                         <input type="hidden" value="<?php echo $_SESSION['acc_id'] ?>" name="acc_id">
                         <input type="hidden" value="1" name="cart_pro_quantity">
                         <div class="product-info">

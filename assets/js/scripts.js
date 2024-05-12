@@ -149,7 +149,6 @@ function handleActiveMenu() {
  * <div id="box">Content show/hide</div>
  */
 window.addEventListener("template-loaded", initJsToggle);
-
 function initJsToggle() {
     $$(".js-toggle").forEach((button) => {
         const target = button.getAttribute("toggle-target");
