@@ -66,5 +66,10 @@
             $sql = "SELECT COUNT(*) AS num_rows FROM $tbl_product WHERE pro_id = :id";
             return $this->db->checkid($sql, $id);
         }
+
+        public function cart_pro_size($table){
+            $sql = "SELECT * FROM $table ORDER BY $table.size_id DESC";
+            return $this->db->select($sql);
+        }
     }
 ?>
