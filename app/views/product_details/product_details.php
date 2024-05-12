@@ -11,7 +11,12 @@
         $brand_name = $product['brand_name'];
         $id = $product['pro_id'];
         $sizeArray = explode(',', $size);
-    }    
+    }  
+    if(isset($_SESSION['acc_id'])) {
+        $acc_id = $_SESSION['acc_id'];
+    }  else {
+        $acc_id = '';
+    }
 ?>
 
 <main class="product">
@@ -30,15 +35,22 @@
             <div class="breadcrumb">
                 <ul class="breadcrumb__list">
                     <li>
-                        <a href="<?php echo BASE_URL ?>/index-logined.html#product" class="breadcrumb__item">
-                            Categories
+                        <a href="<?php echo BASE_URL ?>" class="breadcrumb__item">
+                            Trang chủ
+                            <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo BASE_URL ?>/#product" class="breadcrumb__item">
+                            Sản phẩm
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
                     </li>
 
                     <li>
                         <a href="<?php echo BASE_URL ?>/product-detail.html" class="breadcrumb__item breadcrumb__item--active">
-                            Product details
+                            Chi tiết sản phẩm
                         </a>
                     </li>
                 </ul>
@@ -110,60 +122,71 @@
                     </div>
                 </div>
                 <div class="col-7 col-lx-6 col-lg-12">
-                    <form action="<?php echo BASE_URL ?>/cart_user/addtocart" method="post">
-                        <input type="hidden" value="<?php echo $id ?>" name="pro_id">
-                        <input type="hidden" value="<?php echo $brand_name ?>" name="cart_brand_name">
-                        <input type="hidden" value="<?php echo $title ?>" name="cart_pro_title">
-                        <input type="hidden" value="<?php echo $image ?>" name="cart_pro_img">
-                        <input type="hidden" value="<?php echo $price ?>" name="cart_pro_price">
-                        <input type="hidden" value="<?php echo $_SESSION['acc_id'] ?>" name="acc_id">
-                        <input type="hidden" value="1" name="cart_pro_quantity">
-                        <div class="product-info">
-                            <h1 class="product-info__heading"><?php echo $title ?></h1>
-                            <div class="row">
-                                <div class="col-6 col-xl-5 col-lg-12">
-                                    <div class="product-prop">
-                                        <img src="<?php echo BASE_URL ?>/assets/icons/start.svg" alt="" class="product-prop__icon" />
-                                        <div>
-                                            <h4 class="product-prop__title">(3.5) 1100 reviews</h4>
-                                            <p class="product-prop__desc"></p>
-                                        </div>
+                    <div class="product-info">
+                        <h1 class="product-info__heading"><?php echo $title ?></h1>
+                        <div class="row">
+                            <div class="col-6 col-xl-5 col-lg-12">
+                                <div class="product-prop">
+                                    <img src="<?php echo BASE_URL ?>/assets/icons/start.svg" alt="" class="product-prop__icon" />
+                                    <div>
+                                        <h4 class="product-prop__title">(3.5) 1100 reviews</h4>
+                                        <p class="product-prop__desc"></p>
                                     </div>
-                                    <!-- form filter size-weight -->
-                                    <form action="#" method="GET" class="form" id="myForm">
-                                        <div class="product-filter">
-                                            <label for="" class="form__label">Size/Weight</label>
-                                            <div class="filter__form-group">
-                                                <div class="form__select-wrap">
-                                                    <div class="form__select">
-                                                        <select name="cart_pro_size" id="cart_pro_size" class="form__select-select">
-                                                            <option value="">Chọn Khối lượng</option>
-                                                            <?php 
-                                                                foreach($sizeArray as $key => $value) {
-                                                                    $value = trim($value);
-                                                            ?>
-                                                            <option value="<?php echo $value ?>" <?php if(isset($_GET['cart_pro_size']) && $_GET['cart_pro_size'] == $value) echo "selected"; ?>>
-                                                                <?php echo $value ?>
-                                                            </option>
-                                                            <?php 
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
+                                </div>
+                                <!-- form filter size-weight -->
+                                <form action="#" method="GET" class="form" id="myForm">
+                                    <div class="product-filter">
+                                        <label for="" class="form__label">Size/Weight</label>
+                                        <div class="filter__form-group">
+                                            <div class="form__select-wrap">
+                                                <div class="form__select">
+                                                    <select name="cart_pro_size" id="cart_pro_size" class="form__select-select">
+                                                        <!-- <option value="">Chọn Khối lượng</option> -->
+                                                        <?php 
+                                                            foreach($sizeArray as $key => $value) {
+                                                                $value = trim($value);
+                                                        ?>
+                                                        <option value="<?php echo $value ?>" <?php if(isset($_GET['cart_pro_size']) && $_GET['cart_pro_size'] == $value) echo "selected"; ?>>
+                                                            <?php echo $value ?>
+                                                        </option>
+                                                        <?php 
+                                                            }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <!-- Hidden submit button -->
-                                        <button type="submit" id="submitBtn" style="display: none;"></button>
-                                    </form>
-                                </div>
-                                <!-- col 2 -->
-                                <div class="col-6 col-xl-7 col-lg-12">
-                                    <form action="<?php echo BASE_URL ?>/cart_user/addtocart" method="post">
-                                        <input type="hidden" value="<?php echo $id ?>" name="pro_id">
-                                        <input type="hidden" value="<?php echo $_SESSION['acc_id'] ?>" name="acc_id">
-                                        <input type="hidden" value="1" name="cart_pro_quantity">
+                                    <!-- Hidden submit button -->
+                                    <button type="submit" id="submitBtn" style="display: none;"></button>
+                                </form>
+                            </div>
+                            <!-- col 2 -->
+                            
+                            <!-- cap nhat gia theo tung size khac nhau -->
+                            <?php 
+                                $selectedSize = isset($_GET['cart_pro_size']) ? $_GET['cart_pro_size'] : null;
+
+                                // Define size percent for each size
+                                $size_percent = [
+                                    '' => 1,
+                                    'X' => 1,
+                                    'M' => 1.8, 
+                                    'XL' => 2.2
+                                ];
+                                $price *= $size_percent[$selectedSize];
+                            ?>
+                            <div class="col-6 col-xl-7 col-lg-12">
+                                <form action="<?php echo BASE_URL ?>/cart_user/addtocart" method="post">
+                                    <input type="hidden" value="<?php echo $id ?>" name="pro_id">
+                                    <input type="hidden" value="<?php echo $brand_name ?>" name="cart_brand_name">
+                                    <input type="hidden" value="<?php echo $title ?>" name="cart_pro_title">
+                                    <input type="hidden" value="<?php echo $image ?>" name="cart_pro_img">
+                                    <input type="hidden" value="<?php echo $price ?>" name="cart_pro_price">
+                                    <input type="hidden" value="<?php echo $acc_id?>" name="acc_id">
+                                    <input type="hidden" value="<?php echo $selectedSize?>" name="cart_pro_size">
+                                    <input type="hidden" value="1" name="cart_pro_quantity">
                                     <div class="product-props">
                                         <div class="product-prop">
                                             <img
@@ -201,22 +224,9 @@
                                             </div>
                                         </div>
                                     </div>
-    
+
                                     <div class="product-info__card">
                                         <div class="product-info__row">
-                                        <?php 
-                                            $selectedSize = isset($_GET['cart_pro_size']) ? $_GET['cart_pro_size'] : null;
-
-                                            // Define size percent for each size
-                                            $size_percent = [
-                                                'S' => 1,
-                                                'M' => 1.8, 
-                                                'XL' => 2.2
-                                            ];
-
-                                            $price *= $size_percent[$selectedSize];
-                                        ?>
-
                                             <span class="product-info__price"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
                                             <span class="product-info__tax">10%</span>
                                         </div>
@@ -242,8 +252,8 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

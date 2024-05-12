@@ -15,7 +15,7 @@
         }
 
         public function cartbyid($table, $cond) {
-            $sql = "SELECT * FROM $table WHERE $cond LIMIT 1";
+            $sql = "SELECT * FROM $table WHERE $cond";
             return $this->db->select($sql);
         } 
         
