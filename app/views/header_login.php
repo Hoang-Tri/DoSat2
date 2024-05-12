@@ -184,7 +184,11 @@
                             <div class="dropdown-cart__inner">
                                 <img src="<?php echo BASE_URL ?>/assets/icons/dropdown-arrow.svg" alt="" class="dropdown-cart__img" />
                                 <div class="dropdown-cart__row">
-                                    <h2 class="dropdown-cart__heading">You have 3 item</h2>
+                                    <h2 class="dropdown-cart__heading">
+                                    <?php 
+                                        echo count($cart) > 0 ? 'Bạn đang có ' . count($cart) . ' sản phẩm' : 'Giỏ hàng trống'; 
+                                    ?>
+                                    </h2>
                                     <a href="<?php echo BASE_URL ?>/cart_user" class="dropdown-cart__view-all">Xem tất cả</a>
                                 </div>
                                 <div class="dropdown-cart__wrap">
@@ -210,7 +214,7 @@
                                 </div>
 
                                 <div class="dropdown-cart__checkout">
-                                    <a href="<?php echo BASE_URL ?>/cart_user" class="btn btn--primary btn--rounded">Thanh toán tất cả</a>
+                                    <a href="<?php echo BASE_URL ?>/cart_user" class="btn btn--primary btn--rounded">Đến giỏ hàng</a>
                                 </div>
                             </div>
                         </div>

@@ -56,9 +56,10 @@
                 $cart_pro_img = $_POST["cart_pro_img"];
                 $cart_pro_price = $_POST["cart_pro_price"];
                 $cart_brand_name = $_POST["cart_brand_name"];
+                $cart_pro_size = $_POST["cart_pro_size"];
         
                 $table = "cart";
-                $cond = "pro_id = '$pro_id' AND acc_id = '$acc_id'";
+                $cond = "cart.pro_id = '$pro_id' AND cart.acc_id = '$acc_id' AND cart.cart_pro_size = '$cart_pro_size'";
                 $cartmodel = $this->load->model("cartmodel");
 
                 $get_cart = $cartmodel->cartbyid($table, $cond);
@@ -80,7 +81,8 @@
                             "cart_pro_img" => $cart_pro_img,
                             "cart_pro_price" => $cart_pro_price,
                             "cart_brand_name" => $cart_brand_name,
-                            "cart_pro_quantity" => $cart_pro_quantity
+                            "cart_pro_quantity" => $cart_pro_quantity,
+                            "cart_pro_size" => $cart_pro_size
                         );
                         $result = $cartmodel->insertcart($table, $data);
                     }

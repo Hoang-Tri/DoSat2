@@ -64,7 +64,7 @@
                                             </a>
                                         </h2>
                                         <p class="cart__price">
-                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock">In Stock</span>
+                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock"> Size <?php echo $value['cart_pro_size'] ?></span>
                                         </p>
 
                                         <div class="cart__row cart__row-ctrl">
