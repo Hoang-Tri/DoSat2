@@ -28,6 +28,10 @@
                 <input type="text" name="pro_quantity" class="form-control" id="pro_quantity">
             </div>
             <div class="form-group mb-3">
+                <label for="pro_size">Size/Weight</label>
+                <input type="text" name="pro_size" class="form-control" id="pro_size">
+            </div>
+            <div class="form-group mb-3">
                 <label for="pro_image">Hình ảnh sản phẩm</label>
                 <input type="file" name="pro_image" class="form-control" id="pro_image">
             </div>

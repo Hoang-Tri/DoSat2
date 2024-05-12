@@ -38,6 +38,7 @@
                 $price = $_POST['pro_price'];
                 $quantity = $_POST['pro_quantity'];
                 $brand = $_POST['pro_brand_id'];
+                $size = $_POST['pro_size'];
                 
                 // File upload handling
                 $image = $_FILES['pro_image']['name'];
@@ -66,7 +67,8 @@
                     'pro_price' => $price,
                     'pro_quantity' => $quantity,
                     'pro_image' => $image,
-                    'pro_brand_id' => $brand
+                    'pro_brand_id' => $brand,
+                    'pro_size' => $size
 
                 );
         
@@ -170,6 +172,7 @@
                 $price = $_POST['pro_price'];
                 $quantity = $_POST['pro_quantity'];
                 $brand = $_POST['pro_brand_id'];
+                $size = $_POST['pro_size'];
                 
                 $image = $_FILES['pro_image']['name'];
                 $tmp_image = $_FILES['pro_image']['tmp_name'];
@@ -199,7 +202,8 @@
                         'pro_price' => $price,
                         'pro_quantity' => $quantity,
                         'pro_image' => $unique_image,
-                        'pro_brand_id' => $brand
+                        'pro_brand_id' => $brand,
+                        'pro_size' => $size
                     );
                     move_uploaded_file($tmp_image, $path_uploads);
                 }
@@ -213,7 +217,8 @@
                         'pro_desc' => $desc,
                         'pro_price' => $price,
                         'pro_quantity' => $quantity,
-                        'pro_brand_id' => $brand
+                        'pro_brand_id' => $brand,
+                        'pro_size' => $size
 
                     );
                 } 
