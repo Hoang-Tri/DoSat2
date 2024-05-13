@@ -1,4 +1,3 @@
-<!-- goi moi thu cua view -->
 <?php 
     class Load {
         public function __construct() {

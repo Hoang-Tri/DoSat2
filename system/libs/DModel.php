@@ -1,5 +1,3 @@
-<!-- Ket noi co so du lieu -->
-
 <?php
     class DModel {
         

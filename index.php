@@ -1,5 +1,4 @@
 <?php 
-        // tu dong load cac class trong libs
         spl_autoload_register(function($class) {
             include_once("./system/libs/".$class.".php");
         });

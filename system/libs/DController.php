@@ -1,5 +1,3 @@
-<!-- Cha cua cac controllers trong app -->
-
 <?php
     class DController {
         protected $load = array();
