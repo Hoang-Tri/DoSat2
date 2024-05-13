@@ -155,5 +155,5 @@ function Validator(formSelector, option = {}) {
             }
         }
     };
-    console.log(formRules);
+    // console.log(formRules);
 }

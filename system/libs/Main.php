@@ -1,4 +1,3 @@
-<!-- dung de goi trang index.php -->
 
 <?php
     class Main {

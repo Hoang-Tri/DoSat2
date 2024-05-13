@@ -273,7 +273,7 @@
 <!-- Modal: Add new shipping address -->
 <div class="modal hide" id="modal-add-address" style="--modal-width: 650px">
     <div class="modal__inner">
-        <form action="" class="form" id="form-address">
+        <form action="" class="form" id="form-address" method="POST">
             <div class="modal__body">
                 <h2 class="modal__heading">Thêm địa chỉ giao hàng mới</h2>
                 <div class="form__row">
@@ -339,27 +339,21 @@
                         <div class="form__row form__options">
                             <div class="form__select-wrap">
                                 <div class="form__select">
-                                    <select name="acc_tp" id="acc_city" class="form__select-select">
+                                    <select name="province" id="province" class="form__select-select">
                                         <option value="">Chọn Tỉnh/TP</option>
-                                        <?php 
-                                            foreach($city as $key => $value) {
-                                        ?>
-                                        <option value="<?php echo $value['matp'] ?>"><?php echo $value['name'] ?></option>
-                                        <?php 
-                                            }
-                                        ?>
+                                        <?php foreach($city as $key => $value) { ?>
+                                            <option value="<?php echo $value['matp'] ?>"><?php echo $value['name'] ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form__select">
-                                    <select name="acc_qh" id="acc_qh" class="form__select-select">
+                                    <select name="district" id="district" class="form__select-select">
                                         <option value="">Chọn Quận/Huyện</option>
-                                        <option value="">1</option>
                                     </select>
                                 </div>
                                 <div class="form__select">
-                                    <select name="acc_px" id="acc_px" class="form__select-select">
+                                    <select name="wards" id="wards" class="form__select-select">
                                         <option value="">Chọn Phường/Xã</option>
-                                        <option value="">1</option>
                                     </select>
                                 </div>
                             </div>
@@ -390,6 +384,7 @@
 
 
 <script src="<?php echo BASE_URL ?>/assets/js/validation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     Validator("#form-address", {
@@ -403,3 +398,81 @@
     // vi du
     // <input name="fullname" rules="required"></input>;
 </script>
+
+<script>
+    jQuery.noConflict();
+
+jQuery(document).ready(function($) {
+    // Listen for changes in the "province" select box
+    $('#province').on('change', function() {
+        var province_id = $(this).val();
+        if (province_id) {
+            // If a province is selected, fetch the districts for that province using AJAX
+            $.ajax({
+                url: '<?php echo BASE_URL ?>/shipping_user/getqh',
+                method: 'GET',
+                dataType: "json",
+                data: {
+                    province_id: province_id
+                },
+                success: function(data) {
+                    // Clear the current options in the "district" select box
+                    $('#district').empty();
+
+                    // Add the new options for the districts for the selected province
+                    $.each(data, function(i, district) {
+                        $('#district').append($('<option>', {
+                            value: district.id,
+                            text: district.name
+                        }));
+                    });
+                    // Clear the options in the "wards" select box
+                    $('#wards').empty();
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log('Error: ' + errorThrown);
+                }
+            });
+            $('#wards').empty();
+        } else {
+            // If no province is selected, clear the options in the "district" and "wards" select boxes
+            $('#district').empty();
+        }
+    });
+    
+    // Listen for changes in the "district" select box
+    $('#district').on('change', function() {
+        var district_id = $(this).val();
+        if (district_id) {
+            $.ajax({
+                url: "<?php echo BASE_URL ?>/shipping_user/getxptt",
+                method: 'GET',
+                dataType: "json",
+                data: {
+                    district_id: district_id
+                },
+                success: function(data) {
+                    $('#wards').empty();
+                    $.each(data, function(i, wards) {
+                        $('#wards').append($('<option>', {
+                            value: wards.id,
+                            text: wards.name
+                        }));
+                    });
+                }, 
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log('Error: ' + errorThrown);
+                }
+            });
+        } else {
+            // If no district is selected, clear the options in the "award" select box
+            $('#wards').empty();
+        }
+    });
+});
+
+</script>
+
+
+
+

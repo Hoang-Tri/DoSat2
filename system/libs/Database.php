@@ -1,4 +1,3 @@
-<!-- Ket noi co so du lieu -->
 
 <?php
     class Database extends PDO{

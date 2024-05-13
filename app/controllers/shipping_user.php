@@ -36,7 +36,14 @@
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["city"] = $addressmodel->getaddress($tbl_tinhthanhpho);
-            
+
+            // if(isset($_POST['city_id'])) {
+            //     $cityId = $_POST['city_id'];
+            //     $districts = $addressmodel->getDistrictbyid('tbl_quanhuyen', $cityId);
+            //     header('Content-Type: application/json');
+            //     echo json_encode($districts);
+            // }
+
             $this->load->view("doctype");
             $this->load->view("shipping/title_shipping");
             if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
@@ -144,5 +151,56 @@
             }
         }
 
+        public function getqh() {
+            if(isset($_GET['province_id'])) {
+                $city_id = $_GET['province_id'];
+                $cond = "matp = $city_id";
+        
+                // Assuming $this->load->model() loads the model and establishes the PDO connection
+                $addressmodel = $this->load->model("addressmodel");
+                $districts = $addressmodel->getdistrict($city_id, $cond);
+        
+                // Set content type to JSON
+                header('Content-Type: application/json');
+        
+                $formatted_districts = array(); 
+                foreach ($districts as $key => $value) {
+                    // Iterate through each fetched row and add its data to the districts array
+                    $formatted_districts[] = array(
+                        'id' => $value['maqh'],
+                        'name' => $value['name']
+                    );
+                }
+                echo json_encode($formatted_districts);
+            } else {
+                echo json_encode(array('error' => 'No province_id parameter received'));
+            }
+        }
+                    
+
+        public function getxptt() {
+            if(isset($_GET['district_id'])) {
+                $district_id = $_GET['district_id'];
+                $cond = "maqh = '$district_id'";
+        
+                $addressmodel = $this->load->model("addressmodel");
+                $wards = $addressmodel->getwards($district_id, $cond);
+        
+                // Set content type to JSON
+                header('Content-Type: application/json');
+        
+                $formatted_wards = array(); 
+                foreach ($wards as $row) {
+                    // Iterate through each fetched row and add its data to the wards array
+                    $formatted_wards[] =array(
+                        'id' => $row['xaid'],
+                        'name' => $row['name']
+                    );
+                }
+                echo json_encode($formatted_wards);
+            } else {
+                // If no district_id parameter is received, return an error message
+                echo json_encode(array('error' => 'No district_id parameter received'));
+            }
+        }        
     }
-?>
