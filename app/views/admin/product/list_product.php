@@ -21,10 +21,11 @@
                         <th style="width: 12%">Tên sản phẩm</th>
                         <th style="width: 23%">Mô tả sản phẩm</th>
                         <th style="width: 5%">Giá</th>
-                        <th style="width: 5%">Số lượng</th>
+                        <th style="width: 3%">Số lượng</th>
                         <th style="width: 5%">Size/Weight</th>
                         <th style="width: 10%">Hình ảnh bài viết</th>
                         <th style="width: 5%">Thương hiệu</th>
+                        <th style="width: 2%">Sản phẩm mới</th>
                         <th style="width: 10%" class="text-center">Chức năng</th>
                     </tr>
                 </thead>
@@ -43,6 +44,13 @@
                         <td><?php echo $pro['pro_size'] ?></td>
                         <td><img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>" height = "100" width = "100"> </td>
                         <td><?php echo $pro['brand_name'] ?></td>
+                        <td><?php
+                            if ($pro['pro_new']==0){
+                                echo 'Old';
+                            } else {
+                                echo 'New';
+                            }
+                        ?></td>
                         <td class="text-center">
                             <a href="<?php echo BASE_URL ?>/product/edit_product/<?php echo $pro["pro_id"]?>" class="btn btn-success btn-sm" role="button">
                                 <i class="fa-solid fa-pen"></i>
