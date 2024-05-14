@@ -76,7 +76,10 @@
                             <div class="user-address__bottom">
                                 <div class="address">
                                     <div class="address__list">
-                                        <p class="address__not-item d-none">
+                                        <?php 
+                                            if(empty($customer)) {
+                                        ?>
+                                        <p class="address__not-item">
                                             Chưa có địa chỉ.
                                             <a
                                                 href="#!"
@@ -86,8 +89,14 @@
                                             >
                                         </p>
 
+                                        <?php 
+                                            }else {
+                                                ?>
                                         <div class="cart__info-separate"></div>
-                                        <!-- address 1 -->
+
+                                        <?php 
+                                            foreach($customer as $key => $value) {
+                                        ?>
                                         <article class="address__item">
                                             <div class="address__item-left checked-input">
                                                 <!-- Custom input checkbox -->
@@ -97,20 +106,19 @@
                                                             type="radio"
                                                             name="checkaddress"
                                                             class="cart__select-checkbox"
-                                                            checked
                                                         />
                                                     </label>
                                                 </div>
                                                 <!-- address item info -->
                                                 <div class="address__item-info">
-                                                    <h4 class="address__item-title">Imran Khan</h4>
+                                                    <h4 class="address__item-title"><?php echo $value['cus_name'] ?></h4>
                                                     <p class="address__item-desc">
-                                                        Museum of Rajas, Sylhet Sadar, Sylhet 3100.
+                                                        <?php echo $value['cus_wards'].", ".$value['cus_district'].", ".$value['cus_province'] ?>
                                                     </p>
 
                                                     <ul class="address__item-list">
+                                                        <li><?php echo $value['cus_phone'] ?></li>
                                                         <li>Vận chuyển</li>
-                                                        <li>Giao hàng từ cửa hàng</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -130,6 +138,11 @@
                                                 </div>
                                             </div>
                                         </article>
+                                        <?php 
+                                                }
+                                            }
+                                        ?>
+                                        <div class="cart__info-separate"></div>
                                     </div>
                                 </div>
                             </div>
@@ -146,6 +159,7 @@
                                 foreach($cart as $key => $value) {
                                     $sub_totals += $value['cart_pro_price'] * $value['cart_pro_quantity'];
                                     $item += $value['cart_pro_quantity'];
+                                    $acc_id = $value['acc_id'];
                             ?>
                             <article class="cart__item">
                                 <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $value['pro_id']?>" class="cart__thumb">
@@ -159,7 +173,7 @@
                                             </a>
                                         </h2>
                                         <p class="cart__price">
-                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock">In Stock</span>
+                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock"><?php echo $value['cart_pro_size'] ?></span>
                                         </p>
 
                                         <div class="cart__row cart__row-ctrl">
@@ -273,7 +287,8 @@
 <!-- Modal: Add new shipping address -->
 <div class="modal hide" id="modal-add-address" style="--modal-width: 650px">
     <div class="modal__inner">
-        <form action="" class="form" id="form-address" method="POST">
+        <form action="<?php echo BASE_URL ?>/customer_user" class="form" id="form-address" method="POST">
+            <input type="hidden" name="acc_id" value="<?php echo $acc_id ?>">
             <div class="modal__body">
                 <h2 class="modal__heading">Thêm địa chỉ giao hàng mới</h2>
                 <div class="form__row">
@@ -284,7 +299,7 @@
                             <input
                                 type="text"
                                 id="name"
-                                name="name"
+                                name="cus_name"
                                 rules="required"
                                 placeholder="Tên"
                                 class="form__input"
@@ -301,7 +316,7 @@
                             <input
                                 type="tel"
                                 id="phone"
-                                name="phone"
+                                name="cus_phone"
                                 rules="required|min:10|phone"
                                 placeholder="Số điện thoại"
                                 class="form__input"
@@ -316,11 +331,10 @@
                 <!-- Address -->
                 <div class="form__group">
                     <label for="address" class="form__label form__label--small">Địa chỉ cụ thể</label>
-
                     <div class="form__text-area">
                         <textarea
                             id="address"
-                            name="address"
+                            name="cus_desc"
                             rules="required"
                             placeholder="Mô tả địa chỉ giao hàng"
                             class="form__textarea"
@@ -335,30 +349,34 @@
                     <label for="select-address" class="form__label form__label--small"
                         >Chọn địa chỉ của bạn</label
                     >
-                    <div class="form__select-dialog show">
                         <div class="form__row form__options">
                             <div class="form__select-wrap">
                                 <div class="form__select">
-                                    <select name="province" id="province" class="form__select-select">
-                                        <option value="">Chọn Tỉnh/TP</option>
+                                    <select name="cus_province" id="province" class="form__options-select">
+                                        <option>Chọn Tỉnh/TP</option>
                                         <?php foreach($city as $key => $value) { ?>
                                             <option value="<?php echo $value['matp'] ?>"><?php echo $value['name'] ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="form__select-wrap">
                                 <div class="form__select">
-                                    <select name="district" id="district" class="form__select-select">
-                                        <option value="">Chọn Quận/Huyện</option>
+                                    <select name="cus_district" id="district" class="form__options-select">
+                                        <option>Chọn Quận/Huyện</option>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="form__select-wrap">
                                 <div class="form__select">
-                                    <select name="wards" id="wards" class="form__select-select">
-                                        <option value="">Chọn Phường/Xã</option>
+                                    <select name="cus_wards" id="wards" class="form__options-select">
+                                        <option >Chọn Phường/Xã</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <span class="form__message"></span>
                 </div>
                 <!-- Default address  -->
@@ -427,13 +445,13 @@ jQuery(document).ready(function($) {
                         }));
                     });
                     // Clear the options in the "wards" select box
-                    $('#wards').empty();
+                    // $('#wards').empty();
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     console.log('Error: ' + errorThrown);
                 }
             });
-            $('#wards').empty();
+            // $('#wards').empty();
         } else {
             // If no province is selected, clear the options in the "district" and "wards" select boxes
             $('#district').empty();
@@ -465,12 +483,10 @@ jQuery(document).ready(function($) {
                 }
             });
         } else {
-            // If no district is selected, clear the options in the "award" select box
             $('#wards').empty();
         }
     });
 });
-
 </script>
 
 

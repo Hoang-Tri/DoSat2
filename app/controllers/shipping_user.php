@@ -15,12 +15,14 @@
             $tbl_brand = "brand";
             $tbl_cate_post = "category_post";
             $tbl_cart = 'cart';
+            $customer = 'customer';
             $tbl_tinhthanhpho = 'tbl_tinhthanhpho';
 
             $categorymodel = $this->load->model("categorymodel");
             $accountmodel = $this->load->model("accountmodel");
             $cartmodel = $this->load->model("cartmodel");
             $addressmodel = $this->load->model("addressmodel");
+            $cusmodel = $this->load->model("cusmodel");
 
             // lấy id của user đang đăng nhập
             if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
@@ -37,12 +39,10 @@
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_cate_post);
             $data["city"] = $addressmodel->getaddress($tbl_tinhthanhpho);
 
-            // if(isset($_POST['city_id'])) {
-            //     $cityId = $_POST['city_id'];
-            //     $districts = $addressmodel->getDistrictbyid('tbl_quanhuyen', $cityId);
-            //     header('Content-Type: application/json');
-            //     echo json_encode($districts);
-            // }
+            // lay ra tat ca khach hang trong customer co acc_id bang voi id cua user
+            $cond_customer = "customer.acc_id = '$user_id'";
+            $data["customer"] = $cusmodel->customer($customer,$cond_customer);
+
 
             $this->load->view("doctype");
             $this->load->view("shipping/title_shipping");
@@ -163,7 +163,12 @@
                 // Set content type to JSON
                 header('Content-Type: application/json');
         
-                $formatted_districts = array(); 
+                $formatted_districts = array();
+                
+                $formatted_districts[0] = array(
+                    'id' => null, // Set ID to null
+                    'name' => 'Chọn Quận/Huyện' // Set name to "Chon Quan/Huyen"
+                );
                 foreach ($districts as $key => $value) {
                     // Iterate through each fetched row and add its data to the districts array
                     $formatted_districts[] = array(
@@ -190,6 +195,12 @@
                 header('Content-Type: application/json');
         
                 $formatted_wards = array(); 
+
+                $formatted_wards[0] = array(
+                    'id' => null, // Set ID to null
+                    'name' => 'Chọn Phường/Xã' // Set name to "Chon Quan/Huyen"
+                );
+
                 foreach ($wards as $row) {
                     // Iterate through each fetched row and add its data to the wards array
                     $formatted_wards[] =array(
