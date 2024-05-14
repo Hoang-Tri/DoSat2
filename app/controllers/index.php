@@ -37,7 +37,7 @@
             $data["brand"] = $categorymodel->brand($tbl_brand);
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
             $data["productall"] = $productmodel->productall_home($tbl_product, $tbl_brand);
-            
+            $data["productnew"] = $productmodel->productall_new($tbl_product,$tbl_brand);
             
 
             $this->load->view("doctype");

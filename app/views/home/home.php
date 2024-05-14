@@ -33,21 +33,30 @@
         <!-- List categories  -->
         <div class="home__cate row row-cols-3 row-cols-md-1">
             <!-- categories item 1 -->
+            <?php
+                foreach($productnew as $key => $product) {
+                    if($product['pro_new']==1){
+            ?>
             <div class="col">
                 <a href="#!">
                     <article class="cate-item">
-                        <img src="<?php echo BASE_URL ?>/assets/img/category-item/product-1.png" alt="" class="cate-item__thumb" />
+                        <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="cate-item__thumb" />
 
                         <div class="cate-item__info">
-                            <h3 class="cate-item__title">$24 - $150</h3>
-                            <p class="cate-item__desc">New sumatra mandeling coffe blend</p>
-                        </div>
+                            <h3 class="cate-item__title"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></h3>
+                            <!-- <p class="cate-item__desc"><?php echo $product['pro_desc'] ?></p> -->
+                            <p class="payment__desc payment__desc--low"><?php echo substr($product['pro_desc'],0,100) ?></p>
+                            
                     </article>
                 </a>
             </div>
+            <?php 
+                    }
+                }
+            ?>
 
             <!-- categories item  2-->
-
+            
             <!-- categories item 3 -->
         </div>
     </section>

@@ -47,6 +47,13 @@
                     ?>
                 </select>
             </div>
+            <div class="form-group mb-4">
+                <label for="pro_new" class="form-label">Sản phẩm mới</label>
+                <select class="form-select" name="pro_new" id="pro_new">
+                        <option value="0">Old</option>
+                        <option value="1">New</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

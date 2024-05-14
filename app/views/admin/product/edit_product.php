@@ -52,6 +52,25 @@
 
                 </select>
             </div>
+            <div class="form-group mb-4">
+                <label for="email" class="form-label">Sản phẩm mới</label>
+                <select class="form-select" name="pro_new" id="pro_new">
+                    <?php 
+                        if($pro['pro_new']==0){
+                    ?>
+                        <option selected value="0">Old</option>
+                        <option value="1">New</option>
+                    <?php 
+                        }
+                        else{
+                    ?>
+                         <option value="0">Old</option>
+                        <option selected value="1">New</option>
+                    <?php 
+                        }
+                    ?>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <?php 
