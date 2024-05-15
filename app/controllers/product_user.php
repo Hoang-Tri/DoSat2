@@ -95,7 +95,7 @@
                 $cond_related = "$tbl_product.pro_brand_id = $tbl_brand.brand_id 
                 AND $tbl_brand.brand_id = '$brand_id' AND $tbl_product.pro_id NOT IN('$id')";
                 $data["related"] = $productmodel->related_product_home($tbl_product, $tbl_brand, $cond_related);
-    
+                
     
                 $this->load->view("doctype");
                 $this->load->view("product_details/title_product_details");

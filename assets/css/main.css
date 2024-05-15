@@ -2216,7 +2216,7 @@ html {
 
 .cate-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px;
   border-radius: 16px;
   height: 100%;
@@ -2814,6 +2814,17 @@ html {
     height: 42px;
   }
 }
+.form__select-select {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+@media (max-width: 767.98px) {
+  .form__select-select {
+    font-size: 1.4rem;
+    line-height: 150%;
+  }
+}
 .form__select + .form__select {
   border-left: 1px solid #D2D1D6;
 }
@@ -2905,6 +2916,7 @@ html {
   height: 100%;
   align-items: center;
   justify-content: space-between;
+  background-color: transparent;
   gap: 10px;
 }
 .form__options-list {
@@ -3336,10 +3348,12 @@ html {
 }
 .home__cate {
   --grid-gutter-x: 51px;
+  --grid-gutter-y: 51px;
 }
 @media (max-width: 991.98px) {
   .home__cate {
     --grid-gutter-x: 24px;
+    --grid-gutter-y: 24px;
   }
 }
 @media (max-width: 767.98px) {

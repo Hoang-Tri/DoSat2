@@ -12,5 +12,9 @@
             $sql = "SELECT * FROM $customer WHERE $cond ORDER BY cus_id DESC";
             return $this->db->select($sql);
         }
+
+        public function deletecus($table, $cond) {
+            return $this->db->delete($table, $cond);
+         }
     }
 ?>

@@ -62,5 +62,26 @@
                 exit();
             }
         }
+
+        public function delete_cus($id = '') {
+            if(isset($id)) {
+                $cusmodel = $this->load->model("cusmodel");
+                $table = "customer";
+                $cond = "customer.cus_id = '$id'";
+            
+                $result = $cusmodel->deletecus($table, $cond);
+                
+                if($result == 1) {
+                    header("Location:".BASE_URL."/shipping_user");
+                    exit();
+                } else {
+                    header("Location:".BASE_URL);
+                    exit();
+                }
+            }else {
+                header("Location:".BASE_URL);
+                exit();
+            }
+        }
     }
 ?>
