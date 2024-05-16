@@ -113,5 +113,65 @@
 
         }
 
+        // Search product
+        public function product_search() {
+            session_start();
+            $tbl_brand = "brand";
+            $tbl_post = "category_post";
+            $tbl_product = "product";
+            $tbl_cart = 'cart';
+            
+            // Load các model
+            $categorymodel = $this->load->model("categorymodel");            
+            $productmodel = $this->load->model("productmodel");
+            $accountmodel = $this->load->model("accountmodel");
+            $cartmodel = $this->load->model("cartmodel");
+
+            //search
+            
+
+            // lấy id của user đang đăng nhập
+            if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
+                $user_id = $_SESSION['acc_id'];
+                $data["user"] = $accountmodel->getAccountById($user_id);
+            }else {
+                $user_id = -1;
+            }
+
+            // kiem tra xem co tu can tim kiem hay khong
+            if(isset($_POST['search'])) {
+                $search = $_POST['search'];
+            }else {
+                header('Location:'.BASE_URL);
+            }
+            $cond_cart = "cart.acc_id = '$user_id'";
+
+            
+            // Lấy dữ liệu từ các bảng
+            $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
+
+            $data["brand"] = $categorymodel->brand($tbl_brand);
+            $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+            $data["productall"] = $productmodel->productall_home($tbl_product, $tbl_brand);
+            $data["productnew"] = $productmodel->productall_new($tbl_product,$tbl_brand);
+
+            $data["productsearch"] = $productmodel->productsearch($tbl_product, $search, $tbl_brand);
+            
+            
+
+            $this->load->view("doctype");
+            $this->load->view("home/title_home");
+            
+            // Kiểm tra session để hiển thị header phù hợp
+            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                $this->load->view("header_login", $data);
+            } else {
+                $this->load->view("header", $data);
+            }
+            
+            $this->load->view("search/search", $data);
+            $this->load->view("footer");
+        }
+
 
     }

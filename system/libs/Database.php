@@ -117,5 +117,15 @@
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function search($sql, $search) {
+            $statement = $this->prepare($sql);
+            $statement->bindParam(1, $search, PDO::PARAM_STR);
+            $statement->execute();
+        
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+            return $results;
+        }        
+
     }
 ?>

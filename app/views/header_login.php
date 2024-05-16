@@ -276,7 +276,7 @@
     <div class="modal modal__search hide" id="modal-search">
         <div class="modal__inner">
             <span class="form__close js-toggle" toggle-target="#modal-search">&times</span>
-            <form action="" class="form">
+            <form action="<?php echo BASE_URL ?>/product_user/product_search" class="form" method ="post">
                 <div class="form__group">
                     <label for="search" class="form__label">Search</label>
                     <div class="form__text-input form__text-input--small">
@@ -299,7 +299,7 @@
                 </div>
             </form>
 
-            <ul class="modal__search-list">
+            <!-- <ul class="modal__search-list">
                 <li>
                     <a href="#!" class="modal__search-link">ffffffffff</a>
                 </li>
@@ -324,7 +324,7 @@
                 <li>
                     <a href="#!" class="modal__search-link">sssssssssssssss</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
 
         <div class="modal__opacity js-toggle" toggle-target="#modal-search"></div>

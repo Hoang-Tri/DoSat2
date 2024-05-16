@@ -40,13 +40,15 @@
             <div class="col">
                 <a href="#!">
                     <article class="cate-item">
-                        <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="cate-item__thumb" />
-
+                        <!-- <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="cate-item__thumb" /> -->
+                        <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $product['pro_id'] ?>">
+                                <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $product['pro_image'] ?>" alt="" class="cate-item__thumb" />
+                            
                         <div class="cate-item__info">
                             <h3 class="cate-item__title"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></h3>
                             <!-- <p class="cate-item__desc"><?php echo $product['pro_desc'] ?></p> -->
                             <p class="payment__desc payment__desc--low"><?php echo substr($product['pro_desc'],0,100) ?></p>
-                            
+                        </a>    
                     </article>
                 </a>
             </div>

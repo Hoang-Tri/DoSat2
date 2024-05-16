@@ -79,5 +79,10 @@
             $sql = "SELECT * FROM $table ORDER BY $table.size_id DESC";
             return $this->db->select($sql);
         }
+        // product search
+        public function productsearch($tbl_product, $search,$tbl_brand){
+            $sql = "SELECT * FROM $tbl_product, $tbl_brand WHERE $tbl_product.pro_brand_id = $tbl_brand.brand_id AND pro_title LIKE CONCAT('%', ?, '%')";
+            return $this->db->search($sql, $search);
+        }
     }
 ?>
