@@ -35,6 +35,9 @@ function Validator(formSelector, option = {}) {
         max: (max) => {
             return (value) => (value.length <= max ? undefined : `Vui lòng nhập tối đa ${max} ký tự`);
         },
+        selected: (value) => {
+            return value !== "" ? undefined : "Vui lòng chọn một mục";
+        }
     };    
 
     // Lấy element của form
@@ -43,7 +46,7 @@ function Validator(formSelector, option = {}) {
     // chỉ xữ lý khi có formElement trong DOM
     if (formElement) {
         // Lấy ra tất cả các thẻ input có name và rules
-        var inputs = formElement.querySelectorAll("input[name][rules]");
+        var inputs = formElement.querySelectorAll("input[name][rules], select[name][rules]");
         // lặp qua inputs
         for (var input of inputs) {
             // lay ra tung rule trong rules

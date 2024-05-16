@@ -247,13 +247,15 @@
         @include abstracts.screen(sm) {
             height: 42px;
         }
-        // &-select {
-        //     width: 100%;
-        //     @include abstracts.screen(md) {
-        //         font-size: 1.4rem;
-        //         line-height: 150%;
-        //     }
-        // }
+        &-select {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            @include abstracts.screen(md) {
+                font-size: 1.4rem;
+                line-height: 150%;
+            }
+        }
     }
 
     &__select + &__select {
@@ -352,6 +354,7 @@
             height: 100%;
             align-items: center;
             justify-content: space-between;
+            background-color: transparent;
             gap: 10px;
         }
 

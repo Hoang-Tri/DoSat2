@@ -57,6 +57,12 @@
                 $cart_pro_price = $_POST["cart_pro_price"];
                 $cart_brand_name = $_POST["cart_brand_name"];
                 $cart_pro_size = $_POST["cart_pro_size"];
+
+                // kiem tra neu size khong duoc chon thi se khong 
+                if(empty($cart_pro_size)) {
+                    header('Location: '.BASE_URL."/product_user/product_details/".$pro_id);
+                    exit();
+                }
         
                 $table = "cart";
                 $cond = "cart.pro_id = '$pro_id' AND cart.acc_id = '$acc_id' AND cart.cart_pro_size = '$cart_pro_size'";

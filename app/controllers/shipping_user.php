@@ -43,16 +43,20 @@
             $cond_customer = "customer.acc_id = '$user_id'";
             $data["customer"] = $cusmodel->customer($customer,$cond_customer);
 
-
-            $this->load->view("doctype");
-            $this->load->view("shipping/title_shipping");
-            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
-                $this->load->view("header_login", $data);
+            if(!empty($data['cart'])) {
+                $this->load->view("doctype");
+                $this->load->view("shipping/title_shipping");
+                if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                    $this->load->view("header_login", $data);
+                }else {
+                    $this->load->view("header", $data);
+                }
+                $this->load->view("shipping/shipping", $data);
+                $this->load->view("footer");
             }else {
-                $this->load->view("header", $data);
+                header("Location: ".BASE_URL);
             }
-            $this->load->view("shipping/shipping", $data);
-            $this->load->view("footer");
+
         }
         
         public function addtocart() {

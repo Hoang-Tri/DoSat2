@@ -24,7 +24,7 @@
             <div class="breadcrumb checkout__breadcrumb">
                 <ul class="breadcrumb__list">
                     <li>
-                        <a href="<?php echo BASE_URL ?>/index-logined.html" class="breadcrumb__item">
+                        <a href="<?php echo BASE_URL ?>" class="breadcrumb__item">
                             Trang chủ
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
@@ -64,7 +64,7 @@
                                             </a>
                                         </h2>
                                         <p class="cart__price">
-                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock"> Size <?php echo $value['cart_pro_size'] ?></span>
+                                        <?php echo number_format ($value['cart_pro_price'],0,',','.' ).'đ'?> | <span class="cart__price-stock"> Size <?php echo $value['cart_pro_size']?></span>
                                         </p>
 
                                         <div class="cart__row cart__row-ctrl">
@@ -163,10 +163,15 @@
                                 <span>Tổng thanh toán</span>
                                 <span>$201.65</span>
                             </div>
-
+                            <?php 
+                                if(!empty($cart)) {
+                            ?>
                             <a href="<?php echo BASE_URL ?>/shipping_user" class="btn btn--primary btn--rounded cart__checkout-btn"
                                 >Tiếp tục thanh toán</a
                             >
+                            <?php 
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="cart">

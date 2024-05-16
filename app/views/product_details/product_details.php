@@ -141,10 +141,10 @@
                                             <div class="form__select-wrap">
                                                 <div class="form__select">
                                                     <select name="cart_pro_size" id="cart_pro_size" class="form__select-select">
-                                                        <!-- <option value="">Chọn Khối lượng</option> -->
+                                                        <option value="">Chọn Khối lượng</option>
                                                         <?php 
                                                             foreach($sizeArray as $key => $value) {
-                                                                $value = trim($value);
+                                                                $value = trim(strtoupper($value));
                                                         ?>
                                                         <option value="<?php echo $value ?>" <?php if(isset($_GET['cart_pro_size']) && $_GET['cart_pro_size'] == $value) echo "selected"; ?>>
                                                             <?php echo $value ?>
