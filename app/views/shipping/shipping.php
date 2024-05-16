@@ -49,7 +49,7 @@
 
         <!-- checkout cart info -->
         <div class="checkout__container">
-            <form action="" method="post" id="form-order">
+            <form action="<?php echo BASE_URL ?>/payment_user" method="post" id="form-order">
                 <div class="row gy-xl-3">
                     <div class="col-8 col-xl-12">
                         <div class="cart">
@@ -105,7 +105,7 @@
                                                         <label class="cart__select checked__item">
                                                             <input
                                                                 type="radio"
-                                                                name="checkaddress"
+                                                                name="cus_id"
                                                                 class="cart__select-checkbox"
                                                                 rules="required"
                                                                 required
@@ -185,7 +185,7 @@
                                             <div class="cart__row cart__row-ctrl">
                                                 <div class="cart__input"><?php echo $value['cart_brand_name'] ?></div>
                                                 <span class="cart__quantity-number">Số lượng:<?php echo ' '. $value['cart_pro_quantity'] ?></span>
-                                                <input type="hidden" name="cart_pro_quantity" class="cart__quantity-input" value="<?php echo $value['cart_pro_quantity'] ?>"> 
+                                                <!-- <input type="hidden" name="cart_pro_quantity" class="cart__quantity-input" value="<?php echo $value['cart_pro_quantity'] ?>">  -->
                                             </div>
                                         </div>
                                         <div class="cart__info-right">
@@ -221,9 +221,10 @@
                     <div class="col-4 col-xl-12">
                         <div class="cart">
                             <div class="cart__checkout">
-                            <div class="cart__info-row">
+                                <div class="cart__info-row">
                                     <span>Tổng sản phẩm <span class="cart__info-row-sub">(hàng)</span></span>
                                     <span><?php echo $item ?></span>
+                                    <!-- <input type="hidden" name="cart_total_quantity" class="cart__total-quantity-input" value="<?php echo $item ?>">  -->
                                 </div>
 
                                 <div class="cart__info-row">
@@ -243,11 +244,8 @@
                                     <span>$201.65</span>
                                 </div>
 
-                                <a href="<?php echo BASE_URL ?>/payment.html" class="btn btn--outline btn--rounded cart__checkout-btn">
-                                    Payment now
-                                </a>
                                 <button style="width: 100%" class="btn btn--primary btn--rounded cart__checkout-btn btn-not-margin form__submit-btn"
-                                    >Thanh toán ngay
+                                    >Đặt hàng
                                 </button
                                 >
                             </div>
@@ -336,10 +334,10 @@
                     <span class="form__message"></span>
                 </div>
                 <!-- Select address -->
-                <div class="form__group">
+                <div class="form__group-wrap1">
                     <label for="select-address" class="form__label form__label--small">Chọn địa chỉ của bạn</label>
                     <div class="form__row form__options">
-                        <div class="form__select-wrap">
+                        <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
                                 <select name="cus_province" id="province" class="form__options-select" rules="required|selected" required>
                                     <option value="">Chọn Tỉnh/TP</option>
@@ -347,26 +345,32 @@
                                         <option value="<?php echo $value['matp'] ?>"><?php echo $value['name'] ?></option>
                                     <?php } ?>
                                 </select>
+                                <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
+
                             </div>
+                            <span class="form__message"></span>
                         </div>
 
-                        <div class="form__select-wrap">
+                        <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
                                 <select name="cus_district" id="district" class="form__options-select" rules="required|selected" required>
                                     <option value="">Chọn Quận/Huyện</option>
                                 </select>
+                                <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
                             </div>
+                            <span class="form__message"></span>
                         </div>
 
-                        <div class="form__select-wrap">
+                        <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
                                 <select name="cus_wards" id="wards" class="form__options-select" rules="required|selected" required>
                                     <option value="">Chọn Phường/Xã</option>
                                 </select>
+                            <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
                             </div>
+                            <span class="form__message"></span>
                         </div>
                     </div>
-                    <span class="form__message"></span>
                 </div>
 
                 <!-- Default address  -->

@@ -3839,12 +3839,16 @@ html {
   }
 }
 .cart__list {
+  display: block;
   margin-top: -30px;
 }
 @media (max-width: 767.98px) {
   .cart__list {
     margin-top: -16px;
   }
+}
+.cart__list.hide {
+  display: none;
 }
 .cart__item {
   padding: 30px 0;
