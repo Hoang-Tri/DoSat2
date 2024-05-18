@@ -84,5 +84,10 @@
             $sql = "SELECT * FROM $tbl_product, $tbl_brand WHERE $tbl_product.pro_brand_id = $tbl_brand.brand_id AND pro_title LIKE CONCAT('%', ?, '%')";
             return $this->db->search($sql, $search);
         }
+        //Filter product 
+        public function productfilter($tbl_product, $tbl_brand, $cond_product) {
+            $sql = "SELECT * FROM $tbl_product, $tbl_brand WHERE $cond_product";
+            return $this->db->select($sql);
+        }
     }
 ?>

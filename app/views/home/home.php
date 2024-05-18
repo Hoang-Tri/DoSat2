@@ -1,4 +1,10 @@
-<div class="container home">
+<?php
+// Ensure $max_price is defined
+$min_price = isset($min_price) ? $min_price : 0;
+$max_price = isset($max_price) ? $max_price : 0;
+?>
+<div
+ class="container home">
     <!-- Main -->
     <div class="home__container">
         <!-- SlideShow -->
@@ -46,8 +52,7 @@
                             
                         <div class="cate-item__info">
                             <h3 class="cate-item__title"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></h3>
-                            <!-- <p class="cate-item__desc"><?php echo $product['pro_desc'] ?></p> -->
-                            <p class="payment__desc payment__desc--low"><?php echo substr($product['pro_desc'],0,100) ?></p>
+                            <p class="cate-item__desc cate-item__title payment__desc--low"><?php echo substr($product['pro_title'],0,100) ?></p>
                         </a>    
                     </article>
                 </a>
@@ -72,111 +77,108 @@
                     Filter
                     <img src="<?php echo BASE_URL?>/assets/icons/fillter.svg" alt="" class="icon filter-btn__icon" />
                 </button>
-
-                <div class="filter hide" id="home__filter">
-                    <img src="<?php echo BASE_URL?>/assets/icons/arrow-up.png" alt="" class="filter-icon" />
-                    <h3 class="filter__heading">Filter</h3>
-                    <form action="" class="filter__form form">
-                        <div class="filter__row filter__content">
-                            <!-- Filter colums 1 -->
-                            <div class="filter__col">
-                                <label for="" class="form__label">Price</label>
-                                <div class="filter__form-group filter__form-group--inline">
-                                    <div>
-                                        <label for="" class="form__label form__label--small">Minimum</label>
-                                        <div class="filter__form-text-input filter__form-text-input-small">
+                <form action="<?php echo BASE_URL ?>/product_user/filter_product" class="form" method ="post">
+                    <div class="filter hide" id="home__filter">
+                        <img src="<?php echo BASE_URL?>/assets/icons/arrow-up.png" alt="" class="filter-icon" />
+                        <form action="<?php echo BASE_URL ?>/product_user/filter_product" class="form" method ="post">
+                            <div class="filter__row filter__content">
+                                <!-- Filter colums 1 -->
+                                <div class="filter__col">
+                                    <label for="" class="form__label">Price</label>
+                                    <div class="filter__form-group filter__form-group--inline">
+                                        <div>
+                                            <label for="" class="form__label form__label--small">Minimum</label>
+                                            <div class="filter__form-text-input filter__form-text-input-small">
+                                                <input
+                                                    type="text"
+                                                    name="min_price"
+                                                    id="min_price"
+                                                    class="filter__form-input"
+                                                    value="<?php echo $min_price ?>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="" class="form__label form__label--small">Maximum</label>
+                                            <div class="filter__form-text-input filter__form-text-input-small">
+                                                <input
+                                                    type="text"
+                                                    name="max_price"
+                                                    id=""
+                                                    class="filter__form-input"
+                                                    value="<?php echo $max_price ?>"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="filter__separate"></div>
+    
+                                <!-- Filter colums 2 -->
+                                <div class="filter__col">
+                                    <label for="" class="form__label">Size/Weight</label>
+                                    <div class="filter__form-group">
+                                        <div class="form__select-wrap">
+                                            <div class="form__select">
+                                                <select name="size" id="size" class="form__select-select">
+                                                <option value="X">X</option>
+                                                <option value="M">M</option>
+                                                <option value="XL">XL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- <div class="filter__separate"></div> -->
+    
+                                <!-- Filter colums 3 -->
+                                <!-- <div class="filter__col">
+                                    <label for="" class="form__label">Brand</label>
+                                    <div class="filter__form-group">
+                                        <div class="filter__form-text-input">
                                             <input
                                                 type="text"
                                                 name=""
                                                 id=""
+                                                placeholder="Search brand name"
                                                 class="filter__form-input"
-                                                value="$30.00"
+                                            />
+                                            <img
+                                                src="<?php echo BASE_URL?>/assets/icons/search.svg"
+                                                alt=""
+                                                class="filter__form-input-icon icon"
                                             />
                                         </div>
                                     </div>
-
-                                    <div>
-                                        <label for="" class="form__label form__label--small">Maximum</label>
-                                        <div class="filter__form-text-input filter__form-text-input-small">
-                                            <input
-                                                type="text"
-                                                name=""
-                                                id=""
-                                                class="filter__form-input"
-                                                value="$100.00"
-                                            />
+    
+                                    <div class="filter__form-group">
+                                        <div class="form__tags">
+                                        <?php 
+                                        foreach($brand as $key => $value) {
+                                        ?>
+                                        <button class="form__tag"><?php echo $value["brand_name"] ?></button>
+                                        <?php
+                                        }
+                                        ?>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-
-                            <div class="filter__separate"></div>
-
-                            <!-- Filter colums 2 -->
-                            <div class="filter__col">
-                                <label for="" class="form__label">Size/Weight</label>
-                                <div class="filter__form-group">
-                                    <div class="form__select-wrap">
-                                        <div class="form__select">
-                                            <select name="" id="" class="form__select-select">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
-                                                <option value="">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+    
+                            <div class="filter__row filter__footer">
+                                <button
+                                    class="btn btn--text filter__cancel js-toggle"
+                                    toggle-target="#home__filter"
+                                >
+                                    Cancel
+                                </button>
+                                <button class="btn btn--primary filter__submit">Show Result</button>
                             </div>
-
-                            <div class="filter__separate"></div>
-
-                            <!-- Filter colums 3 -->
-                            <div class="filter__col">
-                                <label for="" class="form__label">Brand</label>
-                                <div class="filter__form-group">
-                                    <div class="filter__form-text-input">
-                                        <input
-                                            type="text"
-                                            name=""
-                                            id=""
-                                            placeholder="Search brand name"
-                                            class="filter__form-input"
-                                        />
-                                        <img
-                                            src="<?php echo BASE_URL?>/assets/icons/search.svg"
-                                            alt=""
-                                            class="filter__form-input-icon icon"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="filter__form-group">
-                                    <div class="form__tags">
-                                    <?php 
-                                    foreach($brand as $key => $value) {
-                                    ?>
-                                    <button class="form__tag"><?php echo $value["brand_name"] ?></button>
-                                    <?php
-                                    }
-                                    ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="filter__row filter__footer">
-                            <button
-                                class="btn btn--text filter__cancel js-toggle"
-                                toggle-target="#home__filter"
-                            >
-                                Cancel
-                            </button>
-                            <button class="btn btn--primary filter__submit">Show Result</button>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- List products -->
