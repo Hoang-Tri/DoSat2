@@ -99,9 +99,6 @@
                 </a>
                 <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Thêm</a>
-                    </li>
-                    <li class="sidebar-item">
                         <a href="<?php echo BASE_URL ?>/order" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>

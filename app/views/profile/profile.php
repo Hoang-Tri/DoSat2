@@ -10,99 +10,6 @@
                 <div class="col-9 col-xl-8 col-lg-7 col-md-12">
                     <div class="cart">
                         <div class="row gy-3">
-                            <!-- My wallet
-                            <div class="col-12">
-                                <h2 class="cart__heading">Ví của tôi</h2>
-                                <p class="cart__desc payment-card__desc">Phương thức thanh toán</p>
-
-                                <div class="payment-card__list">
-                                    <div class="row row-cols-3 row-cols-xl-2 row-cols-lg-1">
-                                        <div class="col">
-                                            <article
-                                                class="payment-card__item"
-                                                style="--payment-card-bg: #1e2e69"
-                                            >
-                                                <div class="payment-card__top">
-                                                    <img src="<?php echo BASE_URL ?>/assets/img/payment-card/momo.svg" alt="" />
-                                                    <p class="payment-card__title">Momo</p>
-                                                </div>
-
-                                                <span class="payment-card__number">1234 4567 8901 2221</span>
-
-                                                <div class="payment-card__bottom">
-                                                    <div class="payment-card__info">
-                                                        <div class="payment-card__wrap">
-                                                            <span class="payment-card__name">Card Holder</span>
-                                                            <span class="payment-card__value">Imran Khan</span>
-                                                        </div>
-
-                                                        <div class="payment-card__wrap">
-                                                            <span class="payment-card__name">Expired</span>
-                                                            <span class="payment-card__value">10/22</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/payment-card/payment-card-icon.svg"
-                                                        alt=""
-                                                        class="payment-card__icon"
-                                                    />
-                                                </div>
-                                                <img
-                                                    src="<?php echo BASE_URL ?>/assets/img/payment-card/plane-bg.png"
-                                                    alt=""
-                                                    class="payment-card__bg"
-                                                />
-                                            </article>
-                                        </div>
-                                        <div class="col">
-                                            <article
-                                                class="payment-card__item"
-                                                style="--payment-card-bg: #354151"
-                                            >
-                                                <div class="payment-card__top">
-                                                    <img src="<?php echo BASE_URL ?>/assets/img/payment-card/leaf.svg" alt="" />
-                                                    <p class="payment-card__title">FeatherCard</p>
-                                                </div>
-
-                                                <span class="payment-card__number">2221 4567 8901 3544</span>
-
-                                                <div class="payment-card__bottom">
-                                                    <div class="payment-card__info">
-                                                        <div class="payment-card__wrap">
-                                                            <span class="payment-card__name">Card Holder</span>
-                                                            <span class="payment-card__value">Tfeww</span>
-                                                        </div>
-
-                                                        <div class="payment-card__wrap">
-                                                            <span class="payment-card__name">Expired</span>
-                                                            <span class="payment-card__value">12/22</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/payment-card/payment-card-icon.svg"
-                                                        alt=""
-                                                        class="payment-card__icon"
-                                                    />
-                                                </div>
-                                                <img
-                                                    src="<?php echo BASE_URL ?>/assets/img/payment-card/leaf-bg.png"
-                                                    alt=""
-                                                    class="payment-card__bg"
-                                                />
-                                            </article>
-                                        </div>
-                                        <div class="col">
-                                            <a href="<?php echo BASE_URL ?>/add-new-card.html" class="payment-card__new">
-                                                <img src="<?php echo BASE_URL ?>/assets/icons/plus.svg" alt="" class="icon" />
-                                                <p class="payment-card__new-desc">Add New Card</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-
                             <!-- Account info -->
                             <div class="col-12">
                                 <h2 class="cart__heading">Thông tin tài khoản</h2>
@@ -134,22 +41,6 @@
                                                 <div class="account-info__content">
                                                     <h3 class="account-info__title">Số điện thoại</h3>
                                                     <p class="account-info__desc"><?php echo $acc_phone ?></p>
-                                                </div>
-                                            </article>
-                                        </a>
-                                    </div>
-
-                                    <div class="col">
-                                        <a href="#!">
-                                            <article class="account-info">
-                                                <div class="account-info__icon">
-                                                    <img src="<?php echo BASE_URL ?>/assets/icons/location.svg" alt="" class="icon" />
-                                                </div>
-                                                <div class="account-info__content">
-                                                    <h3 class="account-info__title">Địa chỉ</h3>
-                                                    <p class="account-info__desc">
-                                                        <?php echo $acc_address ?>
-                                                    </p>
                                                 </div>
                                             </article>
                                         </a>

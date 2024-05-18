@@ -59,15 +59,15 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?php echo BASE_URL ?>/shipping.html" class="profile__menu-link">
+                                    <a href="<?php echo BASE_URL ?>/order_user/list_order" class="profile__menu-link">
                                         <span class="profile__menu-thumb">
                                             <img
-                                                src="<?php echo BASE_URL ?>/assets/icons/location.svg"
+                                                src="<?php echo BASE_URL ?>/assets/icons/document.svg"
                                                 alt=""
                                                 class="icon profile__menu-icon"
                                             />
                                         </span>
-                                        Địa chỉ
+                                        Đơn hàng của tôi
                                     </a>
                                 </li>
                             </ul>

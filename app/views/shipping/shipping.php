@@ -245,7 +245,7 @@
                                 </div>
 
                                 <button style="width: 100%" class="btn btn--primary btn--rounded cart__checkout-btn btn-not-margin form__submit-btn"
-                                    >Đặt hàng
+                                    >Mua Ngay
                                 </button
                                 >
                             </div>
@@ -334,7 +334,7 @@
                     <span class="form__message"></span>
                 </div>
                 <!-- Select address -->
-                <div class="form__group-wrap1">
+                <div class="form__group">
                     <label for="select-address" class="form__label form__label--small">Chọn địa chỉ của bạn</label>
                     <div class="form__row form__options">
                         <div class="form__select-wrap d-block form__group">
@@ -429,16 +429,16 @@ jQuery(document).ready(function($) {
                             text: district.name
                         }));
                     });
-                    $('#wards').empty();
+                    // $('#wards').empty();
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     console.log('Error: ' + errorThrown);
                 }
             });
-            $('#wards').empty();
+            // $('#wards').empty();
         } else {
             // If no province is selected, clear the options in the "district" and "wards" select boxes
-            $('#district').empty();
+            // $('#district').empty();
         }
     });
     
