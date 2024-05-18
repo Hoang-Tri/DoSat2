@@ -34,6 +34,7 @@
                 Session::init();
                 Session::set("account", true); //SET MOT SESSION LOGIN
                 Session::set("acc_id", $result[0]["acc_id"]);
+                Session::set("acc_email", $result[0]["acc_email"]);
                 header("Location:".BASE_URL);
             }else if($count == 0) {
                 $error = "Tài khoản này không tồn tại!";
@@ -115,7 +116,7 @@
                 if($checkmail == 0) {
                     header("location: ".BASE_URL);
                 }else {
-                     $data["acc_id"] = $accountmodel->getId($email);
+                    $data["acc_id"] = $accountmodel->getId($email);
                     $this->load->view("doctype");
                     $this->load->view("reset_password/title_reset_password");
                     $this->load->view("reset_password/reset_password", $data);   

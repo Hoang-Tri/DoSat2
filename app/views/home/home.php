@@ -1,3 +1,12 @@
+<?php
+    if(isset($_GET['msg'])) {
+        $success_message = urldecode($_GET['msg']);
+        echo "<script>alert('$success_message')</script>";
+    } elseif(isset($_GET['error'])) {
+        $error_message = urldecode($_GET['error']);
+        echo "<script>alert('$error_message')</script>";
+    }
+?>
 <div class="container home">
     <!-- Main -->
     <div class="home__container">

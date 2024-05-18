@@ -14,7 +14,7 @@
                             <div class="col-12">
                                 <a href="<?php echo BASE_URL ?>/profile_user" class="form-card__top">
                                     <img src="<?php echo BASE_URL ?>/assets/icons/arrow-left.svg" alt="" class="icon" />
-                                    <h2 class="cart__heading cart__sub-heading-lv2">Hoàn tất thông tin cá nhân</h2>
+                                    <h2 class="cart__heading cart__sub-heading-lv2">Thông tin cá nhân</h2>
                                 </a>
 
                                 <form method="post" action="<?php echo BASE_URL ?>/profile_user/update_profile/<?php echo $acc_id?>" id="form-card" class="form form-card" enctype="multipart/form-data">
