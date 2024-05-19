@@ -57,6 +57,59 @@
     initTinyMCE('.edit_product');
 </script>
 
+<!-- Them phi theo dia chi -->
+<script>
+    $(document).ready(function() {
+        $('.add_fee').click(function() {
+            var city = $('.city').val();
+            var fee_fee = $('.fee_fee').val();
+
+            if(city === '' || fee_fee === '') {
+                alert('Vui lòng nhập đầy đủ thông tin');
+            }else {
+                $.ajax({
+                    url: '<?php echo BASE_URL?>/fee/insert_fee',
+                    method: "POST",
+                    data: {
+                        city: city,
+                        fee_fee: fee_fee
+                    },
+                    success:function(data) {
+                        alert("Thêm phí vận chuyển thành công")
+                    }
+                })
+            }
+        })
+    })
+</script>
+
+<!-- cap nhat phi -->
+<script>
+    $(document).ready(function() {
+        $('.update_fee').click(function() {
+            var city = $('.city').val();
+            var fee_fee = $('.fee_fee').val();
+            var fee_id = $('.fee_id').val();
+
+            if(city === '' || fee_fee === '') {
+                alert('Vui lòng nhập đầy đủ thông tin');
+            }else {
+                $.ajax({
+                    url: '<?php echo BASE_URL?>/fee/update_fee',
+                    method: "POST",
+                    data: {
+                        city: city,
+                        fee_fee: fee_fee,
+                        fee_id: fee_id,
+                    },
+                    success:function(data) {
+                        alert("Cập nhật phí vận chuyển thành công")
+                    }
+                })
+            }
+        })
+    })
+</script>
 
 </body>
 

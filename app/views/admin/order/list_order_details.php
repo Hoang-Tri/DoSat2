@@ -15,14 +15,18 @@
                         <th>Só lượng</th>
                         <th>Giá</th>
                         <th>Size</th>
+                        <th>Phí vận chuyển</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                         $i = 0;
+                        $totals = 0;
                         foreach($order_details as $key => $value) {
                             $order_code = $value['order_code'];
                             $i++;
+                            $fee = $value['order_details_fee'];
+                            $totals += $value['order_details_quantity'] * $value['order_details_price'];
                         ?>
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
@@ -34,13 +38,20 @@
                         <td><?php echo $value["order_details_quantity"] ?></td>
                         <td><?php echo $value["order_details_price"] ?></td>
                         <td><?php echo $value["order_details_size"] ?></td>
+                        <td><?php echo $value["order_details_fee"] ?></td>
                     </tr>
                     <?php 
                         }
                     ?>
+                    <?php $totals += $fee ?>
+                    <tr>
+                        <td colspan="9" class="text-right"><strong>Tổng tiền:</strong></td>
+                        <td><strong><?php echo number_format($totals, 0, ',', '.') ?> đ</strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
+
         <form action="<?php echo BASE_URL?>/order/update_order_status/<?php echo $order_code ?>" method="post">
             <input type="hidden" name="order_status" value="1">
             <button class="btn btn-primary">Bàn giao cho đơn vị vận chuyển</button>

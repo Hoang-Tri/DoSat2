@@ -3,6 +3,16 @@
 $min_price = isset($min_price) ? $min_price : 0;
 $max_price = isset($max_price) ? $max_price : 0;
 ?>
+
+<?php
+    if(isset($_GET['msg'])) {
+        $success_message = urldecode($_GET['msg']);
+        echo "<script>alert('$success_message')</script>";
+    } elseif(isset($_GET['error'])) {
+        $error_message = urldecode($_GET['error']);
+        echo "<script>alert('$error_message')</script>";
+    }
+?>
 <div
  class="container home">
     <!-- Main -->

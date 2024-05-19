@@ -122,11 +122,6 @@
                                             <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                                         </div>
 
-                                        <div class="cart__info-row">
-                                            <span>Vận chuyển:</span>
-                                            <span>$10.00</span>
-                                        </div>
-
                                         <div class="cart__info-separate"></div>
 
                                         <div class="cart__info-row cart__info-row--bold">
@@ -152,16 +147,11 @@
                                 <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                             </div>
 
-                            <div class="cart__info-row">
-                                <span>Vận chuyển</span>
-                                <span>$10.00</span>
-                            </div>
-
                             <div class="cart__info-separate"></div>
 
                             <div class="cart__info-row">
                                 <span>Tổng thanh toán</span>
-                                <span>$201.65</span>
+                                <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                             </div>
                             <?php 
                                 if(!empty($cart)) {

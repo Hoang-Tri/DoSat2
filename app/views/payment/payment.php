@@ -165,17 +165,28 @@
 
                                 <div class="cart__info-row">
                                     <span>Vận chuyển</span>
-                                    <span>$10.00</span>
+                                    <span>
+                                    <?php 
+                                        $totals = $sub_totals;
+                                        if(isset($_SESSION['fee'])) {
+                                            echo number_format ($_SESSION['fee'],0,',','.' ).'đ';
+                                            $totals += $_SESSION['fee'];
+                                        }else {
+                                            echo 0;
+                                        }
+                                    ?>
+                                    </span>
                                 </div>
 
                                 <div class="cart__info-separate"></div>
 
                                 <div class="cart__info-row">
-                                    <span>Estimated Total</span>
-                                    <span>$201.65</span>
+                                    <span>Giá tổng</span>
+                                    <span><?php echo number_format ($totals,0,',','.' ).'đ'?></span>
                                 </div>
                             <form action="<?php echo BASE_URL ?>/order_user" method="post" class="form_order">
                                 <input type="hidden" name="cus_id" value="<?php echo $cus_id ?>">
+                                <input type="hidden" name="order_details_fee" value="<?php echo $_SESSION['fee'] ?>">
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng ví VNPay</a>
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng MOMO</a>
                                 <button class="btn btn--primary btn--rounded payment__btn btn-not-margin">Đặt hàng</button>

@@ -127,19 +127,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="address__item-right">
-                                                    <div class="cart__edit-wrap">
-                                                        <a
-                                                            href="<?php echo BASE_URL ?>/customer_user/delete_cus/<?php echo $value['cus_id']?>"
-                                                            class="cart__edit"
+                                                    <!-- <div class="cart__edit-wrap">
+                                                        <button
+                                                            type="button"
+                                                            class="cart__edit js-toggle" toggle-target="#modal-update-address"   
                                                         >
                                                             <img
-                                                                src="<?php echo BASE_URL ?>/assets/icons/trash.svg"
+                                                                src="<?php echo BASE_URL ?>/assets/icons/document.svg"
                                                                 alt=""
                                                                 class="icon"
                                                             />
-                                                            Xoá
-                                                        </a>
-                                                    </div>
+                                                            Sữa
+                                                        </button>
+                                                    </div> -->
                                                 </div>
 
                                             <span class="form__message"></span>
@@ -232,16 +232,11 @@
                                     <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                                 </div>
 
-                                <div class="cart__info-row">
-                                    <span>Vận chuyển</span>
-                                    <span>$10.00</span>
-                                </div>
-
                                 <div class="cart__info-separate"></div>
 
                                 <div class="cart__info-row">
-                                    <span>Estimated Total</span>
-                                    <span>$201.65</span>
+                                    <span>Giá tổng</span>
+                                    <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
                                 </div>
 
                                 <button style="width: 100%" class="btn btn--primary btn--rounded cart__checkout-btn btn-not-margin form__submit-btn"
@@ -276,7 +271,7 @@
 <!-- Modal: Add new shipping address -->
 <div class="modal hide" id="modal-add-address" style="--modal-width: 650px">
     <div class="modal__inner">
-        <form action="<?php echo BASE_URL ?>/customer_user" class="form" id="form-address" method="POST">
+        <form  action="<?php echo BASE_URL ?>/customer_user" method="post" class="form" id="form-address">
             <input type="hidden" name="acc_id" value="<?php echo $acc_id ?>">
             <div class="modal__body">
                 <h2 class="modal__heading">Thêm địa chỉ giao hàng mới</h2>
@@ -291,7 +286,7 @@
                                 name="cus_name"
                                 rules="required"
                                 placeholder="Tên"
-                                class="form__input"
+                                class="form__input cus_name"
                                 required
                             />
                             <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
@@ -308,7 +303,7 @@
                                 name="cus_phone"
                                 rules="required|min:10|phone"
                                 placeholder="Số điện thoại"
-                                class="form__input"
+                                class="form__input cus_phone"
                                 required
                             />
                             <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
@@ -326,7 +321,7 @@
                             name="cus_desc"
                             rules="required"
                             placeholder="Mô tả địa chỉ giao hàng"
-                            class="form__textarea"
+                            class="form__textarea cus_desc"
                             required
                         ></textarea>
                         <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
@@ -339,7 +334,7 @@
                     <div class="form__row form__options">
                         <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
-                                <select name="cus_province" id="province" class="form__options-select" rules="required|selected" required>
+                                <select name="cus_province" id="province" class="form__options-select cus_province" rules="required|selected" required>
                                     <option value="">Chọn Tỉnh/TP</option>
                                     <?php foreach($city as $key => $value) { ?>
                                         <option value="<?php echo $value['matp'] ?>"><?php echo $value['name'] ?></option>
@@ -353,7 +348,7 @@
 
                         <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
-                                <select name="cus_district" id="district" class="form__options-select" rules="required|selected" required>
+                                <select name="cus_district" id="district" class="form__options-select cus_district" rules="required|selected" required>
                                     <option value="">Chọn Quận/Huyện</option>
                                 </select>
                                 <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
@@ -363,7 +358,7 @@
 
                         <div class="form__select-wrap d-block form__group">
                             <div class="form__select">
-                                <select name="cus_wards" id="wards" class="form__options-select" rules="required|selected" required>
+                                <select name="cus_wards" id="wards" class="form__options-select cus_wards" rules="required|selected" required>
                                     <option value="">Chọn Phường/Xã</option>
                                 </select>
                             <img src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg" alt="" class="form__input-icon form__icon" />
@@ -382,7 +377,7 @@
                 </div>
             </div>
             <div class="modal__bottom">
-                <button class="btn btn--text modal__btn js-toggle" toggle-target="#modal-add-address">
+                <button type="button" class="btn btn--text modal__btn js-toggle" toggle-target="#modal-add-address">
                     Huỷ
                 </button>
                 <button class="btn btn--primary btn--small modal__btn btn-not-margin form__submit-btn">
@@ -473,6 +468,25 @@ jQuery(document).ready(function($) {
 });
 </script>
 
+
+<script>
+    jQuery(document).ready(function($) {
+        $('input[type="radio"][name="cus_id"]').change(function() {
+            var selectedValue = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo BASE_URL ?>/fee/set_fee',
+                data: { cus_id: selectedValue },
+                success: function(response) {
+                    // location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX error:', status, error);
+                }
+            });
+        });
+    });
+</script>
 
 
 

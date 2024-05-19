@@ -105,6 +105,21 @@
             </li>
 
             <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#fee" data-bs-toggle="collapse"
+                    aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
+                    Phí vận chuyển
+                </a>
+                <ul id="fee" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/fee/add_fee" class="sidebar-link">Thêm</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/fee/list_fee" class="sidebar-link">Liệt kê</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
                 <a href="<?php echo BASE_URL ?>/admin_login/logout" class="sidebar-link">
                 <i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>
                     Đăng Xuất

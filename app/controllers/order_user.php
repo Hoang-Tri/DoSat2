@@ -12,6 +12,7 @@
             if(isset($_POST['cus_id'])) {
                 $order_code = rand(0, 99999);
                 $cus_id = $_POST['cus_id'];
+                $order_details_fee = $_POST['order_details_fee'];
 
                 // chuan bi cho data
                 date_default_timezone_set('asia/ho_chi_minh');
@@ -26,12 +27,16 @@
                 );
                 $ordermodel = $this->load->model("ordermodel");
                 $cartmodel = $this->load->model("cartmodel");
+                $productmodel = $this->load->model("productmodel");
                 $result_order = $ordermodel->insert_order('m_order', $data_order);
 
                 // kiem tra gio hang
                 $user_id = $_SESSION['acc_id'];
                 $cond_cart = "cart.acc_id = '$user_id'";
                 $tbl_cart = 'cart';
+                $tbl_product = 'product';
+
+
                 $cart = $cartmodel->cart($tbl_cart, $cond_cart);
                 if(!empty($cart)) {
                     foreach($cart as $key => $value) {
@@ -43,20 +48,34 @@
                             'order_details_size' => $value['cart_pro_size'],
                             'order_details_price' => $order_details_price,
                             'cus_id' => $cus_id,
+                            'order_details_fee' => $order_details_fee
                         );
+
                         $cart_id = $value['cart_id'];
+                        $pro_id_update = $value['pro_id'];
                         $cond_delete_cart = "cart.cart_id = '$cart_id'";
                         $result_order_details = $ordermodel->insert_order_details('order_details', $data_order_details);
-                        $delete_cart = $cartmodel->deletecart($tbl_cart, $cond_delete_cart);
+                        $cond_product = "$pro_id_update = $tbl_product.pro_id";
 
-                        if($result_order_details == 1) {
-                            header("Location:".BASE_URL."/order_user/send_mail/".$order_code);
-                            exit();
-                        } else {
-                            $error = "Thêm vào thất bại!";
-                            header("Location:".BASE_URL."/cart_user?error=".$error);
-                            exit();
+                        $product = $productmodel->productbyid($tbl_product, $cond_product);
+
+                        foreach($product as $key => $prd) {
+                            $data_product = array (
+                                'pro_quantity' => $prd['pro_quantity'] - $value['cart_pro_quantity']
+                            );
+                            
+                            $product_update = $productmodel->updateproduct($tbl_product, $data_product, $cond_product);
                         }
+
+                        $delete_cart = $cartmodel->deletecart($tbl_cart, $cond_delete_cart);
+                    }
+                    if($result_order_details == 1) {
+                        header("Location:".BASE_URL."/order_user/send_mail/".$order_code);
+                        exit();
+                    } else {
+                        $error = "Thêm vào thất bại!";
+                        header("Location:".BASE_URL."/cart_user?error=".$error);
+                        exit();
                     }
                 }else {
                     $message = "Bạn đã đặt hàng thành công. Cảm ơn!, chúc bạn mua sắm vui vẻ";
@@ -120,56 +139,66 @@
         }
 
         public function list_order_details($id = '') {
-            session_start();
-            $accountmodel = $this->load->model("accountmodel");
+            if(!empty($id)) {
+                session_start();
+                $accountmodel = $this->load->model("accountmodel");
 
-            // lấy id của user đang đăng nhập
-            if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
-                $user_id = $_SESSION['acc_id'];
-                $data["user"] = $accountmodel->getAccountById($user_id);
+                // lấy id của user đang đăng nhập
+                if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
+                    $user_id = $_SESSION['acc_id'];
+                    $data["user"] = $accountmodel->getAccountById($user_id);
+                }else {
+                    $message = "Có vẻ bạn chưa đăng kí tài khoản vui lòng thử lại";
+                    header("Location:".BASE_URL."?msg=".$message);
+                    exit();
+                }
+
+                $tbl_brand = "brand";
+                $tbl_post = "category_post";
+                $tbl_cart = 'cart';
+                
+                // Load các model
+                $categorymodel = $this->load->model("categorymodel");            
+                $cartmodel = $this->load->model("cartmodel");
+
+                // du lieu bang order_details
+                $tbl_order_details = "order_details";
+                $tbl_product = "product";
+                $cond_order_details = "$tbl_order_details.order_code = '$id' AND
+                                        $tbl_order_details.pro_id = $tbl_product.pro_id AND
+                                        $tbl_brand.brand_id = $tbl_product.pro_brand_id";
+                $ordermodel = $this->load->model("ordermodel");
+                $data["order_details"] = $ordermodel->list_order_details_user($tbl_order_details, $tbl_product, $tbl_brand, $cond_order_details);
+                // end 
+
+                // dulieu bang order
+                $tbl_order = 'm_order';
+                $cond_order = "$tbl_order.order_code = $id";
+                $data["order"] = $ordermodel->order_user_byid($tbl_order, $cond_order);
+
+
+                $cond_cart = "cart.acc_id = '$user_id'";
+
+                // Lấy dữ liệu từ các bảng
+                $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
+
+                $data["brand"] = $categorymodel->brand($tbl_brand);
+                $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
+                
+
+                $this->load->view("doctype");
+                $this->load->view("order_details/title_order_details");
+                if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
+                    $this->load->view("header_login", $data);
+                }else {
+                    $this->load->view("header", $data);
+                }
+                $this->load->view("profile/sidebar_profile", $data);
+                $this->load->view("order_details/order_details", $data);
+                $this->load->view("footer");
             }else {
-                $message = "Có vẻ bạn chưa đăng kí tài khoản vui lòng thử lại";
-                header("Location:".BASE_URL."?msg=".$message);
-                exit();
+                header('Location: '.BASE_URL);
             }
-
-            $tbl_brand = "brand";
-            $tbl_post = "category_post";
-            $tbl_cart = 'cart';
-            
-            // Load các model
-            $categorymodel = $this->load->model("categorymodel");            
-            $cartmodel = $this->load->model("cartmodel");
-
-            // du lieu bang order_details
-            $tbl_order_details = "order_details";
-            $tbl_product = "product";
-            $cond_order_details = "$tbl_order_details.order_code = '$id' AND
-                    $tbl_brand.brand_id = $tbl_product.pro_brand_id AND
-                    $tbl_product.pro_id = $tbl_order_details.pro_id";
-            $ordermodel = $this->load->model("ordermodel");
-            $data["order_details"] = $ordermodel->list_order_details_user($tbl_order_details, $tbl_product, $tbl_brand, $cond_order_details);
-            // end 
-
-            $cond_cart = "cart.acc_id = '$user_id'";
-
-            // Lấy dữ liệu từ các bảng
-            $data["cart"] = $cartmodel->cart($tbl_cart, $cond_cart);
-
-            $data["brand"] = $categorymodel->brand($tbl_brand);
-            $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
-            
-
-            $this->load->view("doctype");
-            $this->load->view("order_details/title_order_details");
-            if(isset($_SESSION['account']) && $_SESSION['account'] == true) {
-                $this->load->view("header_login", $data);
-            }else {
-                $this->load->view("header", $data);
-            }
-            $this->load->view("profile/sidebar_profile", $data);
-            $this->load->view("order_details/order_details", $data);
-            $this->load->view("footer");
         }
 
         public function send_mail($id = '') {

@@ -9,8 +9,13 @@
             return $this->db->select($sql);
         }
 
+        public function order_user_byid($tbl_order, $cond_order){
+            $sql = "SELECT * FROM $tbl_order WHERE $cond_order";
+            return $this->db->select($sql);
+        }
         public function list_order_user($tbl_order_details, $tbl_cus, $tbl_product, $cond_order){
-            $sql = "SELECT * FROM $tbl_order_details, $tbl_cus, $tbl_product  WHERE $cond_order GROUP BY $tbl_order_details.order_code";
+            $sql = "SELECT * FROM $tbl_order_details, $tbl_cus, $tbl_product  WHERE $cond_order GROUP BY $tbl_order_details.order_code
+                    ORDER BY $tbl_order_details.order_details_id DESC";
             return $this->db->select($sql);
         }
 
