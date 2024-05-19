@@ -54,7 +54,7 @@
                                     $item += $value['order_details_quantity'];
                                     $acc_id = $value['acc_id'];
                             ?>
-                            <a href="<?php echo BASE_URL ?>/post_user/post_details/<?php echo $value['pro_id'] ?>">
+                            <a href="<?php echo BASE_URL?>/product_user/product/<?php echo $value['pro_id'] ?>">
                                 <article class="payment__item">
                                     <img src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $value['pro_image'] ?>" alt="" class="payment__thumb blog__thumb" />
                                     <div class="payment__item-content">

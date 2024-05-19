@@ -19,6 +19,7 @@
                                 foreach($order_details as $key => $value) {
                                     $sub_totals += $value['order_details_price'] * $value['order_details_quantity'];
                                     $item += $value['order_details_quantity'];
+                                    $order_details_fee = $value['order_details_fee'];
                             ?>
                             <article class="cart__item">
                                 <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $value['pro_id']?>" class="cart__thumb">
@@ -65,8 +66,18 @@
                                     </a>
                                 </div>
 
+                                <!-- lay trang thai don hang -->
+                                <?php 
+                                    foreach($order as $key => $value) {
+                                        $status = $value['order_status'] = 0 ? "Chờ xác nhận" : "Đang giao hàng";
+                                    }
+                                ?>
                                 <div class="col-6">
                                     <div class="cart__checkout">
+                                        <div class="cart__info-row">
+                                            <span>Trạng thái đơn hàng:</span>
+                                            <span><?php echo $status?></span>
+                                        </div>
                                         <div class="cart__info-row">
                                             <span>Tổng tiền hàng:</span>
                                             <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
@@ -74,14 +85,14 @@
 
                                         <div class="cart__info-row">
                                             <span>Vận chuyển:</span>
-                                            <span>$10.00</span>
+                                            <span><?php echo number_format ($order_details_fee,0,',','.' ).'đ'?></span>
                                         </div>
 
                                         <div class="cart__info-separate"></div>
 
                                         <div class="cart__info-row cart__info-row--bold">
                                             <span>Tổng thanh toán:</span>
-                                            <span><?php echo number_format ($sub_totals,0,',','.' ).'đ'?></span>
+                                            <span><?php echo number_format ($sub_totals + $order_details_fee,0,',','.' ).'đ'?></span>
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,14 @@
         public function categorybyid($table, $cond) {
             $sql = "SELECT * FROM $table WHERE $cond";
             return $this->db->select($sql);
-        }   
+        } 
+        
+        
+        // Fee
+        public function fee_province($tbl_fee, $tbl_tinhthanhpho, $cond_fee) {
+            $sql = "SELECT * FROM $tbl_fee, $tbl_tinhthanhpho WHERE $cond_fee";
+            return $this->db->select($sql);
+        }  
 
         public function insertcategory($table, $data) {
            return $this->db->insert($table, $data);

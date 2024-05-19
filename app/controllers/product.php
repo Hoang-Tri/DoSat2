@@ -225,8 +225,6 @@
                         'pro_brand_id' => $brand,
                         'pro_size' => $size,
                         'pro_new' => $new
-
-
                     );
                 } 
             } else {

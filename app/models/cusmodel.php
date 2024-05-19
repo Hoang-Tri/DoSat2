@@ -17,9 +17,5 @@
             $sql = "SELECT * FROM $table WHERE $cond";
             return $this->db->select($sql);
         } 
-
-        public function deletecus($table, $cond) {
-            return $this->db->delete($table, $cond);
-         }
     }
 ?>
