@@ -29,8 +29,8 @@
             }
 
             // kiểm tra xem có tồn tại id của khách hàng không
-            if(isset($_POST['cus_id'])) {
-                $cus_id = $_POST['cus_id'];
+            if(isset($_SESSION['cus_id'])) {
+                $cus_id = $_SESSION['cus_id'];
             }else {
                 header("Location: ".BASE_URL.'/shipping_user');
             }
@@ -45,7 +45,7 @@
             $data["cate_post"] = $categorymodel->cate_post_home($tbl_post);
             $data["customer"] = $cusmodel->cusbyid($tbl_cus, $cond_cus);
 
-            if(!empty($data['cart']) && !empty($data['customer'])) {
+            if(!empty($data['cart'])) {
                 $this->load->view("doctype");
                 $this->load->view("payment/title_payment");
                 
@@ -60,6 +60,45 @@
                 $this->load->view("footer");
             }else {
                 header("Location: ".BASE_URL);
+            }
+        }
+
+        public function add_coupon() {
+            session_start();
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $coupon_code = $_POST['coupon_code'];
+
+                $table = 'coupon';
+
+                $couponmodel = $this->load->model("couponmodel");
+                $cond_coupon = "$table.coupon_code = '$coupon_code'";
+
+                // Kiem tra xem co trong du lieu chua 
+                $coupon = $couponmodel->couponbycode($table, $cond_coupon);
+
+                if(!empty($coupon)) {
+                    if(isset($_SESSION['coupon'])) {
+                        unset($_SESSION['coupon']);
+                        $_SESSION['coupon'] = [
+                            'form' => $coupon[0]['coupon_form'],
+                            'sale' => $coupon[0]['coupon_sale'],
+                            'times' => $coupon[0]['coupon_times']
+                        ];
+                    }else {
+                        $_SESSION['coupon'] = [
+                            'form' => $coupon[0]['coupon_form'],
+                            'sale' => $coupon[0]['coupon_sale'],
+                            'times' => $coupon[0]['coupon_times']
+                        ];
+                    }
+                    $message = "Áp dụng thành công!";
+                    header("Location:".BASE_URL."/payment_user?msg=".$message);
+                    exit();
+                }else {
+                    $error = "Không tồn tại mã khuyến mãi này vui lòng nhập lại!";
+                    header("Location:".BASE_URL."/payment_user?error=".$error);
+                    exit();
+                }
             }
         }
     }

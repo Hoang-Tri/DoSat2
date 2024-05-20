@@ -9,10 +9,12 @@
         }
         public function order() {
             session_start();
+            unset($_SESSION['coupon']);
             if(isset($_POST['cus_id'])) {
                 $order_code = rand(0, 99999);
                 $cus_id = $_POST['cus_id'];
                 $order_details_fee = $_POST['order_details_fee'];
+                $order_details_coupon = $_POST['order_details_coupon'];
 
                 // chuan bi cho data
                 date_default_timezone_set('asia/ho_chi_minh');
@@ -48,7 +50,8 @@
                             'order_details_size' => $value['cart_pro_size'],
                             'order_details_price' => $order_details_price,
                             'cus_id' => $cus_id,
-                            'order_details_fee' => $order_details_fee
+                            'order_details_fee' => $order_details_fee,
+                            'order_details_coupon' => $order_details_coupon
                         );
 
                         $cart_id = $value['cart_id'];

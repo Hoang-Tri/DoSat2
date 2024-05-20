@@ -106,7 +106,8 @@
 
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed" data-bs-target="#fee" data-bs-toggle="collapse"
-                    aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
+                    aria-expanded="false">
+                    <i class="fa-solid fa-truck-fast pe-2"></i>
                     Phí vận chuyển
                 </a>
                 <ul id="fee" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -115,6 +116,22 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="<?php echo BASE_URL ?>/fee/list_fee" class="sidebar-link">Liệt kê</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#coupon" data-bs-toggle="collapse"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-money-bill pe-2"></i>
+                    Mã giảm giá
+                </a>
+                <ul id="coupon" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/coupon/add_coupon" class="sidebar-link">Thêm</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="<?php echo BASE_URL ?>/coupon/list_coupon" class="sidebar-link">Liệt kê</a>
                     </li>
                 </ul>
             </li>

@@ -20,6 +20,7 @@
                                     $sub_totals += $value['order_details_price'] * $value['order_details_quantity'];
                                     $item += $value['order_details_quantity'];
                                     $order_details_fee = $value['order_details_fee'];
+                                    $order_details_coupon = $value['order_details_coupon'];
                             ?>
                             <article class="cart__item">
                                 <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $value['pro_id']?>" class="cart__thumb">
@@ -69,7 +70,7 @@
                                 <!-- lay trang thai don hang -->
                                 <?php 
                                     foreach($order as $key => $value) {
-                                        $status = $value['order_status'] = 0 ? "Chờ xác nhận" : "Đang giao hàng";
+                                        $status = $value['order_status'] == 0 ? "Chờ xác nhận" : "Đang giao hàng";
                                     }
                                 ?>
                                 <div class="col-6">
@@ -88,11 +89,25 @@
                                             <span><?php echo number_format ($order_details_fee,0,',','.' ).'đ'?></span>
                                         </div>
 
+                                        <?php 
+                                            $totals = $sub_totals + $order_details_fee;
+                                            if($order_details_coupon < 1) {
+                                                $totals = $totals - $totals * $order_details_coupon; 
+                                            }else {
+                                                $totals += $order_details_coupon;
+                                            }
+                                        ?>
+
+                                        <div class="cart__info-row">
+                                            <span>Giảm giá:</span>
+                                            <span><?php echo $order_details_coupon > 1 ? number_format ($order_details_coupon,0,',','.' ).'đ' : $order_details_coupon."%" ?></span>
+                                        </div>
+
                                         <div class="cart__info-separate"></div>
 
                                         <div class="cart__info-row cart__info-row--bold">
                                             <span>Tổng thanh toán:</span>
-                                            <span><?php echo number_format ($sub_totals + $order_details_fee,0,',','.' ).'đ'?></span>
+                                            <span><?php echo number_format ($totals,0,',','.' ).'đ'?></span>
                                         </div>
                                     </div>
                                 </div>

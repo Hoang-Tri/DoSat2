@@ -16,6 +16,7 @@
                         <th>Giá</th>
                         <th>Size</th>
                         <th>Phí vận chuyển</th>
+                        <th>Khuyến mãi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +27,16 @@
                             $order_code = $value['order_code'];
                             $i++;
                             $fee = $value['order_details_fee'];
+                            $sale = $value['order_details_coupon'];
+
                             $totals += $value['order_details_quantity'] * $value['order_details_price'];
+
+                            if($sale < 1) {
+                                $totals = $totals - $totals * $sale; 
+                            }else {
+                                $totals += $sale;
+                            }
+
                         ?>
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
@@ -39,6 +49,7 @@
                         <td><?php echo $value["order_details_price"] ?></td>
                         <td><?php echo $value["order_details_size"] ?></td>
                         <td><?php echo $value["order_details_fee"] ?></td>
+                        <td><?php echo $value["order_details_coupon"] ?></td>
                     </tr>
                     <?php 
                         }

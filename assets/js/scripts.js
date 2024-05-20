@@ -337,6 +337,39 @@ document.querySelector("html").classList.toggle("dark", isDark);
 
 // Quantity
 window.addEventListener("template-loaded", () => {
+    const updateQuantity = (quantitySpan, newQuantity) => {
+        const quantity = parseInt(newQuantity);
+        if (!isNaN(quantity) && quantity > 0) {
+            quantitySpan.textContent = quantity;
+            // Cập nhật giá trị vào input hidden
+            quantitySpan.nextElementSibling.value = quantity;
+        } else {
+            // Đặt lại giá trị cũ nếu đầu vào không hợp lệ
+            quantitySpan.textContent = quantitySpan.dataset.previousQuantity;
+            quantitySpan.nextElementSibling.value = quantitySpan.dataset.previousQuantity;
+        }
+    };
+
+    document.querySelectorAll('.cart__quantity-number').forEach(span => {
+        span.addEventListener('focus', function() {
+            this.dataset.previousQuantity = this.textContent; // Lưu lại số lượng hiện tại
+        });
+
+        span.addEventListener('blur', function() {
+            updateQuantity(this, this.textContent);
+            // Submit form khi blur ra khỏi span
+            this.closest('form').submit();
+        });
+
+        span.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Ngăn chặn việc xuống dòng
+                this.blur(); // Kích hoạt sự kiện blur để kiểm tra tính hợp lệ
+            }
+        });
+    });
+
+
     // Lấy ra tất cả các phần tử .cart__item và chuyển đổi thành mảng
     var cartItems = Array.from(document.querySelectorAll('.cart__item'));
 

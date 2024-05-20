@@ -74,7 +74,7 @@
                                                     <button class="cart__quantity minus">
                                                         <img src="<?php echo BASE_URL ?>/assets/icons/minus.svg" alt="" class="icon" />
                                                     </button>
-                                                    <span class="cart__quantity-number"><?php echo $value['cart_pro_quantity'] ?></span>
+                                                    <span class="cart__quantity-number" contenteditable="true"><?php echo $value['cart_pro_quantity'] ?></span>
                                                     <input type="hidden" name="cart_pro_quantity" class="cart__quantity-input" value="<?php echo $value['cart_pro_quantity'] ?>">
                                                     <button class="cart__quantity plus">
                                                         <img src="<?php echo BASE_URL ?>/assets/icons/plus.svg" alt="" class="icon" />
