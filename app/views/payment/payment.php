@@ -1,3 +1,13 @@
+<?php
+    if(isset($_GET['msg'])) {
+        $success_message = urldecode($_GET['msg']);
+        echo "<script>alert('$success_message')</script>";
+    } elseif(isset($_GET['error'])) {
+        $error_message = urldecode($_GET['error']);
+        echo "<script>alert('$error_message')</script>";
+    }
+?>
+
 <main class="checkout">
     <div class="container">
         <!-- Search -->
@@ -149,6 +159,36 @@
                                 Hoàn thành mục mua hàng của bạn bằng cách cung cấp đơn đặt hàng chi tiết thanh toán của bạn.
                             </p>
 
+                            <!-- Payment details -->
+                            <form method="post" action="<?php echo BASE_URL ?>/payment_user/add_coupon" class="form cart__form" id="form-3">
+                                <!-- Card Details -->
+                                <div class="form__group">
+                                    <label for="card-details" class="form__label form__label--medium"
+                                        >Mã giảm giá</label
+                                    >
+                                    <div class="form__text-input">
+                                        <input
+                                            type="text"
+                                            id="coupon_code"
+                                            name="coupon_code"
+                                            rules="required|min:6"
+                                            placeholder="Nhập mã giảm giá vào đây"
+                                            class="form__input"
+                                            required
+                                        />
+                                        <img
+                                            src="<?php echo BASE_URL ?>/assets/img/auth/lock.svg"
+                                            alt=""
+                                            class="form__input-icon form__icon"
+                                        />
+                                    </div>
+                                    <span class="form__message"></span>
+                                </div>
+                                <div class="form__group">
+                                    <button class="btn btn--primary auth__btn form__submit-btn">Áp dụng mã khuyến mãi</button>
+                                </div>
+                            </form>
+
                             <div class="cart__info-separate"></div>
 
 
@@ -178,6 +218,30 @@
                                     </span>
                                 </div>
 
+                                <div class="cart__info-row">
+                                    <span>Khuyến mãi</span>
+                                    <span>
+                                    <?php 
+                                        if(isset($_SESSION['coupon'])) {
+                                            $form = $_SESSION['coupon']['form'];
+                                            $sale = $_SESSION['coupon']['sale'];
+                                            $times = $_SESSION['coupon']['times'];
+
+                                            if($form == 1) {
+                                                echo "<span>".$sale." %</span>";
+                                                $sale /= 100;
+                                                $totals = $totals - $totals * $sale; 
+                                            }else {
+                                                echo "<span>".$number_format ($sale,0,',','.' ).'đ'." %</span>";
+                                                $totals += $sale;
+                                            }
+                                        }else {
+                                            echo 0;
+                                        }
+                                    ?>
+                                    </span>
+                                </div>
+
                                 <div class="cart__info-separate"></div>
 
                                 <div class="cart__info-row">
@@ -187,6 +251,7 @@
                             <form action="<?php echo BASE_URL ?>/order_user" method="post" class="form_order">
                                 <input type="hidden" name="cus_id" value="<?php echo $cus_id ?>">
                                 <input type="hidden" name="order_details_fee" value="<?php echo $_SESSION['fee'] ?>">
+                                <input type="hidden" name="order_details_coupon" value="<?php echo $sale ?>">
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng ví VNPay</a>
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng MOMO</a>
                                 <button class="btn btn--primary btn--rounded payment__btn btn-not-margin">Đặt hàng</button>
@@ -198,3 +263,14 @@
         </div>
     </div>
 </main>
+
+<!-- thư viện validation mình viết -->
+<script src="<?php echo BASE_URL ?>/assets/js/validation.js"></script>
+
+<script>
+    Validator("#form-3", {
+        onSubmit: (data) => {
+            console.log(data);
+        },
+    });
+</script>

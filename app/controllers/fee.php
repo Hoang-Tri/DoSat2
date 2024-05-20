@@ -130,7 +130,8 @@
 
         public function set_fee() {
             session_start();
-
+            unset($_SESSION['fee']);
+            unset($_SESSION['cus_id']);
             $cus_id = $_POST["cus_id"];
 
             $cusmodel = $this->load->model("cusmodel");
@@ -140,7 +141,8 @@
             $cus =  $cusmodel->cusbyid($table, $cond);
 
             $_SESSION['fee'] = $cus[0]['fee_fee'];
-            echo json_encode(['status' => 'success', 'fee' => $_SESSION['fee']]);
+            $_SESSION['cus_id'] = $cus[0]['cus_id'];
+            echo json_encode(['status' => 'success', 'fee' => $_SESSION['fee'], 'cus_id' => $_SESSION['cus_id']]);
         }
     }
 ?>

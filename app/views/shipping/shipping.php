@@ -127,8 +127,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="address__item-right">
-                                                    <!-- <div class="cart__edit-wrap">
-                                                        <button
+                                                    <div class="cart__edit-wrap">
+                                                        <!-- <button
                                                             type="button"
                                                             class="cart__edit js-toggle" toggle-target="#modal-update-address"   
                                                         >
@@ -138,8 +138,8 @@
                                                                 class="icon"
                                                             />
                                                             Sữa
-                                                        </button>
-                                                    </div> -->
+                                                        </button> -->
+                                                    </div>
                                                 </div>
 
                                             <span class="form__message"></span>
@@ -244,22 +244,6 @@
                                 </button
                                 >
                             </div>
-                        </div>
-
-                        <div class="cart">
-                            <a href="#!">
-                                <article class="gift">
-                                    <div class="gift__thumb">
-                                        <img src="<?php echo BASE_URL ?>/assets/icons/gift.svg" alt="" class="gift__thumb-img" />
-                                    </div>
-                                    <div class="gift__content">
-                                        <h4 class="gift__title">Send this order as a gift.</h4>
-                                        <p class="gift__desc">
-                                            Available items will be shipped to your gift recipient.
-                                        </p>
-                                    </div>
-                                </article>
-                            </a>
                         </div>
                     </div>
                 </div>
