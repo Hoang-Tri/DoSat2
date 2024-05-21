@@ -17,7 +17,7 @@
                                 $sub_totals = 0;
                                 $item = 0;
                                 foreach($order_details as $key => $value) {
-                                    $sub_totals += $value['order_details_price'] * $value['order_details_quantity'];
+                                    $sub_totals += $value['order_details_price'];
                                     $item += $value['order_details_quantity'];
                                     $order_details_fee = $value['order_details_fee'];
                                     $order_details_coupon = $value['order_details_coupon'];
@@ -91,6 +91,7 @@
 
                                         <?php 
                                             $totals = $sub_totals + $order_details_fee;
+
                                             if($order_details_coupon < 1) {
                                                 $totals = $totals - $totals * $order_details_coupon; 
                                             }else {

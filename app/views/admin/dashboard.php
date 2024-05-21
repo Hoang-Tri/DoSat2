@@ -1,7 +1,16 @@
+<?php
+require './Carbon/autoload.php';
 
-            <div class="mb-3">
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
+?>
+   
+   <div class="mb-3">
                 <h4>Trang quản trị dành cho Admin</h4>
             </div>
+
+
             <div class="row">
                 <div class="col-12 d-flex">
                     <div class="card flex-fill border-0 illustration">
@@ -21,4 +30,41 @@
                     </div>
                 </div>
             </div>
-        
+
+            <!-- Thong ke tai day -->
+
+            <div class="gird_10">
+                <div class="box row first gird">
+                    <h2>Thông kê đơn hàng</h2>
+
+                    <div class="block row">
+                        <div class="col-md-3">
+                            Từ ngày: <input type="text" id="datepicker_from" class="form-control date_from">
+                        </div>
+
+                        <div class="col-md-3">
+                            Dến ngày: <input type="text" id="datepicker_to" class="form-control date_to">
+                            <button type="button" class="btn btn-success mt-2 filter">Lọc ngay</button>
+                        </div>
+
+                        <div class="col-md-3">
+                            Lọc theo: <span class="text-date"></span>
+                            <select name="" id="" class="form-control select-sta">
+                                <option>--Lọc theo--</option>
+                                <option value="7ngay">Lọc theo 7 ngày qua</option>
+                                <option value="30ngay">Lọc theo 30 ngày qua</option>
+                                <option value="90ngay">Lọc theo 90 ngày qua</option>
+                                <option value="1nam">Lọc theo 1 năm qua</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row-col-md-12">
+                        <div id="myfirstchart" style="height: 250px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            

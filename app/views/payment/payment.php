@@ -236,7 +236,8 @@
                                                 $totals += $sale;
                                             }
                                         }else {
-                                            echo 0;
+                                            $sale = 0;
+                                            echo $sale;
                                         }
                                     ?>
                                     </span>
