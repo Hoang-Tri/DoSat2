@@ -18,7 +18,7 @@
 
                 // chuan bi cho data
                 date_default_timezone_set('asia/ho_chi_minh');
-                $date = date('d/m/Y');
+                $date = date('Y-m-d');
                 $hour = date('h:i:sa');
                 $order_date = $date.$hour;
 
@@ -27,6 +27,7 @@
                     'order_code' => $order_code,
                     'order_date' => $date.' '.$hour,
                 );
+
                 $ordermodel = $this->load->model("ordermodel");
                 $cartmodel = $this->load->model("cartmodel");
                 $productmodel = $this->load->model("productmodel");
@@ -54,6 +55,9 @@
                             'order_details_coupon' => $order_details_coupon
                         );
 
+                        $sta_statictis += $order_details_price;
+
+                        // Theo du lieu vao bang chi tiet don hang
                         $cart_id = $value['cart_id'];
                         $pro_id_update = $value['pro_id'];
                         $cond_delete_cart = "cart.cart_id = '$cart_id'";
@@ -62,6 +66,7 @@
 
                         $product = $productmodel->productbyid($tbl_product, $cond_product);
 
+                        // cap nhat lai so luong trong san pham
                         foreach($product as $key => $prd) {
                             $data_product = array (
                                 'pro_quantity' => $prd['pro_quantity'] - $value['cart_pro_quantity']
@@ -70,9 +75,29 @@
                             $product_update = $productmodel->updateproduct($tbl_product, $data_product, $cond_product);
                         }
 
+                        // Xoa du lieu trong gio hang
                         $delete_cart = $cartmodel->deletecart($tbl_cart, $cond_delete_cart);
                     }
+
+                    if($order_details_coupon <= 1) {
+                        $sta_statictis = $sta_statictis - $sta_statictis * $order_details_coupon;
+                    }else {
+                        $sta_statictis -=  $order_details_coupon;
+                    }
+
+                    // data cua bang thong ke
+                    $data_statiscial = array(
+                        'sta_order_id' => $order_code,
+                        'sta_quantity' => count($cart),
+                        'sta_date' => $date,
+                        'sta_statistic' => $sta_statictis + $order_details_fee
+                    );
+                    // Them du lieu vao bang statistic
+                    // Muon model cua order
+                    $result_statistic = $ordermodel->insert_order_details('statistic', $data_statiscial);
+
                     if($result_order_details == 1) {
+                        // Gui mail xac nhan don hang
                         header("Location:".BASE_URL."/order_user/send_mail/".$order_code);
                         exit();
                     } else {

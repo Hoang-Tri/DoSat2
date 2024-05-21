@@ -61,5 +61,11 @@
          public function delete_cate_post($table, $cond) {
             return $this->db->delete($table, $cond);
          }
+
+        //  thong ke
+        public function statiscial($tbl_statiscial, $cond) {
+            $sql = "SELECT * FROM $tbl_statiscial WHERE $cond ORDER BY $tbl_statiscial.sta_date ASC";
+            return $this->db->select($sql);
+        } 
     }
 ?>

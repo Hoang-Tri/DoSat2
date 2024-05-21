@@ -29,15 +29,8 @@
                             $fee = $value['order_details_fee'];
                             $sale = $value['order_details_coupon'];
 
-                            $totals += $value['order_details_quantity'] * $value['order_details_price'];
-
-                            if($sale < 1) {
-                                $totals = $totals - $totals * $sale; 
-                            }else {
-                                $totals += $sale;
-                            }
-
-                        ?>
+                            $totals += $value['order_details_price'];
+                    ?>
                     <tr>
                         <td class="text-center"><?php echo $i ?></td>
                         <td><?php echo $value["order_code"] ?></td>
@@ -54,7 +47,17 @@
                     <?php 
                         }
                     ?>
-                    <?php $totals += $fee ?>
+                    <?php 
+                    
+                        $totals += $fee;
+                        if($sale < 1) {
+                            $totals = $totals - $totals * $sale; 
+                        }else {
+                            $totals += $sale;
+                        }
+
+                    
+                    ?>
                     <tr>
                         <td colspan="9" class="text-right"><strong>Tổng tiền:</strong></td>
                         <td><strong><?php echo number_format($totals, 0, ',', '.') ?> đ</strong></td>

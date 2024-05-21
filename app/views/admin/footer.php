@@ -10,6 +10,12 @@
 <script src="<?php echo BASE_URL ?>/assets/admin-assets/js/script.js"></script>
 <script src="https://cdn.tiny.cloud/1/comip58lhd0os8orcneq0smt4o5hf7k77024kcp65j2tqon3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+
 <script>
     const image_upload_handler_callback = (blobInfo, progress) => {
         const formData = new FormData();
@@ -109,6 +115,93 @@
             }
         })
     })
+</script>
+
+<script>
+  $( function() {
+      $( "#datepicker_from" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        duration: 'slow'
+      });
+      $( "#datepicker_to" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        duration: 'slow'
+      });
+  } );
+</script>
+
+<!-- Thong ke tai day -->
+<script>
+    $(document).ready(function() {
+        day365()
+        var char = new Morris.Bar({
+    
+        element: 'myfirstchart',
+    
+        xkey: 'date',
+        ykeys: ['order', 'revenua', 'quantity'],
+        labels: ['Mã dơn hàng', 'Doanh thu', 'Số lượng']
+        });
+
+        $('.filter').click(function() {
+            var from = $('.date_from').val();
+            var to = $('.date_to').val();
+
+            $.ajax({
+                url: '<?php echo BASE_URL ?>/statistic',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    from : from,
+                    to : to
+                },
+                success: function (data) {
+                    char.setData(data) 
+                }
+            })
+        })
+
+        $('.select-sta').change(function() {
+            var time = $(this).val();
+            if(time == '7ngay') {
+                var text = '7 ngày qua'
+            }else if(time == '30ngay') {
+                var text = '30 ngày qua'
+
+            }else if(time == '90ngay') {
+                var text = '90 ngày qua'
+                
+            }else if(time == '1nam') {
+                var text = '365 ngày qua'
+            }
+
+            $('.text-date').text(text)
+            $.ajax({
+                url: '<?php echo BASE_URL ?>/statistic',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {time : time},
+                success: function (data) {
+                    char.setData(data) 
+                }
+            })
+        })
+
+        function day365() {
+            var text = '365 ngày qua'
+            $('.text-date').text(text)
+            $.ajax({
+                url: '<?php echo BASE_URL ?>/statistic',
+                method: 'POST',
+                dataType: 'JSON',
+                cache:false,
+                success: function (data) {
+                    char.setData(data) 
+                }
+            })
+        }
+    })
+
 </script>
 
 </body>
