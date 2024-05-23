@@ -105,7 +105,6 @@
                     <div class="top-act__btn-wrap top-act__favourite">
                         <a href="<?php echo BASE_URL ?>/favorite_user" class="top-act__btn">
                             <img src="<?php echo BASE_URL ?>/assets/icons/hearth.svg" alt="" class="top-act__icon icon" />
-                            <span class="top-act__title">03</span>
                         </a>
                     </div>
                     <div class="top-act__separate"></div>
@@ -183,7 +182,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="<?php echo BASE_URL ?>/favourite.html" class="user-menu__link">Sản phẩm yêu thích</a>
+                                        <a href="<?php echo BASE_URL ?>/favorite_user" class="user-menu__link">Sản phẩm yêu thích</a>
                                     </li>
 
                                     <li class="user-menu__separate">

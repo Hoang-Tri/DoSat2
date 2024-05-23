@@ -227,26 +227,14 @@
                                     <div class="product-info__card">
                                         <div class="product-info__row">
                                             <span class="product-info__price"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
-                                            <span class="product-info__tax">10%</span>
+                                            <span class="product-info__tax">%</span>
                                         </div>
     
-                                        <span class="product-info__total">$540.00</span>
+                                        <span class="product-info__total"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
     
                                         <div class="product-info__row">
                                             <button class="btn btn--primary product-info__add-to-cart">
                                                 Add to cart
-                                            </button>
-                                            <button class="like-btn product-info__like-btn like-btn__liked">
-                                                <img
-                                                    src="<?php echo BASE_URL ?>/assets/icons/hearth.svg"
-                                                    alt=""
-                                                    class="like-btn__icon icon"
-                                                />
-                                                <img
-                                                    src="<?php echo BASE_URL ?>/assets/icons/hearth-red.svg"
-                                                    alt=""
-                                                    class="like-btn__icon--liked"
-                                                />
                                             </button>
                                         </div>
                                     </div>
@@ -384,14 +372,15 @@
                             <div class="col">
                                 <article class="product-card">
                                     <div class="product-card__img-wrap">
-                                        <a href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id']?>">
+                                        <a  href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id']?>" id="wistlist_url<?php echo $pro['pro_id']?>">
                                             <img
                                                 src="<?php echo BASE_URL ?>/assets/uploads/product/<?php echo $pro['pro_image'] ?>"
                                                 alt=""
                                                 class="product-card__thumb"
+                                                id="wistlist_img<?php echo $pro['pro_id']?>"
                                             />
                                         </a>
-                                        <button class="like-btn product-card__like-btn">
+                                        <button class="like-btn product-card__like-btn" id="<?php echo $pro['pro_id'] ?>">
                                             <img
                                                 src="<?php echo BASE_URL ?>/assets/icons/hearth.svg"
                                                 alt=""
@@ -405,11 +394,14 @@
                                         </button>
                                     </div>
                                     <h3 class="product-card__title">
-                                        <a href="#!"><?php echo $pro['pro_title'] ?></a>
+                                        <a 
+                                        id="wistlist_name<?php echo $pro['pro_id']?>"
+                                        href="#!"><?php echo $pro['pro_title'] ?></a>
                                     </h3>
-                                    <h4 class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
+                                    <h4 id="wistlist_brand<?php echo $pro['pro_id']?>" class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
                                     <div class="product-card__row">
                                         <span class="product-card__price"><?php echo number_format( $product['pro_price'],0,',','.' ).'đ'?></span>
+                                        <input type="hidden" name="product_price" id="wistlist_price<?php echo $pro['pro_id']?>" value="<?php echo $pro['pro_price'] ?>">
                                         <img
                                             src="<?php echo BASE_URL ?>/assets/icons/start.svg"
                                             alt=""
