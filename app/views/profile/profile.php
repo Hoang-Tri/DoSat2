@@ -47,58 +47,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Profile list product  -->
-                            <div class="col-12">
-                                <h2 class="cart__heading">Lists</h2>
-                                <p class="cart__desc payment-card__desc">2 items - Primary</p>
-
-                                <div class="favourite">
-                                    <article class="favourite__item">
-                                        <img
-                                            src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
-                                            alt=""
-                                            class="favourite__img"
-                                        />
-
-                                        <div class="favourite__info">
-                                            <h3 class="favourite__info-title">
-                                                Coffee Beans - Espresso Arabica and Robusta Beans
-                                            </h3>
-
-                                            <div class="favourite__bottom">
-                                                <span class="favourite__price">$53.00</span>
-                                                <button class="btn btn--primary btn--rounded">
-                                                    Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </article>
-
-                                    <div class="separate" style="--margin: 20px"></div>
-
-                                    <article class="favourite__item">
-                                        <img
-                                            src="<?php echo BASE_URL ?>/assets/img/product/item-2.png"
-                                            alt=""
-                                            class="favourite__img"
-                                        />
-
-                                        <div class="favourite__info">
-                                            <h3 class="favourite__info-title">
-                                                Lavazza Coffee Blends - Try the Italian Espresso
-                                            </h3>
-
-                                            <div class="favourite__bottom">
-                                                <span class="favourite__price">$47.00</span>
-                                                <button class="btn btn--primary btn--rounded">
-                                                    Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

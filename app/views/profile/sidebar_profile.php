@@ -38,7 +38,7 @@
                         <div class="profile__user">
                             <img src="<?php echo BASE_URL ?>/assets/uploads/avatar/<?php echo $acc_img ?>" alt="" class="profile__user-avatar" />
                             <h1 class="profile__user-name"><?php echo $acc_name ?></h1>
-                            <p class="profile__user-desc">Registered: 17th May 2022</p>
+                            <!-- <p class="profile__user-desc">Registered: 17th May 2022</p> -->
                         </div>
 
                         <!-- Menu 1 -->
@@ -78,7 +78,7 @@
                             <h3 class="profile__menu-title">Danh sách của tôi</h3>
                             <ul class="profile__menu-list">
                                 <li>
-                                    <a href="#!" class="profile__menu-link">
+                                    <a href="<?php echo BASE_URL ?>/favorite_user" class="profile__menu-link">
                                         <span class="profile__menu-thumb">
                                             <img
                                                 src="<?php echo BASE_URL ?>/assets/icons/hearth.svg"
