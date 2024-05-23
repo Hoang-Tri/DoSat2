@@ -193,14 +193,59 @@ window.addEventListener("template-loaded", () => {
 
 // toggle click product like
 window.addEventListener("template-loaded", () => {
-    const likeProducts = $$(".like-btn");
+    const likeProducts = document.querySelectorAll(".like-btn");
 
     likeProducts.forEach((item) => {
-        item.onclick = () => {
+        item.addEventListener("click", () => {
             item.classList.toggle("like-btn__liked");
-        };
+
+            const id = item.id;
+            const isLiked = item.classList.contains("like-btn__liked");
+
+            let likedProducts = JSON.parse(localStorage.getItem("likedProducts")) || {};
+            likedProducts[id] = isLiked;
+            localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+
+            const name = document.getElementById('wistlist_name'+id).textContent;
+            const price = document.getElementById('wistlist_price'+id).value;
+            const brand = document.getElementById('wistlist_brand'+id).textContent;
+            const img = document.getElementById('wistlist_img'+id).src;
+            const url = document.getElementById('wistlist_url'+id).href;
+
+            if (likedProducts[id]) {
+                const newItem = {
+                    'url': url,
+                    'id' : id,
+                    'name': name,
+                    'price': price,
+                    'img' : img,
+                    'brand': brand
+                }
+
+                let old_data = JSON.parse(localStorage.getItem('data')) || [];
+                old_data.push(newItem);
+                localStorage.setItem('data', JSON.stringify(old_data));
+            } else {
+                // Xóa mục có id tương ứng trong mảng data
+                let old_data = JSON.parse(localStorage.getItem('data')) || [];
+                old_data = old_data.filter(obj => obj.id !== id);
+                localStorage.setItem('data', JSON.stringify(old_data));
+            }
+        });
+
+        const likedProducts = JSON.parse(localStorage.getItem("likedProducts")) || {};
+        const isLiked = likedProducts[item.id] || false;
+        item.classList.toggle("like-btn__liked", isLiked);
     });
 });
+
+
+
+
+
+
+
+
 
 // Onclick vo nut submit forgot password
 window.addEventListener("template-loaded", () => {
@@ -402,6 +447,65 @@ window.addEventListener("template-loaded", () => {
 
     });
 });
+
+window.addEventListener("template-loaded", () => {
+    // Lấy dữ liệu từ localStorage
+    var data = JSON.parse(localStorage.getItem('data')) || [];
+
+    // Lấy phần tử danh sách
+    var cartList = document.querySelector('.cart__list--js');
+
+    // Tạo biến để lưu trữ HTML sản phẩm
+    var productsHTML = '';
+
+    // Duyệt qua mỗi sản phẩm và thêm vào danh sách
+    for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+
+        // Tạo HTML cho mỗi sản phẩm
+        var productHTML = `
+            <article class="cart__item">
+                <a href="${item.url}" class="cart__thumb">
+                    <img src="${item.img}" alt="" class="cart__thumb-img" />
+                </a>
+                <div class="cart__info">
+                    <div class="cart__info-left">
+                        <h2 class="cart__info-title">
+                            <a href="${item.url}">${item.name}</a>
+                        </h2>
+                        <p class="cart__price">$${item.price} | <span class="cart__price-stock">X</span></p>
+                        <div class="cart__row cart__row-ctrl cart__row-lg--block">
+                            <div class="cart__input-wrap">
+                                <div class="cart__input">${item.brand}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart__info-right">
+                        <span class="cart__total">${item.price}</span>
+
+                        <form class='cartForm'>
+                            <input type="hidden" value="${item.id}" name="pro_id">
+                            <input type="hidden" value="${item.brand}" name="cart_brand_name">
+                            <input type="hidden" value="${item.name}" name="cart_pro_title">
+                            <input type="hidden" value="${item.img}" name="cart_pro_img">
+                            <input type="hidden" value="${item.price}" name="cart_pro_price">
+                            <input type="hidden" value="X" name="cart_pro_size">
+                            <input type="hidden" value="1" name="cart_pro_quantity">
+                            <button class="cart__info-btn btn btn--primary btn--rounded">Thêm vào giỏ hàng</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        `;
+
+        // Thêm HTML của sản phẩm vào biến productsHTML
+        productsHTML += productHTML;
+    }
+
+    // Set innerHTML của cartList thành tổng HTML của tất cả sản phẩm
+    cartList.innerHTML = productsHTML;
+});
+
 
 
 
