@@ -48,12 +48,30 @@
         public function addtocart() {
             session_start();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(isset($_SESSION['acc_id'])) {
+                    $acc_id = $_SESSION['acc_id'];
+                }  else {
+                    $acc_id = '';
+                }
+
                 // Lấy dữ liệu từ biểu mẫu
                 $pro_id = $_POST["pro_id"];
-                $acc_id = $_POST["acc_id"];
                 $cart_pro_quantity = $_POST["cart_pro_quantity"];
                 $cart_pro_title = $_POST["cart_pro_title"];
+
                 $cart_pro_img = $_POST["cart_pro_img"];
+
+                // Kiểm tra xem có dấu '/' trong chuỗi hay không
+                if (strpos($cart_pro_img, '/') !== false) {
+                    // Nếu có dấu '/', lấy phần tử sau cùng
+                    $parts = explode('/', $cart_pro_img);
+                    $result_pro_img = end($parts);
+                } else {
+                    // Nếu không có dấu '/', giữ nguyên chuỗi
+                    $result_pro_img = $cart_pro_img;
+                }
+
+
                 $cart_pro_price = $_POST["cart_pro_price"];
                 $cart_brand_name = $_POST["cart_brand_name"];
                 $cart_pro_size = $_POST["cart_pro_size"];
@@ -84,7 +102,7 @@
                             "pro_id" => $pro_id,
                             "acc_id" => $acc_id,
                             "cart_pro_title" => $cart_pro_title,
-                            "cart_pro_img" => $cart_pro_img,
+                            "cart_pro_img" => $result_pro_img,
                             "cart_pro_price" => $cart_pro_price,
                             "cart_brand_name" => $cart_brand_name,
                             "cart_pro_quantity" => $cart_pro_quantity,

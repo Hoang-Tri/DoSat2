@@ -36,7 +36,7 @@
                     <span class="nav-btn__title">Cart</span>
                     <span class="nav-btn__qnt">3</span>
                 </a>
-                <a href="#!" class="nav-btn d-none d-sm-flex">
+                <a href="<?php echo BASE_URL ?>/favorite_user" class="nav-btn d-none d-sm-flex">
                     <img src="<?php echo BASE_URL?>/assets/icons/hearth.svg" alt="" class="icon" />
                     <span class="nav-btn__title">Private</span>
                     <span class="nav-btn__qnt">3</span>
@@ -103,75 +103,10 @@
 
                 <div class="top-act__group d-md-none">
                     <div class="top-act__btn-wrap top-act__favourite">
-                        <button class="top-act__btn">
+                        <a href="<?php echo BASE_URL ?>/favorite_user" class="top-act__btn">
                             <img src="<?php echo BASE_URL ?>/assets/icons/hearth.svg" alt="" class="top-act__icon icon" />
                             <span class="top-act__title">03</span>
-                        </button>
-
-                        <!-- top action dropdown -->
-                        <div class="dropdown-cart">
-                            <div class="dropdown-cart__inner">
-                                <img src="<?php echo BASE_URL ?>/assets/icons/dropdown-arrow.svg" alt="" class="dropdown-cart__img" />
-                                <div class="dropdown-cart__row">
-                                    <h2 class="dropdown-cart__heading">You have 3 item</h2>
-                                    <a href="<?php echo BASE_URL ?>/favourite.html" class="dropdown-cart__view-all">See All</a>
-                                </div>
-                                <div class="dropdown-cart__wrap">
-                                    <div class="row row-cols-3 gx-2">
-                                        <!-- drop down item cart 1 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-1.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Lavazza Coffee Blends</h4>
-                                                <span class="dropdown-cart__item-price"> $329.00</span>
-                                            </article>
-                                        </div>
-
-                                        <!-- drop down item cart 2 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-2.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Coffee Beans Espresso</h4>
-                                                <span class="dropdown-cart__item-price"> $39.99</span>
-                                            </article>
-                                        </div>
-
-                                        <!-- drop down item cart 3 -->
-                                        <div class="col">
-                                            <article class="dropdown-cart__item">
-                                                <div class="dropdown-cart__thumb">
-                                                    <img
-                                                        src="<?php echo BASE_URL ?>/assets/img/product/item-3.png"
-                                                        alt=""
-                                                        class="dropdown-cart__thumb-img"
-                                                    />
-                                                </div>
-                                                <h4 class="dropdown-cart__item-title">Qualità Oro Mountain</h4>
-                                                <span class="dropdown-cart__item-price">$47.00</span>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-cart__separate"></div>
-
-                                <div class="dropdown-cart__checkout">
-                                    <a href="<?php echo BASE_URL ?>/checkout.html" class="btn btn--primary btn--rounded">Check Out All</a>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="top-act__separate"></div>
                     <div class="top-act__btn-wrap top-act__buy">
