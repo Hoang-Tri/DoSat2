@@ -12,17 +12,18 @@
                         </a>
                     </li>
 
-                    <!-- <li>
+                    <li>
                         <a href="#" class="breadcrumb__item">
-                            Giá tìm kiếm 
+                            Lọc sản phẩm có 
                             <img src="<?php echo BASE_URL ?>/assets/icons/arrow-right.svg" alt="" class="breadcrumb__icon" />
                         </a>
                     </li>   
                     <li>
                         <a href="./" class="breadcrumb__item breadcrumb__item--active">
-                            <?php echo $_POST['search'] ?>
+                            <!-- <?php echo $min_price ?> - <?php echo $max_price ?> & Size: <?php echo $size ?>  -->
+                            Giá <?php echo $_POST['min_price'] ?>đ - <?php echo number_format( $_POST['max_price'],0,',','.' ).'đ'?> & Size: <?php echo $_POST['size'] ?> 
                         </a>
-                    </li> -->
+                    </li> 
                 </ul>
             </div>
         </div>

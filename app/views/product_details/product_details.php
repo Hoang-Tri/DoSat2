@@ -406,7 +406,7 @@
                                     <h3 class="product-card__title">
                                         <a 
                                         id="wistlist_name<?php echo $pro['pro_id']?>"
-                                        href="#!"><?php echo $pro['pro_title'] ?></a>
+                                        href="<?php echo BASE_URL ?>/product_user/product_details/<?php echo $pro['pro_id'] ?>"><?php echo $pro['pro_title'] ?></a>
                                     </h3>
                                     <h4 id="wistlist_brand<?php echo $pro['pro_id']?>" class="product-card__brand"><?php echo $pro['brand_name'] ?></h4>
                                     <div class="product-card__row">

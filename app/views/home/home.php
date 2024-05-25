@@ -1,7 +1,7 @@
 <?php
 // Ensure $max_price is defined
 $min_price = isset($min_price) ? $min_price : 0;
-$max_price = isset($max_price) ? $max_price : 0;
+$max_price = isset($max_price) ? $max_price : 50000;
 ?>
 
 <?php
