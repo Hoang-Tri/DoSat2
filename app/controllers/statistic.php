@@ -50,15 +50,27 @@ use Carbon\CarbonInterval;
 
             $result = $catemodel->statiscial($table, $cond);
 
-            foreach($result as $key => $value) {
+            foreach ($result as $row) {
                 $chart_data[] = array(
-                    'date' => $value['sta_date'],
-                    'order' => $value['sta_order_id'],
-                    'revenua' => $value['sta_statistic'],
-                    'quantity' => $value['sta_quantity']
+                    'date' => $row['sta_date'],
+                    'order' => $row['count_order'],
+                    'revenua' => $row['revenua'],
+                    'quantity' => $row['quantity']
                 );
             }
 
            echo $data = json_encode($chart_data);
+        }
+
+        public function statiscial_product() {
+            $tbl_product = "product";
+            $tbl_order_details = "order_details";
+
+            $cond = "$tbl_product.pro_id = $tbl_order_details.pro_id";
+
+            $categorymodel = $this->load->model("categorymodel");
+            $result = $categorymodel->statiscial_product($tbl_product, $tbl_order_details, $cond);
+
+            echo $data_product = json_encode($result);
         }
     }

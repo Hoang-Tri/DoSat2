@@ -64,8 +64,30 @@
 
         //  thong ke
         public function statiscial($tbl_statiscial, $cond) {
-            $sql = "SELECT * FROM $tbl_statiscial WHERE $cond ORDER BY $tbl_statiscial.sta_date ASC";
+            $sql = "SELECT 
+                        sta_date, 
+                        SUM(sta_statistic) AS revenua, 
+                        COUNT(sta_order_id) AS count_order, 
+                        SUM(sta_quantity) AS quantity 
+                    FROM 
+                        $tbl_statiscial 
+                    WHERE 
+                        $cond
+                    GROUP BY 
+                        sta_date";
+        
             return $this->db->select($sql);
-        } 
+        }
+
+        public function statiscial_product($tbl_product, $tbl_order_details, $cond) {
+            $sql = "SELECT p.pro_title AS title, SUM(o.order_details_quantity) AS quantity,
+                       SUM(o.order_details_quantity * p.pro_price) AS price
+                    FROM $tbl_order_details o
+                    JOIN $tbl_product p ON o.pro_id = p.pro_id
+                    GROUP BY p.pro_title
+                    ORDER BY quantity DESC";
+            return $this->db->select($sql);
+        }
+        
     }
 ?>

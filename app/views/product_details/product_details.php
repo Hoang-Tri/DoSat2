@@ -232,11 +232,21 @@
     
                                         <span class="product-info__total"><?php echo number_format ($price,0,',','.' ).'đ'?></span>
     
+                                        <?php 
+                                            if ($quantity <= 0) {
+                                                echo '<div class="product-info__row">
+                                                Sản phẩm đã hết hàng vui lòng quay lại sau!
+                                                </div>';
+                                            }else {
+                                        ?>
                                         <div class="product-info__row">
                                             <button class="btn btn--primary product-info__add-to-cart">
                                                 Add to cart
                                             </button>
                                         </div>
+                                        <?php 
+                                            }
+                                        ?>
                                     </div>
                                 </form>
                         </div>

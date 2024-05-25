@@ -15,6 +15,7 @@
                 $cus_id = $_POST['cus_id'];
                 $order_details_fee = $_POST['order_details_fee'];
                 $order_details_coupon = $_POST['order_details_coupon'];
+                $sta_statistic = $_POST['sta_statistic'];
 
                 // chuan bi cho data
                 date_default_timezone_set('asia/ho_chi_minh');
@@ -55,8 +56,6 @@
                             'order_details_coupon' => $order_details_coupon
                         );
 
-                        $sta_statictis += $order_details_price;
-
                         // Theo du lieu vao bang chi tiet don hang
                         $cart_id = $value['cart_id'];
                         $pro_id_update = $value['pro_id'];
@@ -79,18 +78,12 @@
                         $delete_cart = $cartmodel->deletecart($tbl_cart, $cond_delete_cart);
                     }
 
-                    if($order_details_coupon <= 1) {
-                        $sta_statictis = $sta_statictis - $sta_statictis * $order_details_coupon;
-                    }else {
-                        $sta_statictis -=  $order_details_coupon;
-                    }
-
                     // data cua bang thong ke
                     $data_statiscial = array(
                         'sta_order_id' => $order_code,
                         'sta_quantity' => count($cart),
                         'sta_date' => $date,
-                        'sta_statistic' => $sta_statictis + $order_details_fee
+                        'sta_statistic' => $sta_statistic
                     );
                     // Them du lieu vao bang statistic
                     // Muon model cua order
