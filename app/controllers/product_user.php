@@ -193,8 +193,9 @@
             if(isset($_SESSION['acc_id']) && $_SESSION['account'] == true) {
                 $user_id = $_SESSION['acc_id'];
                 $data["user"] = $accountmodel->getAccountById($user_id);
-            }else {
-                header('Location:'.BASE_URL);
+            }
+            else {
+                //header('Location:'.BASE_URL);
             }
 
             // Initialize user id
