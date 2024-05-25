@@ -67,4 +67,21 @@ use Carbon\CarbonInterval;
                 </div>
             </div>
 
+            <div class="container mt-5">
+                <h2>Thống kê sản phẩm</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng bán ra</th>
+                            <th>Doanh thu sản phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-stats">
+
+                    </tbody>
+                </table>
+            </div>
+
             

@@ -201,7 +201,41 @@
             })
         }
     })
+</script>
 
+<script>
+    $(document).ready(function() {
+        function statiscial_product() {
+            $.ajax({
+                url: '<?php echo BASE_URL ?>/statistic/statiscial_product',
+                method: 'POST',
+                dataType: 'JSON',
+                success: function(data) {
+                    var tableBody = $('#product-stats');
+                    tableBody.empty();  // Xóa nội dung cũ
+                    var i = 1;
+
+                    var formatter = new Intl.NumberFormat('de-DE', { 
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0
+                    });
+                    data.forEach(function(item) {
+
+                        var row = '<tr>' +
+                            '<td>' + i + '</td>' +
+                            '<td>' + item.title + '</td>' +
+                            '<td>' + item.quantity + '</td>' +
+                            '<td>' + formatter.format(item.price) + ' VND' + '</td>' +
+                            '</tr>';
+                        tableBody.append(row);
+                        i++;
+                    });
+                },
+            })
+        }
+
+        statiscial_product();
+    })
 </script>
 
 </body>

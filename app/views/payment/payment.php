@@ -253,6 +253,7 @@
                                 <input type="hidden" name="cus_id" value="<?php echo $cus_id ?>">
                                 <input type="hidden" name="order_details_fee" value="<?php echo $_SESSION['fee'] ?>">
                                 <input type="hidden" name="order_details_coupon" value="<?php echo $sale ?>">
+                                <input type="hidden" name="sta_statistic" value="<?php echo $totals ?>">
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng ví VNPay</a>
                                 <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng MOMO</a>
                                 <button class="btn btn--primary btn--rounded payment__btn btn-not-margin">Đặt hàng</button>
