@@ -249,15 +249,21 @@
                                     <span>Giá tổng</span>
                                     <span><?php echo number_format ($totals,0,',','.' ).'đ'?></span>
                                 </div>
+                                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
+                                        action="<?php echo BASE_URL ?>/atm_momo.php">
+                                        <button class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng MOMO</button>
+                                    </form>
+                                    <button href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng ví VNPay</button>
+
                             <form action="<?php echo BASE_URL ?>/order_user" method="post" class="form_order">
                                 <input type="hidden" name="cus_id" value="<?php echo $cus_id ?>">
                                 <input type="hidden" name="order_details_fee" value="<?php echo $_SESSION['fee'] ?>">
                                 <input type="hidden" name="order_details_coupon" value="<?php echo $sale ?>">
                                 <input type="hidden" name="sta_statistic" value="<?php echo $totals ?>">
-                                <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng ví VNPay</a>
-                                <a href="#!" class="btn btn--outline btn--rounded payment__btn btn-not-margin">Thanh toán bằng MOMO</a>
                                 <button class="btn btn--primary btn--rounded payment__btn btn-not-margin">Đặt hàng</button>
                             </form>
+
+
                         </div>
                     </div>
                 </div>
