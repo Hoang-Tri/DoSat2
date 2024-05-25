@@ -111,7 +111,7 @@
                     <div class="top-act__btn-wrap top-act__buy">
                         <button class="top-act__btn">
                             <img src="<?php echo BASE_URL ?>/assets/img/buy.svg" alt="" class="top-act__icon icon" />
-                            <span class="top-act__title">$65.42</span>
+                            <!-- <span class="top-act__title">$65.42</span> -->
                         </button>
                         <!-- top action dropdown -->
                         <div class="dropdown-cart">
