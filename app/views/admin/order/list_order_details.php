@@ -53,7 +53,7 @@
                         if($sale < 1) {
                             $totals = $totals - $totals * $sale; 
                         }else {
-                            $totals += $sale;
+                            $totals -= $sale;
                         }
 
                     
