@@ -232,8 +232,8 @@
                                                 $sale /= 100;
                                                 $totals = $totals - $totals * $sale; 
                                             }else {
-                                                echo "<span>".$number_format ($sale,0,',','.' ).'đ'." %</span>";
-                                                $totals += $sale;
+                                                echo "<span>".number_format ($sale,0,',','.' ).'đ'."</span>";
+                                                $totals -= $sale;
                                             }
                                         }else {
                                             $sale = 0;

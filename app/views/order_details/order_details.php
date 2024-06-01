@@ -95,13 +95,13 @@
                                             if($order_details_coupon < 1) {
                                                 $totals = $totals - $totals * $order_details_coupon; 
                                             }else {
-                                                $totals += $order_details_coupon;
+                                                $totals -= $order_details_coupon;
                                             }
                                         ?>
 
                                         <div class="cart__info-row">
                                             <span>Giảm giá:</span>
-                                            <span><?php echo $order_details_coupon > 1 ? number_format ($order_details_coupon,0,',','.' ).'đ' : $order_details_coupon."%" ?></span>
+                                            <span><?php echo $order_details_coupon > 1 ? number_format ($order_details_coupon,0,',','.' ).'đ' : $order_details_coupon ?></span>
                                         </div>
 
                                         <div class="cart__info-separate"></div>
